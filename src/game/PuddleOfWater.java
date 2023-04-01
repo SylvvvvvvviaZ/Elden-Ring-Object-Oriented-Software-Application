@@ -13,7 +13,7 @@ public class PuddleOfWater extends Ground {
 
     /**
      * Giant Crabs can spawn with 2% chance per turn
-     * 
+     *
      * @param location The location of the Ground
      */
     @Override
