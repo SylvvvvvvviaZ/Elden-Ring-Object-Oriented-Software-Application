@@ -18,8 +18,16 @@ public class Graveyard extends Ground {
      */
     @Override
     public void tick(Location location) {
-        if (RandomNumberGenerator.getRandomInt(100) <= 27) {
-            location.addActor(new HeavySkeletalSwordsman());
+        if (location.x() < location.map().getXRange().max() / 2) {
+            // West side spawns HSSs
+            if (RandomNumberGenerator.getRandomInt(100) <= 27) {
+                location.addActor(new HeavySkeletalSwordsman());
+            }
+        } else {
+            // East side spawns Skeletal Bandits
+            if (RandomNumberGenerator.getRandomInt(100) <= 10) {
+                location.addActor(new SkeletalBandit());
+            }
         }
     }
 }
