@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,8 +20,6 @@ public class HeavySkeletalSwordsman extends Actor {
     }
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-
-        // TODO
         return null;
     }
 

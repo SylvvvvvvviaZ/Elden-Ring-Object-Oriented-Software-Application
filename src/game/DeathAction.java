@@ -35,8 +35,13 @@ public class DeathAction extends Action {
 
         ActionList dropActions = new ActionList();
         // drop all items
-        for (Item item : target.getItemInventory())
-            dropActions.add(item.getDropAction(target));
+        for (Item item : target.getItemInventory()) {
+            if (item.hasCapability(Status.IMMEDIATE_PICK_UP)) {
+                item.getPickUpAction(attacker).execute(attacker, map);
+            } else {
+                dropActions.add(item.getDropAction(target));
+            }
+        }
         for (WeaponItem weapon : target.getWeaponInventory())
             dropActions.add(weapon.getDropAction(target));
         for (Action drop : dropActions)

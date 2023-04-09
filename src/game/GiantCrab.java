@@ -13,7 +13,7 @@ public class GiantCrab extends Actor {
     }
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        // TODO
+
         return null;
     }
 
