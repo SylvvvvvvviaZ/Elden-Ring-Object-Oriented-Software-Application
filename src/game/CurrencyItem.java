@@ -11,6 +11,7 @@ import edu.monash.fit2099.engine.items.PickUpAction;
  * @see Item
  */
 public abstract class CurrencyItem extends Item {
+    private final String name;
     private int value;
 
     /**
@@ -21,7 +22,16 @@ public abstract class CurrencyItem extends Item {
      */
     public CurrencyItem(String name, Character displayChar, int value) {
         super(name, displayChar, true);
+        this.name = name;
         this.value = value;
+    }
+
+    /**
+     * Gets the name of the currency
+     * @return currency's name
+     */
+    public String getName() {
+        return name;
     }
 
     /**
@@ -30,6 +40,11 @@ public abstract class CurrencyItem extends Item {
      */
     public int getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s (value: %d)", name, value);
     }
 
     /**
