@@ -19,6 +19,8 @@ public class Club extends WeaponItem {
      */
     public Club() {
         super("Club", '!', 103, "bonks", 80);
+        addCapability(Trade.BUYABLE);
+        addCapability(Trade.SELLABLE);
     }
 
     @Override
