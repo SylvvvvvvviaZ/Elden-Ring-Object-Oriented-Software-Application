@@ -10,7 +10,7 @@ public abstract class WeaponItem extends Item implements Weapon {
 
 	private final int damage;
 	private final int hitRate;
-	private final String verb;
+	protected final String verb;
 
 	/** Constructor.
 	 *

@@ -25,6 +25,8 @@ public class LoneWolf extends Actor {
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
         this.behaviours.put(999, new WanderBehaviour());
+        this.behaviours.put(998, new FollowBehaviour(Player.getInstance()))
+        addCapability(EnemyType.CANINE);
     }
 
     /**
@@ -59,8 +61,6 @@ public class LoneWolf extends Actor {
         ActionList actions = new ActionList();
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
-            // HINT 1: The AttackAction above allows you to attak the enemy with your intrinsic weapon.
-            // HINT 1: How would you attack the enemy with a weapon?
         }
         return actions;
     }

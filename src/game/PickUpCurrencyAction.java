@@ -5,13 +5,16 @@ import edu.monash.fit2099.engine.items.PickUpAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
- * Action for picking up currency items that uses the CurrencyManager to update balances
+ * Action for picking up currency items that uses the CurrencyManager to update
+ * balances
+ * 
  * @author dkon0020
  * @version 0.0
  * @see PickUpAction
  */
 public class PickUpCurrencyAction extends PickUpAction {
     private final CurrencyItem item;
+
     public PickUpCurrencyAction(CurrencyItem item) {
         super(item);
         this.item = item;
@@ -19,8 +22,9 @@ public class PickUpCurrencyAction extends PickUpAction {
 
     /**
      * Picks up the currency item, and updates the actor's balance
+     * 
      * @param actor The actor performing the action.
-     * @param map The map the actor is on.
+     * @param map   The map the actor is on.
      * @return menu printout of the action
      */
     @Override
@@ -31,6 +35,7 @@ public class PickUpCurrencyAction extends PickUpAction {
 
     /**
      * Gets the menu description for the pick-up action
+     * 
      * @param actor The actor performing the action.
      * @return description for the pick-up action
      */
