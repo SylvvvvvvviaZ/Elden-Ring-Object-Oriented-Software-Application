@@ -44,6 +44,7 @@ public class FollowBehaviour implements Behaviour {
 			if (destination.canActorEnter(actor)) {
 				int newDistance = distance(destination, there);
 				if (newDistance < currentDistance) {
+					actor.addCapability(Status.FOLLOWING_PLAYER);
 					return new MoveActorAction(destination, exit.getName());
 				}
 			}
