@@ -1,5 +1,8 @@
 package game;
+import java.util.ArrayList;
+
 import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 
@@ -20,7 +23,7 @@ public class Grossmesser extends WeaponItem {
     public void spinningAttack(Actor user, ArrayList<Actor> targets) {
         for (Actor target : targets) {
             if (target != user) {
-                target.takeDamage(this.getDamage(), this.getAccuracy());
+                target.takeDamage(this.damage(), this.accuracy());
             }
         }
     }
@@ -35,25 +38,15 @@ public class Grossmesser extends WeaponItem {
 		ActionList actions = new ActionList();
 		if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 			actions.add(new AttackAction(this, "slashes"));
-			actions.add(new SpinningAttack(this, DAMAGE, ACCURACY));
+			actions.add(new SpinningAttack(this));
 		}
 		return actions;
 	}
 
 	@Override
-    public Action getSkill() {
-        return new SpinningAttack();
+    public Action getSkill(Actor actor) {
+        return new SpinningAttack(this);
     }
-}
-
-
-
-
-
-
-
-
-
 }
 
 

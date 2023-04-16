@@ -19,6 +19,12 @@ public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
 
+	private static Player instance;
+
+	public static Player getInstance() {
+		return instance;
+	}
+
 	/**
 	 * Constructor.
 	 *
@@ -30,7 +36,17 @@ public class Player extends Actor implements Resettable {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addWeaponToInventory(new Club());
+		instance = this;
 	}
+
+	/**
+	* Returns a list of allowable actions for the Player based on their inventory, location and other factors.
+	* @param actions The list of allowable actions for the Player to be modified and returned.
+	* @param lastAction The last action performed by the player, if any.
+	* @param map The map containing the Player.
+	* @param display The Display where the map is drawn.
+	* @return an Action representing the Player's action for this turn.
+	*/
 
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
@@ -41,7 +57,9 @@ public class Player extends Actor implements Resettable {
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
-
+	/**
+	* Resets the player's state.
+	*/
 	@Override
 	public void reset() {}
 }

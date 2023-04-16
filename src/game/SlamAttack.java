@@ -7,6 +7,9 @@ import edu.monash.fit2099.engine.weapons.Weapon;
  * Special attack method used by Crustacean-type enemies
  */
 public class SlamAttack extends AreaAttackAction {
+  public static SlamAttack newInstance(Weapon weapon) {
+    return new SlamAttack(weapon);
+  }
 
   /**
    * Instantiates the special attack with the weapon
