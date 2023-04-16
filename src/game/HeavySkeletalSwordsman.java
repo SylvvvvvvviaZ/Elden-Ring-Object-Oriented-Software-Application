@@ -16,8 +16,9 @@ public class HeavySkeletalSwordsman extends Actor {
 
     public HeavySkeletalSwordsman() {
         super("Heavy Skeletal Swordsman", 'q', 153);
-        this.behaviours.put(999, new WanderBehaviour());
-
+        // Add the behaviours of the enemy
+        behaviours.put(999, new WanderBehaviour());
+        // Add the enemy's type
         addCapability(EnemyType.SKELETAL);
     }
 
