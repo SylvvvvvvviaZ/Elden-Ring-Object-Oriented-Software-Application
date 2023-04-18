@@ -20,7 +20,6 @@ public class ConsumeAction extends Action {
     this.item = item;
   }
 
-
     /**
     * Executes the ConsumeItemAction, consuming the item and returning a message describing.
     * @param actor the actor performing the action
