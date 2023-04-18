@@ -1,5 +1,6 @@
 package game;
 
+import java.rmi.server.RMIClientSocketFactory;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,17 +15,32 @@ public class ResetManager {
     private List<Resettable> resettables;
     private static ResetManager instance;
 
+    public static ResetManager getInstance() {
+        if (instance == null) instance = new ResetManager();
+        return instance;
+    }
+
     /**
-     * HINT 1: where have we seen a private constructor before?
-     * HINT 2: see the instance attribute above.
+     * Constructor
      */
     private ResetManager() {
         this.resettables = new ArrayList<>();
     }
 
-    public void run() {}
+    /**
+     * Calls each resettable item to reset
+     */
+    public void run(ResetType resetType) {
+        for (Resettable resettable : resettables) {
+            resettable.reset(resetType);
+        }
+    }
 
-    public void registerResettable(Resettable resettable) {}
+    public void registerResettable(Resettable resettable) {
+        resettables.add(resettable);
+    }
 
-    public void removeResettable(Resettable resettable) {}
+    public void removeResettable(Resettable resettable) {
+        resettables.remove(resettable);
+    }
 }

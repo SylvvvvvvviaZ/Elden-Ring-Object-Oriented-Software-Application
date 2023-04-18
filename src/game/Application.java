@@ -18,6 +18,7 @@ import edu.monash.fit2099.engine.positions.World;
 public class Application {
 
 	public static void main(String[] args) {
+		ResetManager resetManager = ResetManager.getInstance();
 
 		World world = new World(new Display());
 
@@ -48,8 +49,10 @@ public class Application {
 				"..####__###..................................................._.....__.#...",
 				"..............................................................###..__###...",
 				"...........................................................................");
-		GameMap gameMap = new GameMap(groundFactory, map);
+		ResettableGameMap gameMap = new ResettableGameMap(groundFactory, map);
 		world.addGameMap(gameMap);
+
+		resetManager.registerResettable(gameMap);
 
 		// BEHOLD, ELDEN RING
 		for (String line : FancyMessage.ELDEN_RING.split("\n")) {
@@ -66,6 +69,8 @@ public class Application {
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300);
 		world.addPlayer(player, gameMap.at(36, 10));
+
+		resetManager.registerResettable(player);
 
 		world.run();
 	}

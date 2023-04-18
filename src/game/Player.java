@@ -38,7 +38,9 @@ public class Player extends Actor implements Resettable {
 		this.addWeaponToInventory(new Club());
 		instance = this;
 		// Add the Flask of Crimson Tears
-		addItemToInventory(new FlaskOfCrimsonTears());
+		FlaskOfCrimsonTears flaskOfCrimsonTears = new FlaskOfCrimsonTears();
+		addItemToInventory(flaskOfCrimsonTears);
+		ResetManager.getInstance().registerResettable(flaskOfCrimsonTears);
 	}
 
 	/**
@@ -63,5 +65,7 @@ public class Player extends Actor implements Resettable {
 	* Resets the player's state.
 	*/
 	@Override
-	public void reset() {}
+	public void reset(ResetType resetType) {
+		
+	}
 }
