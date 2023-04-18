@@ -17,7 +17,7 @@ public class GiantCrayfish extends Actor {
     public GiantCrayfish() {
         super("Giant Crayfish", 'R', 4803);
         this.behaviours.put(997, new AttackBehaviour());
-        this.behaviours.put(998, new FollowBehaviour(Player.getInstance()))
+        this.behaviours.put(998, new FollowBehaviour(Player.getInstance()));
         this.behaviours.put(999, new WanderBehaviour());
 
         addCapability(EnemyType.CRUSTACEAN);

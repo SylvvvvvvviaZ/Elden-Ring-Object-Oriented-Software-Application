@@ -9,5 +9,9 @@ public enum Status {
     HOSTILE_TO_ENEMY,
     RESPAWNABLE,
     RESTING,
-    FOLLOWING_PLAYER
+    FOLLOWING_PLAYER,
+    /**
+     * Actor will become a Pile of Bones upon death
+     */
+    DIES_TO_PILE_OF_BONES
 }

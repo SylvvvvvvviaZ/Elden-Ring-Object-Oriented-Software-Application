@@ -24,7 +24,7 @@ public class SkeletalBandit extends Actor {
         super("Skeletal Bandit", 'b', 184);
         // Add the behaviours of the enemy
         this.behaviours.put(997, new AttackBehaviour());
-        this.behaviours.put(998, new FollowBehaviour(Player.getInstance()))
+        this.behaviours.put(998, new FollowBehaviour(Player.getInstance()));
         this.behaviours.put(999, new WanderBehaviour());
         // Add the enemy's type
         addCapability(EnemyType.SKELETAL);

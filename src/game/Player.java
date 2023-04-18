@@ -37,6 +37,8 @@ public class Player extends Actor implements Resettable {
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addWeaponToInventory(new Club());
 		instance = this;
+		// Add the Flask of Crimson Tears
+		addItemToInventory(new FlaskOfCrimsonTears());
 	}
 
 	/**
