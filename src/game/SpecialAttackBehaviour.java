@@ -17,9 +17,7 @@ import edu.monash.fit2099.engine.weapons.Weapon;
  */
 public class SpecialAttackBehaviour implements Behaviour {
 
-    public SpecialAttackBehaviour() {
-
-    }
+    // public SpecialAttackBehaviour() {}
 
     /**
      * Determines whether the special attack exists or should be executed
@@ -28,9 +26,12 @@ public class SpecialAttackBehaviour implements Behaviour {
      * @param map   the game map
      * @return the attack action to be carried out, or null if
      */
+    
     @Override
     public Action getAction(Actor actor, GameMap map) {
+        // Get the weapon or intrinsic weapon from the actor
         Weapon actorWeapon; 
+        // Check whether weapon from the actor has any special skill
         if (!actor.getWeaponInventory().isEmpty()) {
             actorWeapon = actor.getWeaponInventory().get(0);
             if (actorWeapon.getSkill(actor) != null) {
@@ -39,28 +40,19 @@ public class SpecialAttackBehaviour implements Behaviour {
         } else {
             actorWeapon = actor.getIntrinsicWeapon();
         } 
-
+        // Get the capabilities from the actor
         List<SpecialAttackType> specialAttacks = actor.findCapabilitiesByType(SpecialAttackType.class);
         if (!specialAttacks.isEmpty()) {
-            Action specialAttackAction = null;
-
+            // Action specialAttackAction = null
             SpecialAttackType specialAttackType = specialAttacks.get(0);
+            // Return the appropriate special attack action
             switch (specialAttackType) {
                 case SLAM -> {
-                    specialAttackAction = new SlamAttack(actorWeapon);
+                    return new SlamAttack(actorWeapon);
                 }
             }
-
-//            try {
-//                if (RandomNumberGenerator.getRandomInt(0, 100) <= 50) {
-//                    Action specialAttackAction = specialAttacks.get(0).getSpecialAttack().getConstructor()
-//                            .newInstance();
-//                    return specialAttackAction;
-//                }
-//            } catch (Exception e) {
-//                throw new RuntimeErrorException(null);
-//            }
         }
-        return new AttackAction(actor, null, null)
+        // If no special attacks found, return normal attack action
+        return new AttackAction(actor, null, actorWeapon);
     }
 }
