@@ -4,12 +4,16 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
+
+ /**
+  * Constructs a new ConsumeAction.
+  */
 public class ConsumeAction extends Action {
   private Consumable item;
 
 
     /**
-    * Constructs a new ConsumeAction with the specified item to consume.
+    * Constructs a new ConsumeAction with the specified consume item.
     * @param item the item to consume
     */
   public ConsumeAction(Consumable item) {

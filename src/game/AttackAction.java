@@ -10,8 +10,9 @@ import edu.monash.fit2099.engine.weapons.Weapon;
 /**
  * An Action to attack another Actor.
  * Created by:
+ * 
  * @author Adrian Kristanto
- * Modified by:
+ *         Modified by:
  *
  */
 public class AttackAction extends Action {
@@ -39,8 +40,9 @@ public class AttackAction extends Action {
 	/**
 	 * Constructor.
 	 * 
-	 * @param target the Actor to attack
-	 * @param direction the direction where the attack should be performed (only used for display purposes)
+	 * @param target    the Actor to attack
+	 * @param direction the direction where the attack should be performed (only
+	 *                  used for display purposes)
 	 */
 	public AttackAction(Actor target, String direction, Weapon weapon) {
 		this.target = target;
@@ -51,8 +53,9 @@ public class AttackAction extends Action {
 	/**
 	 * Constructor with intrinsic weapon as default
 	 *
-	 * @param target the actor to attack
-	 * @param direction the direction where the attack should be performed (only used for display purposes)
+	 * @param target    the actor to attack
+	 * @param direction the direction where the attack should be performed (only
+	 *                  used for display purposes)
 	 */
 	public AttackAction(Actor target, String direction) {
 		this.target = target;
@@ -60,11 +63,13 @@ public class AttackAction extends Action {
 	}
 
 	/**
-	 * When executed, the chance to hit of the weapon that the Actor used is computed to determine whether
-	 * the actor will hit the target. If so, deal damage to the target and determine whether the target is killed.
+	 * When executed, the chance to hit of the weapon that the Actor used is
+	 * computed to determine whether
+	 * the actor will hit the target. If so, deal damage to the target and determine
+	 * whether the target is killed.
 	 *
 	 * @param actor The actor performing the attack action.
-	 * @param map The map the actor is on.
+	 * @param map   The map the actor is on.
 	 * @return the result of the attack, e.g. whether the target is killed, etc.
 	 * @see DeathAction
 	 */
@@ -82,7 +87,14 @@ public class AttackAction extends Action {
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
 		if (!target.isConscious()) {
-			result += new DeathAction(actor).execute(target, map);
+			// The target has died
+			if (target.hasCapability(Status.DIES_TO_PILE_OF_BONES)) {
+				// If the target can become a Pile of Bones upon death, do the swap action
+				result += new SwapActorAction(new PileOfBones(actor));
+			} else {
+				// Otherwise, just execute the normal death action
+				result += new DeathAction(actor).execute(target, map);
+			}
 		}
 
 		return result;
@@ -96,6 +108,7 @@ public class AttackAction extends Action {
 	 */
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " attacks " + target + " at " + direction + " with " + (weapon != null ? weapon : "Intrinsic Weapon");
+		return actor + " attacks " + target + " at " + direction + " with "
+				+ (weapon != null ? weapon : "Intrinsic Weapon");
 	}
 }
