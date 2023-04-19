@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.DropAction;
 import edu.monash.fit2099.engine.items.Item;
 import game.actions.ConsumeAction;
+import game.interfaces.Consumable;
 
 /**
  * The Flask of Crimson Tears item that is always carried by the player and can be used to heal the player

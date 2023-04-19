@@ -2,6 +2,9 @@ package game.enemies;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.EnemyType;
+import game.RandomNumberGenerator;
+import game.currency.CurrencyItem;
+import game.currency.Rune;
 
 /**
  * Lone Wolf enemy
@@ -16,5 +19,14 @@ public class LoneWolf extends Enemy {
      */
     public LoneWolf() {
         super("Lone Wolf", 'h', 102, EnemyType.CANINE, new IntrinsicWeapon(97, "bites", 95));
+    }
+
+    /**
+     * Lone Wolf rewards 55-1470 Runes upon death
+     * @return the Runes to be rewarded upon death
+     */
+    @Override
+    public CurrencyItem rewardCurrency() {
+        return new Rune(RandomNumberGenerator.getRandomInt(55, 1470));
     }
 }

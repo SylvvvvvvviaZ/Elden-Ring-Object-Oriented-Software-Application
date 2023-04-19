@@ -1,6 +1,9 @@
 package game.enemies;
 
 import game.EnemyType;
+import game.RandomNumberGenerator;
+import game.currency.CurrencyItem;
+import game.currency.Rune;
 import game.weapons.Scimitar;
 
 /**
@@ -15,5 +18,14 @@ public class SkeletalBandit extends Enemy {
      */
     public SkeletalBandit() {
         super("Skeletal Bandit", 'b', 184, EnemyType.SKELETAL, new Scimitar());
+    }
+
+    /**
+     * Skeletal Bandit rewards 35-892 Runes upon death
+     * @return the Runes to be rewarded upon death
+     */
+    @Override
+    public CurrencyItem rewardCurrency() {
+        return new Rune(RandomNumberGenerator.getRandomInt(35, 892));
     }
 }

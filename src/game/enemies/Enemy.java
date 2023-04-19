@@ -18,6 +18,8 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
+import game.currency.CurrencyItem;
+import game.interfaces.CurrencySource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +31,7 @@ import java.util.Map;
  * @version 1.0
  * @see Actor
  */
-public abstract class Enemy extends Actor {
+public abstract class Enemy extends Actor implements CurrencySource {
     /**
      * Behaviours of the enemy are used to execute AI-like operations
      */
@@ -159,5 +161,17 @@ public abstract class Enemy extends Actor {
     public IntrinsicWeapon getIntrinsicWeapon() {
         if (intrinsicWeapon == null) return super.getIntrinsicWeapon();
         return intrinsicWeapon;
+    }
+
+    /**
+     * Enemies will drop a certain currency upon death
+     * <br/>
+     * By default, no award is given.
+     *
+     * @return the amount of currency to be awarded to the player
+     */
+    @Override
+    public CurrencyItem rewardCurrency() {
+        return null;
     }
 }

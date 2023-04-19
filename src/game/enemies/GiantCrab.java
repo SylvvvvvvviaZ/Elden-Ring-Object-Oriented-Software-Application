@@ -2,6 +2,9 @@ package game.enemies;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.EnemyType;
+import game.RandomNumberGenerator;
+import game.currency.CurrencyItem;
+import game.currency.Rune;
 
 /**
  * Giant Crab enemy
@@ -16,5 +19,14 @@ public class GiantCrab extends Enemy {
      */
     public GiantCrab() {
         super("Giant Crab", 'C', 407, EnemyType.CRUSTACEAN, new IntrinsicWeapon(208, "slams", 90));
+    }
+
+    /**
+     * Giant Crab rewards 318-4961 Runes upon death
+     * @return the Runes to be rewarded upon death
+     */
+    @Override
+    public CurrencyItem rewardCurrency() {
+        return new Rune(RandomNumberGenerator.getRandomInt(318, 4961));
     }
 }

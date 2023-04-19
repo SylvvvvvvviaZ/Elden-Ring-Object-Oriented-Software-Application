@@ -28,7 +28,6 @@ public class AttackBehaviour implements Behaviour {
    */
   @Override
   public Action getAction(Actor actor, GameMap map) {
-    Actor targetActor = null;
 
     // The location of the actor attacking others
     Location actorLocation = map.locationOf(actor);
@@ -52,7 +51,7 @@ public class AttackBehaviour implements Behaviour {
             // Get the EnemyTypes of this actor and the target actor
             List<EnemyType> otherActorTypes = actorAtLocation.findCapabilitiesByType(EnemyType.class);
             List<EnemyType> actorTypes = actor.findCapabilitiesByType(EnemyType.class);
-            // Check whether the possess the same EnemyType capability
+            // Check whether they possess the same EnemyType capability
             for (EnemyType actorType : actorTypes) {
               for (EnemyType otherActorType : otherActorTypes) {
                 if (actorType == otherActorType) isOfSameType = true;
@@ -62,7 +61,7 @@ public class AttackBehaviour implements Behaviour {
         
             if (!isOfSameType) {
               // If they are not of the same type, the actor can proceed with the attack
-              return new AttackAction(targetActor, null, actor.getWeaponInventory().get(0));
+              return new AttackAction(actorAtLocation, null, actor.getWeaponInventory().get(0));
             }
           }
         }
@@ -71,5 +70,4 @@ public class AttackBehaviour implements Behaviour {
     // No suitable actor to attack, so no action will be returned
     return null;
   }
-
 }
