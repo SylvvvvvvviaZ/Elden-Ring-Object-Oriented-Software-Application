@@ -1,6 +1,7 @@
 package game;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import game.currency.CurrencyItem;
 
 import java.util.HashMap;
 

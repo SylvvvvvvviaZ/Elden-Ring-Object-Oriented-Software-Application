@@ -5,8 +5,11 @@ import java.util.List;
 
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.enemies.LoneWolf;
+import game.grounds.Dirt;
+import game.grounds.Floor;
+import game.grounds.Wall;
 
 /**
  * The main class to start the game.

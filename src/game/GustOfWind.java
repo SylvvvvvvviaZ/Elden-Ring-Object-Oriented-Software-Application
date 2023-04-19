@@ -2,6 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.enemies.LoneWolf;
 
 /**
  * Gust of Wind ground

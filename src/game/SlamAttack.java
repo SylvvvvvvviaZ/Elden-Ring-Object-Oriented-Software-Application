@@ -2,6 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.actions.AreaAttackAction;
 
 /**
  * Special attack method used by Crustacean-type enemies

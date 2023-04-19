@@ -2,6 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.actions.AreaAttackAction;
 
 /**
  * A special action that allows an actor to perform an area attack on multiple targets around them using a weapon.

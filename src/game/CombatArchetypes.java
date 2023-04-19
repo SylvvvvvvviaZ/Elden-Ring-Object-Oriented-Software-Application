@@ -1,6 +1,9 @@
 package game;
 
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.weapons.Club;
+import game.weapons.GreatKnife;
+import game.weapons.Uchigatana;
 
 /**
  * The available combat archetypes
