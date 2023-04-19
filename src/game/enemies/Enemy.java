@@ -33,7 +33,7 @@ public abstract class Enemy extends Actor {
     /**
      * Behaviours of the enemy are used to execute AI-like operations
      */
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
+    protected Map<Integer, Behaviour> behaviours = new HashMap<>();
     /**
      * The enemy's special intrinsic weapon (if any)
      */

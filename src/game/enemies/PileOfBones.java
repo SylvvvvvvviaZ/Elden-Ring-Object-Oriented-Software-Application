@@ -9,41 +9,26 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.EnemyType;
 import game.behaviours.Behaviour;
 import game.behaviours.SwapActorBehaviour;
 
 /**
  * Pile of Bones enemy (other enemies can become this after death)
+ * @author dkon0020
+ * @version 2.0
+ * @see Enemy
  */
-public class PileOfBones extends Actor {
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
-
+public class PileOfBones extends Enemy {
     /**
      * Constructor
      * @param formerActor the actor the Pile of Bones used to be
      */
     public PileOfBones(Actor formerActor) {
-        super("Pile of Bones", 'X', 1);
-        // Because Pile of Bones is an undead enemy, it will remember who it used to be
+        super("Pile of Bones", 'X', 1, EnemyType.SKELETAL);
+        // Disregard default enemy behaviours
+        super.behaviours.clear(); // TODO this seems a little janky
         // Add the behaviours
-        behaviours.put(0, new SwapActorBehaviour(formerActor));
-    }
-
-
-    /**
-     * At each turn, the Pile of Bones will check whether it is time to revive its former self
-     * @param actions    collection of possible Actions for this Actor
-     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-     * @param map        the map containing the Actor
-     * @param display    the I/O object to which messages may be written
-     * @return
-     */
-    @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        for (Behaviour behaviour : behaviours.values()) {
-            Action action = behaviour.getAction(this, map);
-            if (action != null) return action;
-        }
-        return new DoNothingAction();
+        super.behaviours.put(0, new SwapActorBehaviour(formerActor));
     }
 }

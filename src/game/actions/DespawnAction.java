@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
  * Action that despawns an actor from the map (used by enemies)
  *
  * @author dkon0020
- * @version 1.0
+ * @version 2.0
  * @see Action
  */
 public class DespawnAction extends Action {
