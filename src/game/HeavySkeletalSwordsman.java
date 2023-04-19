@@ -24,7 +24,7 @@ public class HeavySkeletalSwordsman extends Actor {
         addCapability(EnemyType.SKELETAL);
     }
 
-    
+
     /**
      * At each turn, select a valid action to perform.
      *
@@ -38,27 +38,28 @@ public class HeavySkeletalSwordsman extends Actor {
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
-            if(action != null)
+            if (action != null)
                 return action;
         }
         return new DoNothingAction();
     }
 
-  /**
- * Returns a list of allowable actions for an actor to attack another actor in a given direction on a map.
- * @param otherActor the actor being attacked
- * @param direction the direction the attacking actor is facing
- * @param map the map the actors are on
- * @return a list of allowable actions for the attacking actor
- */
+    /**
+     * Returns a list of allowable actions for an actor to attack another actor in a given direction on a map.
+     *
+     * @param otherActor the actor being attacked
+     * @param direction  the direction the attacking actor is facing
+     * @param map        the map the actors are on
+     * @return a list of allowable actions for the attacking actor
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             if (otherActor.getWeaponInventory().isEmpty()) {
-              actions.add(new AttackAction(this, direction));
+                actions.add(new AttackAction(this, direction));
             } else {
-              actions.add(new AttackAction(this, direction, otherActor.getWeaponInventory().get(0)));
+                actions.add(new AttackAction(this, direction, otherActor.getWeaponInventory().get(0)));
             }
 
         }
@@ -66,7 +67,7 @@ public class HeavySkeletalSwordsman extends Actor {
     }
 
     public WeaponItem getWeaponItem() {
-      return new Grossmesser();
+        return new Grossmesser();
     }
 
 }
