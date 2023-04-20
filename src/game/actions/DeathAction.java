@@ -43,10 +43,6 @@ public class DeathAction extends Action {
             dropActions.add(weapon.getDropAction(target));
         for (Action drop : dropActions)
             drop.execute(target, map);
-        if (target instanceof Enemy) {
-            // Reward attacker with the enemy's death reward
-            CurrencyManager.getInstance().addMoney(attacker, ((Enemy) target).rewardCurrency());
-        }
         // remove actor
         map.removeActor(target);
         result += System.lineSeparator() + menuDescription(target);
@@ -72,7 +68,7 @@ public class DeathAction extends Action {
         for (Action drop : dropActions)
             drop.execute(target, map);
         // Reward attacker with the enemy's death reward
-        CurrencyManager.getInstance().addMoney(attacker, ((Enemy) target).rewardCurrency());
+        CurrencyManager.getInstance().addMoney(attacker, target.rewardCurrency());
         // remove actor
         map.removeActor(target);
         result += System.lineSeparator() + menuDescription(target);

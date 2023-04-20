@@ -7,22 +7,25 @@ import edu.monash.fit2099.engine.positions.GroundFactory;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * <b>Class is disabled</b>
+ */
 public class ResettableGameMap extends GameMap implements Resettable {
-    public ResettableGameMap(GroundFactory groundFactory, char groundChar, int width, int height) {
+    private ResettableGameMap(GroundFactory groundFactory, char groundChar, int width, int height) {
         super(groundFactory, groundChar, width, height);
     }
 
-    public ResettableGameMap(GroundFactory groundFactory, List<String> lines) {
+    private ResettableGameMap(GroundFactory groundFactory, List<String> lines) {
         super(groundFactory, lines);
     }
 
-    public ResettableGameMap(GroundFactory groundFactory, String mapFile) throws IOException {
+    private ResettableGameMap(GroundFactory groundFactory, String mapFile) throws IOException {
         super(groundFactory, mapFile);
     }
 
 
     @Override
-    public void reset(ResetType resetType) {
+    public void reset(ResetType resetType, GameMap gameMap) {
         // Iterates through the Actor locations to remove the ones needed for reset
         while (actorLocations.iterator().hasNext()) {
             if (actorLocations.iterator().next().hasCapability(resetType)) {

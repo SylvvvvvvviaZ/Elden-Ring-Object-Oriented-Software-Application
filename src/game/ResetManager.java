@@ -1,5 +1,7 @@
 package game;
 
+import edu.monash.fit2099.engine.positions.GameMap;
+
 import java.rmi.server.RMIClientSocketFactory;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,18 +14,20 @@ import java.util.List;
  *
  */
 public class ResetManager {
+    private GameMap gameMap;
     private List<Resettable> resettables;
     private static ResetManager instance;
 
-    public static ResetManager getInstance() {
-        if (instance == null) instance = new ResetManager();
+    public static ResetManager getInstance(GameMap gameMap) {
+        if (instance == null) instance = new ResetManager(gameMap);
         return instance;
     }
 
     /**
      * Constructor
      */
-    private ResetManager() {
+    private ResetManager(GameMap gameMap) {
+        this.gameMap = gameMap;
         this.resettables = new ArrayList<>();
     }
 
@@ -32,7 +36,7 @@ public class ResetManager {
      */
     public void run(ResetType resetType) {
         for (Resettable resettable : resettables) {
-            resettable.reset(resetType);
+            resettable.reset(resetType, gameMap);
         }
     }
 

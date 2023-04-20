@@ -3,6 +3,7 @@ package game;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.DropAction;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.ConsumeAction;
 import game.interfaces.Consumable;
 
@@ -52,8 +53,7 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable 
      * Reset the number of uses for the item
      */
     @Override
-    public void reset() {
+    public void reset(ResetType resetType, GameMap gameMap) {
         noOfUses = 0;
-        
     }
 }

@@ -8,10 +8,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.EnemyType;
-import game.Player;
-import game.RandomNumberGenerator;
-import game.Status;
+import game.*;
 import game.actions.AttackAction;
 import game.actions.DespawnAction;
 import game.behaviours.AttackBehaviour;
@@ -31,7 +28,7 @@ import java.util.Map;
  * @version 1.0
  * @see Actor
  */
-public abstract class Enemy extends Actor implements CurrencySource {
+public abstract class Enemy extends Actor implements CurrencySource, Resettable {
     /**
      * Behaviours of the enemy are used to execute AI-like operations
      */
@@ -173,5 +170,16 @@ public abstract class Enemy extends Actor implements CurrencySource {
     @Override
     public CurrencyItem rewardCurrency() {
         return null;
+    }
+
+    /**
+     * Enemies despawn from the game map upon reset by default
+     *
+     * @param resetType the type of reset being performed
+     * @param gameMap   the game map
+     */
+    @Override
+    public void reset(ResetType resetType, GameMap gameMap) {
+        new DespawnAction().execute(this, gameMap);
     }
 }
