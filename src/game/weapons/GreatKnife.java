@@ -11,6 +11,7 @@ import game.interfaces.Sellable;
 
 /**
  * Great Knife weapon item
+ *
  * @version 1.0
  */
 public class GreatKnife extends WeaponItem implements Buyable, Sellable {
@@ -22,16 +23,8 @@ public class GreatKnife extends WeaponItem implements Buyable, Sellable {
     }
 
     /**
-     * Gets the Great Knife's skill: QuickStep
-     * @return the QuickStep action
-     */
-    @Override
-    public Action getSkill(Actor target, String direction) {
-       return new QuickstepAttackAction(target, direction, this);
-    }
-
-    /**
      * Great Knife can be bought for 3500 runes
+     *
      * @return 3500 runes
      */
     @Override
@@ -41,6 +34,7 @@ public class GreatKnife extends WeaponItem implements Buyable, Sellable {
 
     /**
      * Insert the weapon into the actor's inventory
+     *
      * @param buyer the actor buying the item
      */
     @Override
@@ -50,6 +44,7 @@ public class GreatKnife extends WeaponItem implements Buyable, Sellable {
 
     /**
      * Great Knife can be sold for 350 runes
+     *
      * @return 350 runes
      */
     @Override
@@ -59,10 +54,21 @@ public class GreatKnife extends WeaponItem implements Buyable, Sellable {
 
     /**
      * Remove the weapon from the actor's inventory
+     *
      * @param seller the actor selling the item
      */
     @Override
     public void takeFromActor(Actor seller) {
         seller.removeWeaponFromInventory(this);
+    }
+
+    /**
+     * Gets the Great Knife's skill: QuickStep
+     *
+     * @return the QuickStep action
+     */
+    @Override
+    public Action getSkill(Actor target, String direction) {
+        return new QuickstepAttackAction(target, direction, this);
     }
 }
