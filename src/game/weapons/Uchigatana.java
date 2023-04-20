@@ -3,6 +3,7 @@ package game.weapons;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.UnsheatheAttackAction;
 import game.currency.CurrencyItem;
 import game.currency.Rune;
 import game.interfaces.Buyable;
@@ -55,5 +56,10 @@ public class Uchigatana extends WeaponItem implements Buyable, Sellable {
     @Override
     public void takeFromActor(Actor seller) {
         seller.removeWeaponFromInventory(this);
+    }
+
+    @Override
+    public Action getSkill(Actor target, String direction) {
+        return new UnsheatheAttackAction(target, direction, this);
     }
 }

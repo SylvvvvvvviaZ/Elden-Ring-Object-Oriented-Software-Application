@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
-import game.SlamAttack;
+import game.SlamAttackAction;
 import game.SpecialAttackType;
 import game.actions.AttackAction;
 
@@ -46,7 +46,7 @@ public class SpecialAttackBehaviour implements Behaviour {
             // Return the appropriate special attack action
             switch (specialAttackType) {
                 case SLAM -> {
-                    return new SlamAttack(actorWeapon);
+                    return new SlamAttackAction(actorWeapon);
                 }
             }
         }

@@ -3,7 +3,7 @@ package game.weapons;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.SpinningAttack;
+import game.SpinningAttackAction;
 import game.currency.CurrencyItem;
 import game.currency.Rune;
 import game.interfaces.Sellable;
@@ -23,7 +23,7 @@ public class Grossmesser extends WeaponItem implements Sellable {
 
     @Override
     public Action getSkill(Actor actor) {
-        return new SpinningAttack(this);
+        return new SpinningAttackAction(this);
     }
 
     /**

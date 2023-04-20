@@ -7,13 +7,13 @@ import game.actions.AreaAttackAction;
 /**
  * A special action that allows an actor to perform an area attack on multiple targets around them using a weapon.
  */
-public class SpinningAttack extends AreaAttackAction {
+public class SpinningAttackAction extends AreaAttackAction {
 
     /**
     * Constructor for the SpinningAttack class.
     * @param weapon - the weapon used for the spinning attack
     */
-    public SpinningAttack(Weapon weapon) {
+    public SpinningAttackAction(Weapon weapon) {
         super(weapon);
     }
 

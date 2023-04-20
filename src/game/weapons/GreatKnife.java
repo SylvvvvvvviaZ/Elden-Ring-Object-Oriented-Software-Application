@@ -3,6 +3,7 @@ package game.weapons;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.QuickstepAttackAction;
 import game.currency.CurrencyItem;
 import game.currency.Rune;
 import game.interfaces.Buyable;
@@ -26,7 +27,7 @@ public class GreatKnife extends WeaponItem implements Buyable, Sellable {
      */
     @Override
     public Action getSkill(Actor target, String direction) {
-       return new QuickStepAction();
+       return new QuickstepAttackAction(target, direction, this);
     }
 
     /**

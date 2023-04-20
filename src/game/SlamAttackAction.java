@@ -7,16 +7,12 @@ import game.actions.AreaAttackAction;
 /**
  * Special attack method used by Crustacean-type enemies
  */
-public class SlamAttack extends AreaAttackAction {
-  public static SlamAttack newInstance(Weapon weapon) {
-    return new SlamAttack(weapon);
-  }
-
+public class SlamAttackAction extends AreaAttackAction {
   /**
    * Instantiates the special attack with the weapon
    * @param weapon the weapon to be used for the attack
    */
-  public SlamAttack(Weapon weapon) {
+  public SlamAttackAction(Weapon weapon) {
     super(weapon);
   }
 
