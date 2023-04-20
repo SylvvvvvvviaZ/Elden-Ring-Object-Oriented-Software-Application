@@ -45,7 +45,7 @@ public abstract class TradeAction extends Action {
      * @param item      the item to be traded
      * @param itemPrice the price of the item
      */
-    public TradeAction(Trader trader, Item item, CurrencyItem itemPrice) {
+    private TradeAction(Trader trader, Item item, CurrencyItem itemPrice) {
         this.trader = trader;
         this.item = item;
         this.itemPrice = itemPrice;
@@ -59,7 +59,7 @@ public abstract class TradeAction extends Action {
      * @param weaponItem the weapon to be traded
      * @param itemPrice  the price of the weapon
      */
-    public TradeAction(Trader trader, WeaponItem weaponItem, CurrencyItem itemPrice) {
+     private TradeAction(Trader trader, WeaponItem weaponItem, CurrencyItem itemPrice) {
         this.trader = trader;
         this.weaponItem = weaponItem;
         this.itemPrice = itemPrice;

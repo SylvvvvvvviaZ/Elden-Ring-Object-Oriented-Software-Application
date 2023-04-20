@@ -11,6 +11,8 @@ import game.currency.CurrencyItem;
 import game.Trade;
 import game.actions.BuyTradeAction;
 import game.actions.SellTradeAction;
+import game.interfaces.Buyable;
+import game.interfaces.Sellable;
 
 import java.util.HashMap;
 
@@ -22,8 +24,8 @@ import java.util.HashMap;
  * @see Actor
  */
 public abstract class Trader extends Actor {
-    private final HashMap<Item, CurrencyItem> buyableInventory;
-    private final HashMap<Item, CurrencyItem> sellableInventory;
+    private final HashMap<Buyable, CurrencyItem> buyableInventory;
+    private final HashMap<Sellable, CurrencyItem> sellableInventory;
 
     /**
      * Constructor
@@ -37,44 +39,36 @@ public abstract class Trader extends Actor {
         sellableInventory = new HashMap<>();
     }
 
-    /**
-     * (Disabled function)
-     * <br/>
-     * Add an item to be traded by the trader for a certain price
-     * <br/>
-     * Note: the allowed trades for the item are defined in the item's capability
-     * set.
-     *
-     * @param item      the item to be traded
-     * @param itemPrice the price of the trade
-     */
-    private void addTradeItem(Item item, CurrencyItem itemPrice) {
-        if (item.hasCapability(Trade.BUYABLE))
-            buyableInventory.put(item, itemPrice);
-        if (item.hasCapability(Trade.SELLABLE))
-            sellableInventory.put(item, itemPrice);
-    }
+//    /**
+//     * (Disabled function)
+//     * <br/>
+//     * Add an item to be traded by the trader for a certain price
+//     * <br/>
+//     * Note: the allowed trades for the item are defined in the item's capability
+//     * set.
+//     *
+//     * @param item      the item to be traded
+//     * @param itemPrice the price of the trade
+//     */
+//    private void addTradeItem(Buyable item) {
+//    }
 
     /**
      * Adds a buyable item to the trader's inventory
-     * 
-     * @param item      the item that can be sold
-     * @param itemPrice the price of the item
+     *
+     * @param item the item that can be bought
      */
-    public void addBuyableItem(Item item, CurrencyItem itemPrice) {
-        if (item.hasCapability(Trade.BUYABLE))
-            buyableInventory.put(item, itemPrice);
+    public void addBuyableItem(Buyable item) {
+        buyableInventory.put(item, item.getBuyPrice());
     }
 
     /**
      * Adds a sellable item to the trader's inventory
-     * 
-     * @param item      the item that can be bought
-     * @param itemPrice the price of the item
+     *
+     * @param item the item that can be soldd
      */
-    public void addSellableItem(Item item, CurrencyItem itemPrice) {
-        if (item.hasCapability(Trade.SELLABLE))
-            sellableInventory.put(item, itemPrice);
+    public void addSellableItem(Sellable item) {
+        sellableInventory.put(item, item.getSellPrice());
     }
 
     /**
@@ -115,10 +109,10 @@ public abstract class Trader extends Actor {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = super.allowableActions(otherActor, direction, map);
         buyableInventory.forEach((item, currencyItem) -> {
-            actions.add(new BuyTradeAction(this, item, currencyItem));
+            actions.add(new BuyTradeAction(this, item));
         });
         sellableInventory.forEach((item, currencyItem) -> {
-            actions.add(new SellTradeAction(this, item, currencyItem));
+            actions.add(new SellTradeAction(this, item));
         });
         return actions;
     }

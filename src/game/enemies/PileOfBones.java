@@ -3,6 +3,7 @@ package game.enemies;
 import edu.monash.fit2099.engine.actors.Actor;
 import game.EnemyType;
 import game.behaviours.SwapActorBehaviour;
+import game.weapons.Grossmesser;
 
 /**
  * Pile of Bones enemy (other enemies can become this after death)
@@ -16,7 +17,7 @@ public class PileOfBones extends Enemy {
      * @param formerActor the actor the Pile of Bones used to be
      */
     public PileOfBones(Actor formerActor) {
-        super("Pile of Bones", 'X', 1, EnemyType.SKELETAL);
+        super("Pile of Bones", 'X', 1, EnemyType.SKELETAL, new Grossmesser());
         // Disregard default enemy behaviours
         super.behaviours.clear(); // TODO this seems a little janky
         // Add the behaviours
