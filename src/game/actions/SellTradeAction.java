@@ -19,29 +19,18 @@ import game.traders.Trader;
  * @see TradeAction
  */
 public class SellTradeAction extends Action {
-    private CurrencyManager currencyManager;
-    private Sellable item;
+    private final CurrencyManager currencyManager;
+    private final Sellable item;
+
     /**
      * Constructor for item
      *
-     * @param trader    the trader who will be trading this item
-     * @param item      the item to be traded
+     * @param item the item to be traded
      */
-    public SellTradeAction(Trader trader, Sellable item) {
+    public SellTradeAction(Sellable item) {
         this.currencyManager = CurrencyManager.getInstance();
         this.item = item;
     }
-
-//    /**
-//     * Constructor for weapon item
-//     *
-//     * @param trader     the trader who will be trading this item
-//     * @param weaponItem the weapon to be traded
-//     * @param itemPrice  the price of the weapon
-//     */
-//    public SellTradeAction(Trader trader, WeaponItem weaponItem, CurrencyItem itemPrice) {
-//        super(trader, weaponItem, itemPrice);
-//    }
 
     /**
      * Executes the buying action
@@ -52,9 +41,6 @@ public class SellTradeAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-//        // Check that the item can be bought (in practice, this should never fail)
-//        if (!item.hasCapability(Trade.SELLABLE))
-//            return String.format("%s cannot be sold because it is not sellable.", item);
         // Process the transaction
         // Remove item from actor's inventory
         item.takeFromActor(actor);

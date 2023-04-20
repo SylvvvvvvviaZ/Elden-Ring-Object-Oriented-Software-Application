@@ -39,20 +39,6 @@ public abstract class Trader extends Actor {
         sellableInventory = new HashMap<>();
     }
 
-//    /**
-//     * (Disabled function)
-//     * <br/>
-//     * Add an item to be traded by the trader for a certain price
-//     * <br/>
-//     * Note: the allowed trades for the item are defined in the item's capability
-//     * set.
-//     *
-//     * @param item      the item to be traded
-//     * @param itemPrice the price of the trade
-//     */
-//    private void addTradeItem(Buyable item) {
-//    }
-
     /**
      * Adds a buyable item to the trader's inventory
      *
@@ -108,12 +94,8 @@ public abstract class Trader extends Actor {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = super.allowableActions(otherActor, direction, map);
-        buyableInventory.forEach((item, currencyItem) -> {
-            actions.add(new BuyTradeAction(this, item));
-        });
-        sellableInventory.forEach((item, currencyItem) -> {
-            actions.add(new SellTradeAction(this, item));
-        });
+        buyableInventory.forEach((item, currencyItem) -> actions.add(new BuyTradeAction(item)));
+        sellableInventory.forEach((item, currencyItem) -> actions.add(new SellTradeAction(item)));
         return actions;
     }
 }
