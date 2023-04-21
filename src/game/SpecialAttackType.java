@@ -3,7 +3,7 @@ package game;
 import edu.monash.fit2099.engine.actions.Action;
 
 public enum SpecialAttackType {
-    SLAM(SlamAttack.class);
+    SLAM(SlamAttackAction.class);
 
     private Class<? extends Action> specialAttackClass;
 

@@ -1,6 +1,7 @@
 package game;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import game.currency.CurrencyItem;
 
 import java.util.HashMap;
 
@@ -33,7 +34,8 @@ public class CurrencyManager {
 
     /**
      * Checks whether the actor has enough of a currency in their balance
-     * @param actor the actor whose balance to check
+     *
+     * @param actor        the actor whose balance to check
      * @param currencyItem the currency and value to check
      * @return true if the actor has enough of that currency in their balance; false otherwise
      */

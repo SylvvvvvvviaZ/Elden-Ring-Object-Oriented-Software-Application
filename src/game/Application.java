@@ -7,6 +7,10 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.enemies.LoneWolf;
+import game.grounds.Dirt;
+import game.grounds.Floor;
+import game.grounds.Wall;
 
 /**
  * The main class to start the game.
@@ -18,8 +22,6 @@ import edu.monash.fit2099.engine.positions.World;
 public class Application {
 
 	public static void main(String[] args) {
-		ResetManager resetManager = ResetManager.getInstance();
-
 		World world = new World(new Display());
 
 		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor());
@@ -49,10 +51,10 @@ public class Application {
 				"..####__###..................................................._.....__.#...",
 				"..............................................................###..__###...",
 				"...........................................................................");
-		ResettableGameMap gameMap = new ResettableGameMap(groundFactory, map);
+		GameMap gameMap = new GameMap(groundFactory, map);
 		world.addGameMap(gameMap);
 
-		resetManager.registerResettable(gameMap);
+		ResetManager resetManager = ResetManager.getInstance(gameMap);
 
 		// BEHOLD, ELDEN RING
 		for (String line : FancyMessage.ELDEN_RING.split("\n")) {
