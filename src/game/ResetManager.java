@@ -14,20 +14,20 @@ import java.util.List;
  * Modified by:
  */
 public class ResetManager {
-    private GameMap gameMap;
+    //    private GameMap gameMap;
     private List<Resettable> resettables;
     private static ResetManager instance;
 
-    /**
-     * Gets an instance of the reset manager
-     *
-     * @param gameMap the game map
-     * @return instance of reset manager
-     */
-    public static ResetManager getInstance(GameMap gameMap) {
-        if (instance == null) instance = new ResetManager(gameMap);
-        return instance;
-    }
+//    /**
+//     * Gets an instance of the reset manager
+//     *
+//     * @param gameMap the game map
+//     * @return instance of reset manager
+//     */
+//    public static ResetManager getInstance(GameMap gameMap) {
+//        if (instance == null) instance = new ResetManager(gameMap);
+//        return instance;
+//    }
 
     /**
      * Gets the instance of the reset manager
@@ -35,14 +35,15 @@ public class ResetManager {
      * @return instance of reset manager
      */
     public static ResetManager getInstance() {
+        if (instance == null) instance = new ResetManager();
         return instance;
     }
 
     /**
      * Constructor
      */
-    private ResetManager(GameMap gameMap) {
-        this.gameMap = gameMap;
+    private ResetManager(/* GameMap gameMap */) {
+//        this.gameMap = gameMap;
         this.resettables = new ArrayList<>();
     }
 
@@ -50,8 +51,9 @@ public class ResetManager {
      * Calls each resettable item to reset
      *
      * @param resetType the type of reset to do
+     * @param gameMap   the game map
      */
-    public void run(ResetType resetType) {
+    public void run(ResetType resetType, GameMap gameMap) {
         for (Resettable resettable : resettables) {
             resettable.reset(resetType, gameMap);
         }
