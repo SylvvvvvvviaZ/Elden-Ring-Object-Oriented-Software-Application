@@ -20,28 +20,22 @@ public class Player extends Actor implements Resettable {
 
     private final Menu menu = new Menu();
 
-    private static Player instance;
-
-    public static Player getInstance() {
-        return instance;
-    }
-
     /**
      * Constructor.
      *
-     * @param name        Name to call the player in the UI
-     * @param displayChar Character to represent the player in the UI
-     * @param hitPoints   Player's starting number of hitpoints
+     * @param name         Name to call the player in the UI
+     * @param displayChar  Character to represent the player in the UI
+     * @param hitPoints    Player's starting number of hitpoints
+     * @param resetManager the reset manager
      */
-    public Player(String name, char displayChar, int hitPoints) {
+    public Player(String name, char displayChar, int hitPoints, ResetManager resetManager) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         this.addWeaponToInventory(new Club());
-        instance = this;
         // Add the Flask of Crimson Tears
         FlaskOfCrimsonTears flaskOfCrimsonTears = new FlaskOfCrimsonTears();
         addItemToInventory(flaskOfCrimsonTears);
-        ResetManager.getInstance().registerResettable(flaskOfCrimsonTears);
+        resetManager.registerResettable(flaskOfCrimsonTears);
     }
 
     /**
