@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
  * @author dkon0020
  * @version 1.0
  */
-public abstract class CombatArchetypeSealedClass {
+public abstract class CombatArchetypeClass {
     /**
      * The weapon that the player starts off with
      */
@@ -24,7 +24,7 @@ public abstract class CombatArchetypeSealedClass {
      * @param startingWeapon the weapon that the player starts off with
      * @param startingHitPoints the number of hit points that the player starts off with
      */
-    public CombatArchetypeSealedClass(WeaponItem startingWeapon, int startingHitPoints) {
+    public CombatArchetypeClass(WeaponItem startingWeapon, int startingHitPoints) {
         this.startingWeapon = startingWeapon;
         this.startingHitPoints = startingHitPoints;
     }

@@ -9,8 +9,11 @@ import game.ResetType;
 import game.Resettable;
 import game.actions.PickUpCurrencyAction;
 
+import java.util.Currency;
+
 /**
  * Item for currencies
+ *
  * @author dkon0020
  * @version 0.0
  * @see Item
@@ -22,9 +25,10 @@ public abstract class CurrencyItem extends Item implements Resettable {
 
     /**
      * Constructor
-     * @param name name of the currency
+     *
+     * @param name        name of the currency
      * @param displayChar the symbol for the currency
-     * @param value current value of the currency
+     * @param value       current value of the currency
      */
     public CurrencyItem(String name, Character displayChar, int value) {
         super(name, displayChar, true);
@@ -34,6 +38,7 @@ public abstract class CurrencyItem extends Item implements Resettable {
 
     /**
      * Gets the name of the currency
+     *
      * @return currency's name
      */
     public String getName() {
@@ -42,6 +47,7 @@ public abstract class CurrencyItem extends Item implements Resettable {
 
     /**
      * Gets the currency's current value
+     *
      * @return currency value
      */
     public int getValue() {
@@ -55,6 +61,7 @@ public abstract class CurrencyItem extends Item implements Resettable {
 
     /**
      * Add a certain amount of value to the currency item
+     *
      * @param value the amount to add
      */
     public void addValue(int value) {
@@ -65,6 +72,7 @@ public abstract class CurrencyItem extends Item implements Resettable {
      * Remove a certain amount of value from the currency item
      * <br/>
      * If the amount to remove exceeds the value of the currency item, it will go into negative.
+     *
      * @param value the amount to remove
      */
     public void removeValue(int value) {
@@ -84,14 +92,28 @@ public abstract class CurrencyItem extends Item implements Resettable {
 
     /**
      * If the game is reset due to player death, the money should be removed from the ground
+     *
      * @param resetType the type of reset
      * @param gameMap   the game map
      */
     @Override
     public void reset(ResetType resetType, GameMap gameMap) {
         if (resetType == ResetType.RESET_ON_DEATH) {
-
+            // Remove the item from the ground if its location is known
+            if (location != null) {
+                location.removeItem(this);
+                return;
+            }
+            // Otherwise, try to get location of this item to remove it
+            for (int x = gameMap.getXRange().min(); x < gameMap.getXRange().max() + 1; x++) {
+                for (int y = gameMap.getYRange().min(); y < gameMap.getYRange().max() + 1; y++) {
+                    Location location = gameMap.at(x, y);
+                    if (location.getItems().contains(this)) {
+                        location.removeItem(this);
+                        return;
+                    }
+                }
+            }
         }
     }
 }
-

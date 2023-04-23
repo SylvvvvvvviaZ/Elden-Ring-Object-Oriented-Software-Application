@@ -22,6 +22,11 @@ public enum CombatArchetype {
         public int getStartingHitPoints() {
             return 455;
         }
+
+        @Override
+        public Character getHotKey() {
+            return 'S';
+        }
     },
     BANDIT {
         @Override
@@ -33,6 +38,11 @@ public enum CombatArchetype {
         public int getStartingHitPoints() {
             return 414;
         }
+
+        @Override
+        public Character getHotKey() {
+            return 'G';
+        }
     },
     WRETCH {
         @Override
@@ -43,6 +53,11 @@ public enum CombatArchetype {
         @Override
         public int getStartingHitPoints() {
             return 414;
+        }
+
+        @Override
+        public Character getHotKey() {
+            return 'W';
         }
     };
 
@@ -59,4 +74,15 @@ public enum CombatArchetype {
      * @return starting hit points
      */
     public abstract int getStartingHitPoints();
+
+    /**
+     * Get the archetype option's hotkey
+     *
+     * @return the hotkey for the menu
+     */
+    public abstract Character getHotKey();
+
+    public static CombatArchetype askForClass() {
+        // TODO
+    }
 }

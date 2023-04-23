@@ -6,9 +6,9 @@ import game.weapons.GreatKnife;
  * Bandit Combat Archetype
  * @author dkon0020
  * @version 1.0
- * @see CombatArchetypeSealedClass
+ * @see CombatArchetypeClass
  */
-public final class Bandit extends CombatArchetypeSealedClass {
+public final class Bandit extends CombatArchetypeClass {
     /**
      * Constructor
      */

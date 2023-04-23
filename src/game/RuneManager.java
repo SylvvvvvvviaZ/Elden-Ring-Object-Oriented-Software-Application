@@ -11,7 +11,7 @@ import java.util.HashMap;
 /**
  * Singleton for handling entities in the game holding currency/currencies
  */
-public class RuneManager implements Resettable {
+public class RuneManager /* implements Resettable */ {
     /**
      * Instance of the Currency Manager
      */
@@ -81,18 +81,18 @@ public class RuneManager implements Resettable {
         lastLocation.addItem(runes);
     }
 
-    @Override
-    public void reset(ResetType resetType, GameMap gameMap) {
-        if (resetType == ResetType.RESET_ON_DEATH) {
-            // Player has died
-            currencyRecord.forEach( ((actor, quantity) -> {
-                if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-                    // Their monies should be reset
-                    // Drop all their currencies
-                    // TODO: Drop runes in last-turn location
-                    new Rune(quantity).getDropAction(actor).execute(actor, gameMap);
-                }
-            }));
-        }
-    }
+//    @Override
+//    public void reset(ResetType resetType, GameMap gameMap) {
+//        if (resetType == ResetType.RESET_ON_DEATH) {
+//            // Player has died
+//            currencyRecord.forEach( ((actor, quantity) -> {
+//                if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+//                    // Their monies should be reset
+//                    // Drop all their currencies
+//                    // TODO: Drop runes in last-turn location
+//                    new Rune(quantity).getDropAction(actor).execute(actor, gameMap);
+//                }
+//            }));
+//        }
+//    }
 }

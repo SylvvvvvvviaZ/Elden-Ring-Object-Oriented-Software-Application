@@ -6,9 +6,9 @@ import game.weapons.Uchigatana;
  * Samurai Combat Archetype
  * @author dkon0020
  * @version 1.0
- * @see CombatArchetypeSealedClass
+ * @see CombatArchetypeClass
  */
-public final class Samurai extends CombatArchetypeSealedClass {
+public final class Samurai extends CombatArchetypeClass {
     /**
      * Constructor
      */

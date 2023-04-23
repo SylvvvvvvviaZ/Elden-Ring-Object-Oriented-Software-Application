@@ -6,9 +6,9 @@ import game.weapons.Club;
  * Wretch Combat Archetype
  * @author dkon0020
  * @version 1.0
- * @see CombatArchetypeSealedClass
+ * @see CombatArchetypeClass
  */
-public final class Wretch extends CombatArchetypeSealedClass {
+public final class Wretch extends CombatArchetypeClass {
     /**
      * Constructor
      */
