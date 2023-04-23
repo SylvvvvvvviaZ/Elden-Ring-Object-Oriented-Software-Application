@@ -28,7 +28,7 @@ public class Graveyard extends Ground {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        if (RandomNumberGenerator.getRandomInt(0, 100) <= 27) {
+        if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 27) {
             Enemy heavySkeletalSwordsman = new HeavySkeletalSwordsman();
             ResetManager.getInstance().registerResettable(heavySkeletalSwordsman);
             location.addActor(heavySkeletalSwordsman);

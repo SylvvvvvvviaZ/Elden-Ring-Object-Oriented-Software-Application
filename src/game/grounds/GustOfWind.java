@@ -28,7 +28,7 @@ public class GustOfWind extends Ground {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        if (RandomNumberGenerator.getRandomInt(0, 100) <= 33) {
+        if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 33) {
             Enemy loneWolf = new LoneWolf();
             ResetManager.getInstance().registerResettable(loneWolf);
             location.addActor(loneWolf);

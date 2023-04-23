@@ -93,7 +93,7 @@ public class AttackAction extends Action {
 		if (!target.isConscious()) {
 			if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 				// The player has died, so reset the game
-				ResetManager.getInstance(map).run(ResetType.RESET_ON_DEATH);
+				ResetManager.getInstance().run(ResetType.RESET_ON_DEATH, map);
 			}
 			// The target has died
             else if (target.hasCapability(Status.DIES_TO_PILE_OF_BONES)) {

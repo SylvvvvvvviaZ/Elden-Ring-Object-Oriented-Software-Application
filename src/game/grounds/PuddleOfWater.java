@@ -28,7 +28,7 @@ public class PuddleOfWater extends Ground {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        if (RandomNumberGenerator.getRandomInt(0, 100) <= 2) {
+        if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 2) {
             Enemy giantCrab = new GiantCrab();
             ResetManager.getInstance().registerResettable(giantCrab);
             location.addActor(giantCrab);

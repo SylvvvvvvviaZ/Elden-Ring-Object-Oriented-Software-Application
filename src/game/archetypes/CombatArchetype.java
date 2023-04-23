@@ -82,7 +82,7 @@ public enum CombatArchetype {
      */
     public abstract Character getHotKey();
 
-    public static CombatArchetype askForClass() {
-        // TODO
-    }
+//    public static CombatArchetype askForClass() {
+//        // TODO
+//    }
 }

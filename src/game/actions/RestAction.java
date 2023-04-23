@@ -21,7 +21,7 @@ public class RestAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        ResetManager.getInstance(map).run(ResetType.RESET_ON_REST);
+        ResetManager.getInstance().run(ResetType.RESET_ON_REST, map);
         return menuDescription(actor);
     }
 

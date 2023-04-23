@@ -38,6 +38,9 @@ public class AttackBehaviour implements Behaviour {
                 if (xOffset == 0 && yOffset == 0) {
                     continue;
                 }
+                if (!map.getXRange().contains(actorLocation.x() + xOffset) || !map.getYRange().contains(actorLocation.y() + yOffset)) {
+                    continue;
+                }
 
                 // Get the location
                 Location targetLocation = map.at(actorLocation.x() + xOffset, actorLocation.y() + yOffset);
