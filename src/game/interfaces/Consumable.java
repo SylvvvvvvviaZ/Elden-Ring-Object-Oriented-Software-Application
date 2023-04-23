@@ -11,4 +11,16 @@ public interface Consumable {
      * @param actor the actor who is consuming the item
      */
     void consume(Actor actor);
+
+    /**
+     * Gets the number of uses so far for this consumable
+     * @return number of uses
+     */
+     int useCount();
+
+    /**
+     * Gets the max number of uses for this consumable
+     * @return max number of uses
+     */
+    int maxUseCount();
 }
