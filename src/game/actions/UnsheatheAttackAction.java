@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.weapons.ModifiedWeaponItem;
 
 /**
  * Unsheathe weapon skill
@@ -15,7 +16,7 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 public class UnsheatheAttackAction extends Action {
     private final Actor target;
     private final String direction;
-    private final Weapon weapon;
+    private final WeaponItem weapon;
 
     /**
      * Constructor
@@ -25,7 +26,7 @@ public class UnsheatheAttackAction extends Action {
      *                  used for display purposes)
      * @param weapon    the weapon being used to attack
      */
-    public UnsheatheAttackAction(Actor target, String direction, Weapon weapon) {
+    public UnsheatheAttackAction(Actor target, String direction, WeaponItem weapon) {
         this.target = target;
         this.direction = direction;
         this.weapon = weapon;
@@ -40,8 +41,8 @@ public class UnsheatheAttackAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        // TODO: modify weapon attributes (2x damage, 60% hit rate)
-        return new AttackAction(target, direction, weapon).execute(actor, map);
+        WeaponItem modifiedWeaponitem = new ModifiedWeaponItem(weapon, weapon.damage() * 2, 60);
+        return new AttackAction(target, direction, modifiedWeaponitem).execute(actor, map);
     }
 
     /**

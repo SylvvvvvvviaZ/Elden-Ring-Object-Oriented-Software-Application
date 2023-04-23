@@ -41,12 +41,12 @@ public class BuyTradeAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        // Check that the buyer has enough money
-        if (!currencyManager.hasSufficientBalance(actor, item.getBuyPrice()))
-            return String.format("%s cannot be bought because %s does not have enough money.", item, actor);
         // Process the transaction
         // Deduct money
-        currencyManager.removeMoney(actor, item.getBuyPrice());
+        if (!currencyManager.removeMoney(actor, item.getBuyPrice())) {
+            // Actor does not have enough money
+            return String.format("%s cannot be bought because %s does not have enough money.", item, actor);
+        }
         // Give the buyer the new item
         item.giveToActor(actor);
         return menuDescription(actor);

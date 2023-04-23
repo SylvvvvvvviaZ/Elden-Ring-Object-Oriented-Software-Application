@@ -51,7 +51,7 @@ public abstract class Trader extends Actor {
     /**
      * Adds a sellable item to the trader's inventory
      *
-     * @param item the item that can be soldd
+     * @param item the item that can be sold
      */
     public void addSellableItem(Sellable item) {
         sellableInventory.put(item, item.getSellPrice());

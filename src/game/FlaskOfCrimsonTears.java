@@ -9,6 +9,7 @@ import game.interfaces.Consumable;
 
 /**
  * The Flask of Crimson Tears item that is always carried by the player and can be used to heal the player
+ *
  * @version 1.0
  */
 public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable {
@@ -21,10 +22,12 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable 
     public FlaskOfCrimsonTears() {
         super("Flask of Crimson Tears", ' ', true);
         addAction(new ConsumeAction(this));
+        maxUses = 2;
     }
 
     /**
      * The Flask of Crimson Tears' effect(s) on the actor
+     *
      * @param actor the actor who is consuming the item
      */
     @Override
@@ -41,14 +44,15 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable 
 
     /**
      * The Flask of Crimson Tears cannot be dropped
-     * @param actor
+     *
+     * @param actor the actor holding the item
      * @return null
      */
     @Override
     public DropAction getDropAction(Actor actor) {
-       return null;
+        return null;
     }
-    
+
     /**
      * Reset the number of uses for the item
      */

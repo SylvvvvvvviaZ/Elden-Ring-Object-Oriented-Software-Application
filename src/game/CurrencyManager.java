@@ -1,6 +1,7 @@
 package game;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
 import game.currency.CurrencyItem;
 
 import java.util.HashMap;
@@ -8,11 +9,14 @@ import java.util.HashMap;
 /**
  * Singleton for handling entities in the game holding currency/currencies
  */
-public class CurrencyManager {
+public class CurrencyManager implements Resettable {
     /**
      * Instance of the Currency Manager
      */
     private static CurrencyManager instance;
+    /**
+     * Record of actors' currency holdings
+     */
     private final HashMap<Actor, HashMap<Class<? extends CurrencyItem>, Integer>> currencyRecord;
 
     /**
@@ -83,4 +87,19 @@ public class CurrencyManager {
         return false;
     }
 
+    @Override
+    public void reset(ResetType resetType, GameMap gameMap) {
+        if (resetType == ResetType.RESET_ON_DEATH) {
+            // Player has died
+            currencyRecord.forEach( ((actor, currencies) -> {
+                if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+                    // Their monies should be reset
+                    // Drop all their currencies
+                    currencies.forEach( ((currency, amount) -> {
+
+                    }));
+                }
+            }));
+        }
+    }
 }
