@@ -47,7 +47,7 @@ public abstract class AreaAttackAction extends Action {
                 }
                 Location targetLocation = map.at(actorLocation.x() + xOffset, actorLocation.y() + yOffset);
                 // check if the target location is valid
-                if (targetLocation != null /* && targetLocation.canActorEnter(actor) */) {
+                if (targetLocation != null && targetLocation.containsAnActor()) {
                     String direction = "";
                     direction += switch (yOffset) {
                         case -1 -> "north";
