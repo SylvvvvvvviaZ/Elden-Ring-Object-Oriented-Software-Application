@@ -90,7 +90,7 @@ public class Player extends Actor implements Resettable {
         } else {
             // The player has died
             // Tell the Rune Manager to drop the Player's money on the location they were at before this turn
-            RuneManager.getInstance().resetActor(this, gameMap, locationHistory.get(locationHistory.size() - 2));
+            RuneManager.getInstance().resetActor(this, locationHistory.get(locationHistory.size() - 2));
             // Get respawn point (last Site of Lost Grace visited by the player)
             Location respawnPoint = siteOfLostGraceVisits.get(siteOfLostGraceVisits.size() - 1);
             gameMap.removeActor(this);

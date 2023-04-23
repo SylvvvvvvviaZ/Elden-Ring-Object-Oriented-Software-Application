@@ -69,12 +69,14 @@ public class RuneManager /* implements Resettable */ {
      * @return true if the actor's balance has been updated, false if the actor does not hold this currency item or balance is insufficient
      */
     public boolean removeMoney(Actor actor, CurrencyItem currencyItem) {
-            if (currencyRecord.get(actor) < currencyItem.getValue()) return false;
-            currencyRecord.put(actor, currencyRecord.get(actor) - currencyItem.getValue());
-            return true;
+        if (!currencyRecord.containsKey(actor)) return false;
+        if (currencyRecord.get(actor) < currencyItem.getValue()) return false;
+        currencyRecord.put(actor, currencyRecord.get(actor) - currencyItem.getValue());
+        return true;
     }
 
-    public void resetActor(Actor actor, GameMap gameMap, Location lastLocation) {
+    public void resetActor(Actor actor, Location lastLocation) {
+        if (!currencyRecord.containsKey(actor)) return; // actor has no money :(
         CurrencyItem runes = new Rune(currencyRecord.get(actor));
         currencyRecord.put(actor, 0);
         ResetManager.getInstance().registerResettable(runes);

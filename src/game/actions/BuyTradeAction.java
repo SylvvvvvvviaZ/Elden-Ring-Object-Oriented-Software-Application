@@ -49,6 +49,6 @@ public class BuyTradeAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return String.format("%s has been purchased by %s for %d %s", item, actor, item.getBuyPrice().getValue(), item.getBuyPrice().getName());
+        return String.format("%s purchases %s for %d %s", actor, item, item.getBuyPrice().getValue(), item.getBuyPrice().getName());
     }
 }

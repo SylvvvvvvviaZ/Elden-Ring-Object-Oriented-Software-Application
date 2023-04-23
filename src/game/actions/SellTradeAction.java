@@ -49,6 +49,6 @@ public class SellTradeAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return String.format("%s has been sold by %s for %d %s", item, actor, item.getSellPrice().getValue(), item.getSellPrice().getName());
+        return String.format("%s sells %s for %d %s", actor, item, item.getSellPrice().getValue(), item.getSellPrice().getName());
     }
 }
