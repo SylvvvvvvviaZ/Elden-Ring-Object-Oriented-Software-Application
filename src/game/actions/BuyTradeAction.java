@@ -2,14 +2,9 @@ package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.CurrencyManager;
-import game.currency.CurrencyItem;
-import game.Trade;
+import game.RuneManager;
 import game.interfaces.Buyable;
-import game.traders.Trader;
 
 /**
  * Action for an actor to buy an item from a trader
@@ -19,7 +14,7 @@ import game.traders.Trader;
  * @see TradeAction
  */
 public class BuyTradeAction extends Action {
-    private final CurrencyManager currencyManager;
+    private final RuneManager runeManager;
     private final Buyable item;
 
     /**
@@ -28,7 +23,7 @@ public class BuyTradeAction extends Action {
      * @param item the item to be traded
      */
     public BuyTradeAction(Buyable item) {
-        this.currencyManager = CurrencyManager.getInstance();
+        this.runeManager = RuneManager.getInstance();
         this.item = item;
     }
 
@@ -43,7 +38,7 @@ public class BuyTradeAction extends Action {
     public String execute(Actor actor, GameMap map) {
         // Process the transaction
         // Deduct money
-        if (!currencyManager.removeMoney(actor, item.getBuyPrice())) {
+        if (!runeManager.removeMoney(actor, item.getBuyPrice())) {
             // Actor does not have enough money
             return String.format("%s cannot be bought because %s does not have enough money.", item, actor);
         }

@@ -1,7 +1,10 @@
-package game;
+package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.RandomNumberGenerator;
+import game.ResetManager;
+import game.enemies.Enemy;
 import game.enemies.LoneWolf;
 
 /**
@@ -26,7 +29,9 @@ public class GustOfWind extends Ground {
     public void tick(Location location) {
         super.tick(location);
         if (RandomNumberGenerator.getRandomInt(0, 100) <= 33) {
-            location.addActor(new LoneWolf());
+            Enemy loneWolf = new LoneWolf();
+            ResetManager.getInstance().registerResettable(loneWolf);
+            location.addActor(loneWolf);
         }
     }
 }

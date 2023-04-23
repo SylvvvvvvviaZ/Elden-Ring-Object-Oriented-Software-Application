@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.currency.CurrencyItem;
-import game.CurrencyManager;
+import game.RuneManager;
 import game.traders.Trader;
 
 /**
@@ -36,7 +36,7 @@ public abstract class TradeAction extends Action {
     /**
      * Currency Manager instance
      */
-    protected final CurrencyManager currencyManager;
+    protected final RuneManager runeManager;
 
     /**
      * Constructor for item
@@ -49,7 +49,7 @@ public abstract class TradeAction extends Action {
         this.trader = trader;
         this.item = item;
         this.itemPrice = itemPrice;
-        currencyManager = CurrencyManager.getInstance();
+        runeManager = RuneManager.getInstance();
     }
 
     /**
@@ -63,7 +63,7 @@ public abstract class TradeAction extends Action {
         this.trader = trader;
         this.weaponItem = weaponItem;
         this.itemPrice = itemPrice;
-        currencyManager = CurrencyManager.getInstance();
+        runeManager = RuneManager.getInstance();
     }
 
     /**
@@ -74,6 +74,7 @@ public abstract class TradeAction extends Action {
      * @return message describing the trade outcome
      */
     public abstract String execute(Actor actor, GameMap map);
+
 
     /**
      * Get the description to be displayed to the menu

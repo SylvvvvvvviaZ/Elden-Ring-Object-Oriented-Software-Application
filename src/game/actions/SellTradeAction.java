@@ -2,14 +2,9 @@ package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.CurrencyManager;
-import game.currency.CurrencyItem;
-import game.Trade;
+import game.RuneManager;
 import game.interfaces.Sellable;
-import game.traders.Trader;
 
 /**
  * Action for an actor to sell an item to a trader
@@ -19,7 +14,7 @@ import game.traders.Trader;
  * @see TradeAction
  */
 public class SellTradeAction extends Action {
-    private final CurrencyManager currencyManager;
+    private final RuneManager runeManager;
     private final Sellable item;
 
     /**
@@ -28,7 +23,7 @@ public class SellTradeAction extends Action {
      * @param item the item to be traded
      */
     public SellTradeAction(Sellable item) {
-        this.currencyManager = CurrencyManager.getInstance();
+        this.runeManager = RuneManager.getInstance();
         this.item = item;
     }
 
@@ -48,7 +43,7 @@ public class SellTradeAction extends Action {
         }
         // Remove item from actor's inventory
         item.takeFromActor(actor);
-        currencyManager.addMoney(actor, item.getSellPrice());
+        runeManager.addMoney(actor, item.getSellPrice());
         return menuDescription(actor);
     }
 

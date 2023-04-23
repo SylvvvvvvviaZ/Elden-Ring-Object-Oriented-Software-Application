@@ -16,6 +16,7 @@ public class SiteOfLostGrace extends Ground {
      */
     public SiteOfLostGrace() {
         super('U');
+        addCapability(Status.RESPAWN_POINT);
     }
 
     /**

@@ -3,6 +3,10 @@ package game.currency;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpAction;
+import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
+import game.ResetType;
+import game.Resettable;
 import game.actions.PickUpCurrencyAction;
 
 /**
@@ -11,9 +15,10 @@ import game.actions.PickUpCurrencyAction;
  * @version 0.0
  * @see Item
  */
-public abstract class CurrencyItem extends Item {
+public abstract class CurrencyItem extends Item implements Resettable {
     private final String name;
     private int value;
+    private Location location;
 
     /**
      * Constructor
@@ -69,6 +74,24 @@ public abstract class CurrencyItem extends Item {
     @Override
     public PickUpAction getPickUpAction(Actor actor) {
         return new PickUpCurrencyAction(this);
+    }
+
+    @Override
+    public void tick(Location currentLocation) {
+        super.tick(currentLocation);
+        location = currentLocation;
+    }
+
+    /**
+     * If the game is reset due to player death, the money should be removed from the ground
+     * @param resetType the type of reset
+     * @param gameMap   the game map
+     */
+    @Override
+    public void reset(ResetType resetType, GameMap gameMap) {
+        if (resetType == ResetType.RESET_ON_DEATH) {
+
+        }
     }
 }
 

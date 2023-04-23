@@ -13,5 +13,6 @@ public enum Status {
     /**
      * Actor will become a Pile of Bones upon death
      */
-    DIES_TO_PILE_OF_BONES
+    DIES_TO_PILE_OF_BONES,
+    RESPAWN_POINT
 }

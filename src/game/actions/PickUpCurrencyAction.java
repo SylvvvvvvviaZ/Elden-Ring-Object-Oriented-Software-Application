@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.PickUpAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.currency.CurrencyItem;
-import game.CurrencyManager;
+import game.RuneManager;
 
 /**
  * Action for picking up currency items that uses the CurrencyManager to update
@@ -31,7 +31,7 @@ public class PickUpCurrencyAction extends PickUpAction {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        CurrencyManager.getInstance().addMoney(actor, item);
+        RuneManager.getInstance().addMoney(actor, item);
         return super.execute(actor, map);
     }
 

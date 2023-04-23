@@ -2,6 +2,8 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.ResetManager;
+import game.enemies.Enemy;
 import game.enemies.HeavySkeletalSwordsman;
 import game.RandomNumberGenerator;
 
@@ -27,7 +29,9 @@ public class Graveyard extends Ground {
     public void tick(Location location) {
         super.tick(location);
         if (RandomNumberGenerator.getRandomInt(0, 100) <= 27) {
-            location.addActor(new HeavySkeletalSwordsman());
+            Enemy heavySkeletalSwordsman = new HeavySkeletalSwordsman();
+            ResetManager.getInstance().registerResettable(heavySkeletalSwordsman);
+            location.addActor(heavySkeletalSwordsman);
         }
     }
 }

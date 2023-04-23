@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
  * @author dkon0020
  * @version 1.0
  */
-public abstract sealed class CombatArchetypeSealedClass permits Samurai, Bandit, Wretch {
+public abstract class CombatArchetypeSealedClass {
     /**
      * The weapon that the player starts off with
      */

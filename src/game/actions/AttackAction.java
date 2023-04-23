@@ -6,6 +6,8 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.ResetManager;
+import game.ResetType;
 import game.enemies.PileOfBones;
 import game.Status;
 
@@ -41,7 +43,7 @@ public class AttackAction extends Action {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param target    the Actor to attack
 	 * @param direction the direction where the attack should be performed (only
 	 *                  used for display purposes)
@@ -89,8 +91,12 @@ public class AttackAction extends Action {
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
 		if (!target.isConscious()) {
+			if (target.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+				// The player has died, so reset the game
+				ResetManager.getInstance(map).run(ResetType.RESET_ON_DEATH);
+			}
 			// The target has died
-			if (target.hasCapability(Status.DIES_TO_PILE_OF_BONES)) {
+            else if (target.hasCapability(Status.DIES_TO_PILE_OF_BONES)) {
 				// If the target can become a Pile of Bones upon death, do the swap action
 				result += new SwapActorAction(new PileOfBones(target)).execute(target, map);
 			} else {

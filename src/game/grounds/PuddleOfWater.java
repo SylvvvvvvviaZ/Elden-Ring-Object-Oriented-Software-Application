@@ -2,6 +2,8 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.ResetManager;
+import game.enemies.Enemy;
 import game.enemies.GiantCrab;
 import game.RandomNumberGenerator;
 
@@ -27,7 +29,9 @@ public class PuddleOfWater extends Ground {
     public void tick(Location location) {
         super.tick(location);
         if (RandomNumberGenerator.getRandomInt(0, 100) <= 2) {
-            location.addActor(new GiantCrab());
+            Enemy giantCrab = new GiantCrab();
+            ResetManager.getInstance().registerResettable(giantCrab);
+            location.addActor(giantCrab);
         }
     }
 }

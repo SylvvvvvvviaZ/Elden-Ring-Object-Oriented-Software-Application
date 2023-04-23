@@ -9,17 +9,32 @@ import java.util.List;
 /**
  * A reset manager class that manages a list of resettables.
  * Created by:
+ *
  * @author Adrian Kristanto
  * Modified by:
- *
  */
 public class ResetManager {
     private GameMap gameMap;
     private List<Resettable> resettables;
     private static ResetManager instance;
 
+    /**
+     * Gets an instance of the reset manager
+     *
+     * @param gameMap the game map
+     * @return instance of reset manager
+     */
     public static ResetManager getInstance(GameMap gameMap) {
         if (instance == null) instance = new ResetManager(gameMap);
+        return instance;
+    }
+
+    /**
+     * Gets the instance of the reset manager
+     *
+     * @return instance of reset manager
+     */
+    public static ResetManager getInstance() {
         return instance;
     }
 
@@ -33,6 +48,8 @@ public class ResetManager {
 
     /**
      * Calls each resettable item to reset
+     *
+     * @param resetType the type of reset to do
      */
     public void run(ResetType resetType) {
         for (Resettable resettable : resettables) {
