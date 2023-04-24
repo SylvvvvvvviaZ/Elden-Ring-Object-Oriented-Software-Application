@@ -54,7 +54,7 @@ public class Club extends WeaponItem implements Buyable, Sellable {
     @Override
     public boolean actorHas(Actor seller) {
         for (WeaponItem weaponItem : seller.getWeaponInventory()) {
-            if (weaponItem instanceof Club) {
+            if (weaponItem.getClass() == this.getClass()) {
                 return true;
             }
         }

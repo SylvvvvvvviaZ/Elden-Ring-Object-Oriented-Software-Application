@@ -39,7 +39,7 @@ public class Grossmesser extends WeaponItem implements Sellable {
     @Override
     public boolean actorHas(Actor seller) {
         for (WeaponItem weaponItem : seller.getWeaponInventory()) {
-            if (weaponItem instanceof Grossmesser) {
+            if (weaponItem.getClass() == this.getClass()) {
                 return true;
             }
         }

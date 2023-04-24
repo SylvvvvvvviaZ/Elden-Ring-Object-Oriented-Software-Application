@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.RuneManager;
+import game.Status;
 import game.enemies.Enemy;
 
 /**
@@ -43,6 +44,10 @@ public class DeathAction extends Action {
             dropActions.add(weapon.getDropAction(target));
         for (Action drop : dropActions)
             drop.execute(target, map);
+        // TODO: find a better way to do this
+        if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY) && target instanceof Enemy) {
+            RuneManager.getInstance().addMoney(attacker, ((Enemy) target).rewardCurrency());
+        }
         // remove actor
         map.removeActor(target);
         result += System.lineSeparator() + menuDescription(target);
