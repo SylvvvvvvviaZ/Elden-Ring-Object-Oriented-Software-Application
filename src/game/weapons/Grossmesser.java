@@ -36,13 +36,30 @@ public class Grossmesser extends WeaponItem implements Sellable {
         return new Rune(100);
     }
 
+    @Override
+    public boolean actorHas(Actor seller) {
+        for (WeaponItem weaponItem : seller.getWeaponInventory()) {
+            if (weaponItem instanceof Grossmesser) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Remove the weapon from the actor's inventory
      * @param seller the actor selling the item
      */
     @Override
     public void takeFromActor(Actor seller) {
-        seller.removeWeaponFromInventory(this);
+        WeaponItem itemToRemove = null;
+        for (WeaponItem weaponItem : seller.getWeaponInventory()) {
+            if (weaponItem.getClass() == this.getClass()) {
+                itemToRemove = weaponItem;
+                break;
+            }
+        }
+        if (itemToRemove != null) seller.removeWeaponFromInventory(itemToRemove);
     }
 }
 

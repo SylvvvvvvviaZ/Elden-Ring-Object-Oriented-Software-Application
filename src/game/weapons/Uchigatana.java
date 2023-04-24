@@ -49,13 +49,30 @@ public class Uchigatana extends WeaponItem implements Buyable, Sellable {
         return new Rune(500);
     }
 
+    @Override
+    public boolean actorHas(Actor seller) {
+        for (WeaponItem weaponItem : seller.getWeaponInventory()) {
+            if (weaponItem instanceof Uchigatana) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Remove the weapon from the actor's inventory
      * @param seller the actor selling the item
      */
     @Override
     public void takeFromActor(Actor seller) {
-        seller.removeWeaponFromInventory(this);
+        WeaponItem itemToRemove = null;
+        for (WeaponItem weaponItem : seller.getWeaponInventory()) {
+            if (weaponItem.getClass() == this.getClass()) {
+                itemToRemove = weaponItem;
+                break;
+            }
+        }
+        if (itemToRemove != null) seller.removeWeaponFromInventory(itemToRemove);
     }
 
     @Override

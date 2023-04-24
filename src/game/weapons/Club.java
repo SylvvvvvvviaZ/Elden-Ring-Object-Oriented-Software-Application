@@ -51,12 +51,29 @@ public class Club extends WeaponItem implements Buyable, Sellable {
         return new Rune(100);
     }
 
+    @Override
+    public boolean actorHas(Actor seller) {
+        for (WeaponItem weaponItem : seller.getWeaponInventory()) {
+            if (weaponItem instanceof Club) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Remove the weapon from the actor's inventory
-     * @param actor the actor selling the item
+     * @param seller the actor selling the item
      */
     @Override
-    public void takeFromActor(Actor actor) {
-        actor.removeWeaponFromInventory(this);
+    public void takeFromActor(Actor seller) {
+        WeaponItem itemToRemove = null;
+        for (WeaponItem weaponItem : seller.getWeaponInventory()) {
+            if (weaponItem.getClass() == this.getClass()) {
+                itemToRemove = weaponItem;
+                break;
+            }
+        }
+        if (itemToRemove != null) seller.removeWeaponFromInventory(itemToRemove);
     }
 }

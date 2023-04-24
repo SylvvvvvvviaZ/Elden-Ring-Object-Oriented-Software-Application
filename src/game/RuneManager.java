@@ -39,6 +39,17 @@ public class RuneManager /* implements Resettable */ {
     }
 
     /**
+     * Gets the Rune balance for an actor
+     *
+     * @param actor the actor whose balance to check
+     * @return a quantity of Runes, or 0 if the actor has never held Runes
+     */
+    public int getBalance(Actor actor) {
+        if (!currencyRecord.containsKey(actor)) return 0;
+        return currencyRecord.get(actor);
+    }
+
+    /**
      * Checks whether the actor has enough of a currency in their balance
      *
      * @param actor        the actor whose balance to check

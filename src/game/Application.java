@@ -83,6 +83,7 @@ public class Application {
 		world.addGameMap(gameMap);
 
 		ResetManager resetManager = ResetManager.getInstance();
+		RuneManager runeManager = RuneManager.getInstance();
 
 		// BEHOLD, ELDEN RING
 		for (String line : FancyMessage.ELDEN_RING.split("\n")) {
@@ -98,7 +99,7 @@ public class Application {
 		gameMap.at(40, 12).addActor(new MerchantKale());
 
 		// HINT: what does it mean to prefer composition to inheritance?
-		Player player = new Player("Tarnished", '@', 300, resetManager, new Location(gameMap, 38, 11));
+		Player player = new Player("Tarnished", '@', 300, resetManager, new Location(gameMap, 38, 11), runeManager);
 		world.addPlayer(player, gameMap.at(36, 10));
 
 		resetManager.registerResettable(player);

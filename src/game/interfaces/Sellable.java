@@ -16,6 +16,14 @@ public interface Sellable {
     CurrencyItem getSellPrice();
 
     /**
+     * Check whether the actor has the item
+     *
+     * @param seller the seller whose inventory to check
+     * @return whether the actor possesses the item
+     */
+    boolean actorHas(Actor seller);
+
+    /**
      * Implementation of removing the item from the seller actor
      * @param seller the actor selling the item
      */

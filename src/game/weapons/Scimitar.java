@@ -53,6 +53,16 @@ public class Scimitar extends WeaponItem implements Buyable, Sellable {
         return new Rune(100);
     }
 
+    @Override
+    public boolean actorHas(Actor seller) {
+        for (WeaponItem weaponItem : seller.getWeaponInventory()) {
+            if (weaponItem instanceof Scimitar) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Remove the weapon from the actor's inventory
      *
@@ -60,6 +70,13 @@ public class Scimitar extends WeaponItem implements Buyable, Sellable {
      */
     @Override
     public void takeFromActor(Actor seller) {
-        seller.removeWeaponFromInventory(this);
+        WeaponItem itemToRemove = null;
+        for (WeaponItem weaponItem : seller.getWeaponInventory()) {
+            if (weaponItem.getClass() == this.getClass()) {
+                itemToRemove = weaponItem;
+                break;
+            }
+        }
+        if (itemToRemove != null) seller.removeWeaponFromInventory(itemToRemove);
     }
 }
