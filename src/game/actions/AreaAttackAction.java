@@ -45,6 +45,10 @@ public abstract class AreaAttackAction extends Action {
                 if (xOffset == 0 && yOffset == 0) {
                     continue;
                 }
+                // Check that the location is within the map
+                if (!map.getXRange().contains(actorLocation.x() + xOffset) || !map.getYRange().contains(actorLocation.y() + yOffset)) {
+                    continue;
+                }
                 Location targetLocation = map.at(actorLocation.x() + xOffset, actorLocation.y() + yOffset);
                 // check if the target location is valid
                 if (targetLocation != null && targetLocation.containsAnActor()) {
