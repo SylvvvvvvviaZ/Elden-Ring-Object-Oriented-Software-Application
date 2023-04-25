@@ -101,9 +101,9 @@ public class Application {
 		gameMap.at(23, 17).addActor(new LoneWolf());
 		gameMap.at(40, 12).addActor(new MerchantKale());
 
-		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300, resetManager, new Location(gameMap, 38, 11), runeManager, display);
-		world.addPlayer(player, gameMap.at(36, 10));
+		world.addPlayer(player, gameMap.at(16, 10));
+//		world.addPlayer(player, gameMap.at(38, 11));
 
 		resetManager.registerResettable(player);
 

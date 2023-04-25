@@ -54,9 +54,9 @@ public class ResetManager {
      * @param gameMap   the game map
      */
     public void run(ResetType resetType, GameMap gameMap) {
-        if (resetType == ResetType.RESET_ON_DEATH) System.out.println("YOU DIED");
-        for (Resettable resettable : resettables) {
-            resettable.reset(resetType, gameMap);
+        if (resetType == ResetType.RESET_ON_DEATH) System.out.println(FancyMessage.YOU_DIED);
+        for (int i = 0; i < resettables.size(); i++) {
+            resettables.get(i).reset(resetType, gameMap);
         }
     }
 

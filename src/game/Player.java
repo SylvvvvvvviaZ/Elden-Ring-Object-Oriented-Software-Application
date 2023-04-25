@@ -2,6 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -74,7 +75,7 @@ public class Player extends Actor implements Resettable {
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         // Print the player's stats
-        display.println(String.format("%s (%d/%d), runes: %d", this, hitPoints, maxHitPoints, runeManager.getBalance(this)));
+        display.println(String.format("%s %s, runes: %d", this, printHp(), runeManager.getBalance(this)));
         // Add the locations the player has moved through to a list called locationHistory
         locationHistory.add(map.locationOf(this));
 
@@ -100,18 +101,17 @@ public class Player extends Actor implements Resettable {
      */
     @Override
     public void reset(ResetType resetType, GameMap gameMap) {
-        if (resetType == ResetType.RESET_ON_REST) {
-            // The player is resting
-            heal(getMaxHp());
-        } else {
+        heal(getMaxHp());
+        if (resetType == ResetType.RESET_ON_DEATH) {
             // The player has died
             // Tell the Rune Manager to drop the Player's money on the location they were at before this turn
             RuneManager.getInstance().resetActor(this, locationHistory.get(locationHistory.size() - 2));
             // Get respawn point (last Site of Lost Grace visited by the player)
             Location respawnPoint = siteOfLostGraceVisits.get(siteOfLostGraceVisits.size() - 1);
-            gameMap.removeActor(this);
-            // add to the last Site of Lost Grace visited by the player
-            gameMap.addActor(this, respawnPoint);
+            gameMap.moveActor(this, respawnPoint);
+//            gameMap.removeActor(this);
+//            // add to the last Site of Lost Grace visited by the player
+//            gameMap.addActor(this, respawnPoint);
         }
     }
 

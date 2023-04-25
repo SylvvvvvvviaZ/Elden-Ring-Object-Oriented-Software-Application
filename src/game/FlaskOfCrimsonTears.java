@@ -14,13 +14,15 @@ import game.interfaces.Consumable;
  */
 public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable {
     private int noOfUses;
+    private ConsumeAction action;
 
     /**
      * Constructor
      */
     public FlaskOfCrimsonTears() {
         super("Flask of Crimson Tears", ' ', true);
-        addAction(new ConsumeAction(this));
+        this.action = new ConsumeAction(this);
+        addAction(action);
     }
 
     /**
@@ -36,7 +38,7 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable 
         noOfUses += 1;
         // If the uses has exceeded the maximum, remove the action so it cannot be selected
         if (useCount() >= maxUseCount()) {
-            removeAction(new ConsumeAction(this));
+            removeAction(action);
         }
     }
 
@@ -67,5 +69,6 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable 
     @Override
     public void reset(ResetType resetType, GameMap gameMap) {
         noOfUses = 0;
+        addAction(action);
     }
 }

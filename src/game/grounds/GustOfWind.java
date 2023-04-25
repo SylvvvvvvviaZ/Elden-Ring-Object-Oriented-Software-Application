@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.RandomNumberGenerator;
 import game.ResetManager;
 import game.enemies.Enemy;
+import game.enemies.GiantDog;
 import game.enemies.LoneWolf;
 
 /**
@@ -28,10 +29,18 @@ public class GustOfWind extends Ground {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 33) {
-            Enemy loneWolf = new LoneWolf();
-            ResetManager.getInstance().registerResettable(loneWolf);
-            location.addActor(loneWolf);
+        if (location.x() < location.map().getXRange().max() / 2) {
+            if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 33) {
+                Enemy loneWolf = new LoneWolf();
+                ResetManager.getInstance().registerResettable(loneWolf);
+                location.addActor(loneWolf);
+            }
+        } else if (location.x() > location.map().getXRange().max() / 2) {
+            if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 4) {
+                Enemy giantDog = new GiantDog();
+                ResetManager.getInstance().registerResettable(giantDog);
+                location.addActor(giantDog);
+            }
         }
     }
 }

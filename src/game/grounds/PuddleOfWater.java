@@ -6,6 +6,7 @@ import game.ResetManager;
 import game.enemies.Enemy;
 import game.enemies.GiantCrab;
 import game.RandomNumberGenerator;
+import game.enemies.GiantCrayfish;
 
 /**
  * Puddle of Water ground
@@ -28,10 +29,18 @@ public class PuddleOfWater extends Ground {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 2) {
-            Enemy giantCrab = new GiantCrab();
-            ResetManager.getInstance().registerResettable(giantCrab);
-            location.addActor(giantCrab);
+        if (location.x() < location.map().getXRange().max() / 2) {
+            if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 2) {
+                Enemy giantCrab = new GiantCrab();
+                ResetManager.getInstance().registerResettable(giantCrab);
+                location.addActor(giantCrab);
+            }
+        } else if (location.x() > location.map().getXRange().max() / 2) {
+            if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 2) {
+                Enemy giantCrayfish = new GiantCrayfish();
+                ResetManager.getInstance().registerResettable(giantCrayfish);
+                location.addActor(giantCrayfish);
+            }
         }
     }
 }
