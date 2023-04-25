@@ -139,14 +139,14 @@ public abstract class Enemy extends Actor implements CurrencySource, Resettable 
         ActionList actions = super.allowableActions(otherActor, direction, map);
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             // If a/the player is close by, "capture" the player's instance to be used for FollowBehaviour
-            behaviours.put(998, new FollowBehaviour(otherActor));
+            if (!hasCapability(Status.UNMOVABLE)) behaviours.put(998, new FollowBehaviour(otherActor));
             // Other actor attacks enemies
             // Check whether the actor has a non-intrinsic weapon
-            if (otherActor.getWeaponInventory().isEmpty()) {
-                actions.add(new AttackAction(this, direction));
-            } else {
-                actions.add(new AttackAction(this, direction, otherActor.getWeaponInventory().get(0)));
+            for (WeaponItem weaponItem : otherActor.getWeaponInventory()) {
+                actions.add(new AttackAction(this, direction, weaponItem));
+
             }
+            actions.add(new AttackAction(this, direction));
         }
         return actions;
     }

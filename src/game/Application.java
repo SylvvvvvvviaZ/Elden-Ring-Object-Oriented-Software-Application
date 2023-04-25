@@ -102,19 +102,10 @@ public class Application {
 		gameMap.at(40, 12).addActor(new MerchantKale());
 
 		// HINT: what does it mean to prefer composition to inheritance?
-		Player player = new Player("Tarnished", '@', 300, resetManager, new Location(gameMap, 38, 11), runeManager);
+		Player player = new Player("Tarnished", '@', 300, resetManager, new Location(gameMap, 38, 11), runeManager, display);
 		world.addPlayer(player, gameMap.at(36, 10));
 
 		resetManager.registerResettable(player);
-
-		// Ask for Combat Archetype
-		CombatArchetype archetype = CombatArchetype.askForClass(display);
-		while (archetype == null) {
-			archetype = CombatArchetype.askForClass(display);
-		}
-		// Set Combat Archetype
-		player.addWeaponToInventory(archetype.getStartingWeapon());
-		player.resetMaxHp(archetype.getStartingHitPoints());
 
 		world.run();
 	}

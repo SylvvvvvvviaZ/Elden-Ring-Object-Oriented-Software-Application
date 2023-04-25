@@ -16,8 +16,11 @@ import game.actions.AttackAction;
  * @version 1.0
  */
 public class SpecialAttackBehaviour implements Behaviour {
+    private Actor target;
 
-    // public SpecialAttackBehaviour() {}
+     public SpecialAttackBehaviour(Actor target) {
+         this.target = target;
+     }
 
     /**
      * Determines whether the special attack exists or should be executed
@@ -52,9 +55,9 @@ public class SpecialAttackBehaviour implements Behaviour {
         }
         // If no special attacks found, return normal attack action
         if (actorWeapon == null) {
-            return new AttackAction(actor, null);
+            return new AttackAction(target, null);
         } else {
-            return new AttackAction(actor, null, actorWeapon);
+            return new AttackAction(target, null, actorWeapon);
         }
     }
 }

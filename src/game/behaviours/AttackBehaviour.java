@@ -63,7 +63,7 @@ public class AttackBehaviour implements Behaviour {
 
                         if (!isOfSameType) {
                             // If they are not of the same type, the actor can proceed with the attack
-                            return new SpecialAttackBehaviour().getAction(actor, map);
+                            return new SpecialAttackBehaviour(actorAtLocation).getAction(actor, map);
                         }
                     }
                 }

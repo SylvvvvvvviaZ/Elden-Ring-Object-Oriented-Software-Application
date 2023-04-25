@@ -43,6 +43,6 @@ public class PickUpCurrencyAction extends PickUpAction {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return String.format("%s picks up the %s with %d value", actor.toString(), item.toString(), item.getValue());
+        return String.format("%s retrieves %s (value: %d)", actor.toString(), item.toString(), item.getValue());
     }
 }

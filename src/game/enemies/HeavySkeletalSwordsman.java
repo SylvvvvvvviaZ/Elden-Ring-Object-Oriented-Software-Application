@@ -2,6 +2,7 @@ package game.enemies;
 
 import game.EnemyType;
 import game.RandomNumberGenerator;
+import game.Status;
 import game.currency.CurrencyItem;
 import game.currency.Rune;
 import game.weapons.Grossmesser;
@@ -18,6 +19,8 @@ public class HeavySkeletalSwordsman extends Enemy {
      */
     public HeavySkeletalSwordsman() {
         super("Heavy Skeletal Swordsman", 'q', 153, EnemyType.SKELETAL, new Grossmesser());
+        addCapability(EnemyType.SKELETAL);
+        addCapability(Status.DIES_TO_PILE_OF_BONES);
     }
 
     /**

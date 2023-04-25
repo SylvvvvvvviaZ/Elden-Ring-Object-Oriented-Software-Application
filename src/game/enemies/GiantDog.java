@@ -19,6 +19,7 @@ public class GiantDog extends Enemy {
      */
     public GiantDog() {
         super("Giant Dog", 'G', 693, EnemyType.CANINE, new IntrinsicWeapon(314, "slams", 90));
+        addCapability(EnemyType.CANINE);
     }
 
     /**

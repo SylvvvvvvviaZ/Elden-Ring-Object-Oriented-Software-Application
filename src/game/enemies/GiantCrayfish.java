@@ -19,6 +19,7 @@ public class GiantCrayfish extends Enemy {
      */
     public GiantCrayfish() {
         super("Giant Crayfish", 'R', 4803, EnemyType.CRUSTACEAN, new IntrinsicWeapon(527, "slams", 100));
+        addCapability(EnemyType.CRUSTACEAN);
     }
 
     /**

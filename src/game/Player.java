@@ -7,6 +7,8 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.archetypes.CombatArchetype;
 import game.weapons.Club;
 import jdk.jshell.execution.LocalExecutionControl;
 
@@ -37,11 +39,21 @@ public class Player extends Actor implements Resettable {
      * @param resetManager      the reset manager
      * @param firstStepLocation the location of the First Step (of Site of Lost Grace)
      */
-    public Player(String name, char displayChar, int hitPoints, ResetManager resetManager, Location firstStepLocation, RuneManager runeManager) {
+    public Player(String name, char displayChar, int hitPoints, ResetManager resetManager, Location firstStepLocation, RuneManager runeManager, Display display) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.HOSTILE_TO_ENEMY);
 //        this.addWeaponToInventory(new Club());
         this.runeManager = runeManager;
+
+        // Ask for Combat Archetype
+        CombatArchetype archetype = CombatArchetype.askForClass(display);
+        while (archetype == null) {
+            archetype = CombatArchetype.askForClass(display);
+        }
+        // Set Combat Archetype
+        addWeaponToInventory(archetype.getStartingWeapon());
+        resetMaxHp(archetype.getStartingHitPoints());
+
         // Add the Flask of Crimson Tears
         FlaskOfCrimsonTears flaskOfCrimsonTears = new FlaskOfCrimsonTears();
         addItemToInventory(flaskOfCrimsonTears);
@@ -101,5 +113,10 @@ public class Player extends Actor implements Resettable {
             // add to the last Site of Lost Grace visited by the player
             gameMap.addActor(this, respawnPoint);
         }
+    }
+
+    @Override
+    public IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(11, "punches");
     }
 }

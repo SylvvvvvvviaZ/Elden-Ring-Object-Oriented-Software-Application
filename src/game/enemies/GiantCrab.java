@@ -19,6 +19,7 @@ public class GiantCrab extends Enemy {
      */
     public GiantCrab() {
         super("Giant Crab", 'C', 407, EnemyType.CRUSTACEAN, new IntrinsicWeapon(208, "slams", 90));
+        addCapability(EnemyType.CRUSTACEAN);
     }
 
     /**

@@ -2,6 +2,7 @@ package game.enemies;
 
 import game.EnemyType;
 import game.RandomNumberGenerator;
+import game.Status;
 import game.currency.CurrencyItem;
 import game.currency.Rune;
 import game.weapons.Scimitar;
@@ -18,6 +19,8 @@ public class SkeletalBandit extends Enemy {
      */
     public SkeletalBandit() {
         super("Skeletal Bandit", 'b', 184, EnemyType.SKELETAL, new Scimitar());
+        addCapability(EnemyType.SKELETAL);
+        addCapability(Status.DIES_TO_PILE_OF_BONES);
     }
 
     /**

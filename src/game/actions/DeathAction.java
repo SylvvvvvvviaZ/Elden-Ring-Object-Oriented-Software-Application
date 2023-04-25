@@ -9,6 +9,9 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.RuneManager;
 import game.Status;
 import game.enemies.Enemy;
+import game.interfaces.CurrencySource;
+
+import java.util.Currency;
 
 /**
  * An action executed if an actor is killed.
@@ -48,6 +51,13 @@ public class DeathAction extends Action {
         if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY) && target instanceof Enemy) {
             RuneManager.getInstance().addMoney(attacker, ((Enemy) target).rewardCurrency());
         }
+        //if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY) && target instanceof Enemy) {
+        //CurrencyItem currency = ((CurrencySource) target).rewardCurrency();
+        //        RuneManager.getInstance().addMoney(attacker, currency);
+        //
+
+
+
         // remove actor
         map.removeActor(target);
         result += System.lineSeparator() + menuDescription(target);

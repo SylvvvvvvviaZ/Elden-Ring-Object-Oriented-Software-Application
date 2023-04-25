@@ -19,6 +19,7 @@ public class LoneWolf extends Enemy {
      */
     public LoneWolf() {
         super("Lone Wolf", 'h', 102, EnemyType.CANINE, new IntrinsicWeapon(97, "bites", 95));
+        addCapability(EnemyType.CANINE);
     }
 
     /**

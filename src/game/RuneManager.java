@@ -67,7 +67,11 @@ public class RuneManager /* implements Resettable */ {
      * @param currencyItem the currency item to add
      */
     public void addMoney(Actor actor, CurrencyItem currencyItem) {
-        currencyRecord.put(actor, currencyItem.getValue());
+        if (currencyRecord.containsKey(actor)) {
+            currencyRecord.put(actor, currencyRecord.get(actor) + currencyItem.getValue());
+        } else {
+            currencyRecord.put(actor, currencyItem.getValue());
+        }
     }
 
     /**
