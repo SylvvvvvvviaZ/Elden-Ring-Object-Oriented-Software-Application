@@ -19,7 +19,7 @@ public class Uchigatana extends WeaponItem implements Buyable, Sellable {
      * Constructor
      */
     public Uchigatana(){
-        super("Uchigatana", ')', 1150, "slashes", 100);
+        super("Uchigatana", ')', 115, "slashes", 80);
     }
 
     /**

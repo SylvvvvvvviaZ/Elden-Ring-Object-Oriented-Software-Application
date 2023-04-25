@@ -53,6 +53,6 @@ public class UnsheatheAttackAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return String.format("%s uses Unsheathe!", actor);
+        return String.format("%s attacks %s using Unsheathe at %s with %s", actor, target, direction, (weapon != null ? weapon : "Intrinsic Weapon"));
     }
 }

@@ -55,40 +55,37 @@ public class DeathAction extends Action {
         //CurrencyItem currency = ((CurrencySource) target).rewardCurrency();
         //        RuneManager.getInstance().addMoney(attacker, currency);
         //
-
-
-
         // remove actor
         map.removeActor(target);
         result += System.lineSeparator() + menuDescription(target);
         return result;
     }
 
-    /**
-     * Execute the death action if the target is an enemy
-     *
-     * @param target The actor performing the action.
-     * @param map    The map the actor is on.
-     * @return result of the action to be displayed on the UI
-     */
-    public String execute(Enemy target, GameMap map) {
-        String result = "";
-
-        ActionList dropActions = new ActionList();
-        // drop all items
-        for (Item item : target.getItemInventory())
-            dropActions.add(item.getDropAction(target));
-        for (WeaponItem weapon : target.getWeaponInventory())
-            dropActions.add(weapon.getDropAction(target));
-        for (Action drop : dropActions)
-            drop.execute(target, map);
-        // Reward attacker with the enemy's death reward
-        RuneManager.getInstance().addMoney(attacker, target.rewardCurrency());
-        // remove actor
-        map.removeActor(target);
-        result += System.lineSeparator() + menuDescription(target);
-        return result;
-    }
+//    /**
+//     * Execute the death action if the target is an enemy
+//     *
+//     * @param target The actor performing the action.
+//     * @param map    The map the actor is on.
+//     * @return result of the action to be displayed on the UI
+//     */
+//    public String execute(Enemy target, GameMap map) {
+//        String result = "";
+//
+//        ActionList dropActions = new ActionList();
+//        // drop all items
+//        for (Item item : target.getItemInventory())
+//            dropActions.add(item.getDropAction(target));
+//        for (WeaponItem weapon : target.getWeaponInventory())
+//            dropActions.add(weapon.getDropAction(target));
+//        for (Action drop : dropActions)
+//            drop.execute(target, map);
+//        // Reward attacker with the enemy's death reward
+//        RuneManager.getInstance().addMoney(attacker, target.rewardCurrency());
+//        // remove actor
+//        map.removeActor(target);
+//        result += System.lineSeparator() + menuDescription(target);
+//        return result;
+//    }
 
     @Override
     public String menuDescription(Actor actor) {

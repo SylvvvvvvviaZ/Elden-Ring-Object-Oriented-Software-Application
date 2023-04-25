@@ -51,6 +51,7 @@ public class QuickstepAttackAction extends Action {
         int xDiff = targetLocation.x() - actorLocation.x();
         int yDiff = targetLocation.y() - actorLocation.y();
         // Move away from the target
+        // TODO: Check that no actor exists at this location
         result += new MoveActorAction(new Location(map, actorLocation.x() - xDiff, actorLocation.y() - yDiff), null)
                 .execute(actor, map);
         return result;
@@ -64,6 +65,6 @@ public class QuickstepAttackAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return String.format("%s performs Quickstep!", actor);
+        return String.format("%s attacks %s using Quickstep at %s with %s", actor, target, direction, (weapon != null ? weapon : "Intrinsic Weapon"));
     }
 }

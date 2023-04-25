@@ -144,9 +144,14 @@ public abstract class Enemy extends Actor implements CurrencySource, Resettable 
             // Check whether the actor has a non-intrinsic weapon
             for (WeaponItem weaponItem : otherActor.getWeaponInventory()) {
                 actions.add(new AttackAction(this, direction, weaponItem));
-
+                if (weaponItem.getSkill(otherActor) != null) {
+                    actions.add(weaponItem.getSkill(otherActor));
+                }
+                if (weaponItem.getSkill(this, direction) != null) {
+                    actions.add(weaponItem.getSkill(this, direction));
+                }
+                actions.add(new AttackAction(this, direction));
             }
-            actions.add(new AttackAction(this, direction));
         }
         return actions;
     }
