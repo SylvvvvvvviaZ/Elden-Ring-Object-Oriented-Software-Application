@@ -68,7 +68,9 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable 
      */
     @Override
     public void reset(ResetType resetType, GameMap gameMap) {
+        // If the player had previously used up the Flask, re-add the consume action
+        if (noOfUses >= maxUseCount()) addAction(action);
+        // Reset no. of uses
         noOfUses = 0;
-        addAction(action);
     }
 }

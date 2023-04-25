@@ -101,7 +101,7 @@ public class Player extends Actor implements Resettable {
      */
     @Override
     public void reset(ResetType resetType, GameMap gameMap) {
-        heal(getMaxHp());
+        resetMaxHp(getMaxHp());
         if (resetType == ResetType.RESET_ON_DEATH) {
             // The player has died
             // Tell the Rune Manager to drop the Player's money on the location they were at before this turn
@@ -109,9 +109,6 @@ public class Player extends Actor implements Resettable {
             // Get respawn point (last Site of Lost Grace visited by the player)
             Location respawnPoint = siteOfLostGraceVisits.get(siteOfLostGraceVisits.size() - 1);
             gameMap.moveActor(this, respawnPoint);
-//            gameMap.removeActor(this);
-//            // add to the last Site of Lost Grace visited by the player
-//            gameMap.addActor(this, respawnPoint);
         }
     }
 
