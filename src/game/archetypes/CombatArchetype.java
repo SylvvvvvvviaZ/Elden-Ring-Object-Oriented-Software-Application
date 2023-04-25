@@ -1,9 +1,12 @@
 package game.archetypes;
 
+import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.weapons.Club;
 import game.weapons.GreatKnife;
 import game.weapons.Uchigatana;
+
+import java.util.ArrayList;
 
 /**
  * Enumeration implementation of the Combat Archetypes
@@ -27,6 +30,11 @@ public enum CombatArchetype {
         public Character getHotKey() {
             return 'S';
         }
+
+        @Override
+        public String getName() {
+            return "Samurai";
+        }
     },
     BANDIT {
         @Override
@@ -41,7 +49,12 @@ public enum CombatArchetype {
 
         @Override
         public Character getHotKey() {
-            return 'G';
+            return 'B';
+        }
+
+        @Override
+        public String getName() {
+            return "Bandit";
         }
     },
     WRETCH {
@@ -58,6 +71,11 @@ public enum CombatArchetype {
         @Override
         public Character getHotKey() {
             return 'W';
+        }
+
+        @Override
+        public String getName() {
+            return "Wretch";
         }
     };
 
@@ -82,7 +100,33 @@ public enum CombatArchetype {
      */
     public abstract Character getHotKey();
 
-//    public static CombatArchetype askForClass() {
-//        // TODO
-//    }
+    /**
+     * Get the archetype's name to be displayed
+     *
+     * @return archetype name
+     */
+    public abstract String getName();
+
+    public static CombatArchetype askForClass(Display display) {
+        // Print out every archetype available
+        for (CombatArchetype archetype : CombatArchetype.values()) {
+            display.println(String.format("%s. %s", archetype.getHotKey(), archetype.getName()));
+        }
+        ArrayList<Character> archetypeOptions = new ArrayList<>();
+        for (int i = 0; i < CombatArchetype.values().length; i++) {
+            archetypeOptions.add(CombatArchetype.values()[i].getHotKey());
+        }
+        display.println("=== SELECT ONE ===");
+        Character input = display.readChar();
+        while (!archetypeOptions.contains(input)) {
+            input = display.readChar();
+        }
+        // TODO: maybe improve this conascence
+        switch (input) {
+            case 'S' -> { return SAMURAI; }
+            case 'B' -> { return BANDIT; }
+            case 'W' -> { return WRETCH; }
+        }
+        return null;
+    }
 }

@@ -48,6 +48,7 @@ public class Grossmesser extends WeaponItem implements Sellable {
 
     /**
      * Remove the weapon from the actor's inventory
+     *
      * @param seller the actor selling the item
      */
     @Override

@@ -40,7 +40,7 @@ public class Player extends Actor implements Resettable {
     public Player(String name, char displayChar, int hitPoints, ResetManager resetManager, Location firstStepLocation, RuneManager runeManager) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.HOSTILE_TO_ENEMY);
-        this.addWeaponToInventory(new Club());
+//        this.addWeaponToInventory(new Club());
         this.runeManager = runeManager;
         // Add the Flask of Crimson Tears
         FlaskOfCrimsonTears flaskOfCrimsonTears = new FlaskOfCrimsonTears();

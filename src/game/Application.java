@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
+import game.archetypes.CombatArchetype;
 import game.enemies.LoneWolf;
 import game.grounds.*;
 import game.traders.MerchantKale;
@@ -22,7 +23,9 @@ import game.traders.MerchantKale;
 public class Application {
 
 	public static void main(String[] args) {
-		World world = new World(new Display());
+		Display display = new Display();
+
+		World world = new World(display);
 
 		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Graveyard(), new GustOfWind(), new PuddleOfWater(), new SiteOfLostGrace());
 
@@ -103,6 +106,15 @@ public class Application {
 		world.addPlayer(player, gameMap.at(36, 10));
 
 		resetManager.registerResettable(player);
+
+		// Ask for Combat Archetype
+		CombatArchetype archetype = CombatArchetype.askForClass(display);
+		while (archetype == null) {
+			archetype = CombatArchetype.askForClass(display);
+		}
+		// Set Combat Archetype
+		player.addWeaponToInventory(archetype.getStartingWeapon());
+		player.resetMaxHp(archetype.getStartingHitPoints());
 
 		world.run();
 	}

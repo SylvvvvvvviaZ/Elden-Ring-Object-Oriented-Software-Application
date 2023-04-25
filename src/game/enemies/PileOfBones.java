@@ -18,6 +18,7 @@ public class PileOfBones extends Enemy {
      */
     public PileOfBones(Actor formerActor) {
         super("Pile of Bones", 'X', 1, EnemyType.SKELETAL, new Grossmesser());
+        addCapability(EnemyType.SKELETAL);
         // Disregard default enemy behaviours
         super.behaviours.clear(); // TODO this seems a little janky
         // Add the behaviours
