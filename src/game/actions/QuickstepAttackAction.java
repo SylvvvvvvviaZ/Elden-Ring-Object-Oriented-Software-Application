@@ -47,13 +47,21 @@ public class QuickstepAttackAction extends Action {
         result += new AttackAction(target, direction, weapon).execute(actor, map);
         // Calculate position of attacker with target
         Location actorLocation = map.locationOf(actor);
-        Location targetLocation = map.locationOf(target);
-        int xDiff = targetLocation.x() - actorLocation.x();
-        int yDiff = targetLocation.y() - actorLocation.y();
-        // Move away from the target
-        // TODO: Check that no actor exists at this location
-        result += new MoveActorAction(new Location(map, actorLocation.x() - xDiff, actorLocation.y() - yDiff), null)
-                .execute(actor, map);
+
+        // Check actor's surrounding locations to find one without an actor
+        xLoop:
+        for (int x = -1; x < 2; x++) {
+            for (int y = -1; y < 2; y++) {
+                if (x == 0 && y == 0) continue; // don't try where the actor is located
+                Location location = map.at(actorLocation.x() + x, actorLocation.y() + y);
+                if (!location.canActorEnter(actor)) continue; // actor must be able to enter the location
+                if (!location.containsAnActor()) {
+                    // If no actor is present, the actor shall move to this location
+                    result += new MoveActorAction(location, null).execute(actor, map);
+                    break xLoop;
+                }
+            }
+        }
         return result;
     }
 
