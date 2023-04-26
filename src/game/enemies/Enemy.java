@@ -52,8 +52,10 @@ public abstract class Enemy extends Actor implements CurrencySource, Resettable 
         addCapability(enemyType);
         // Add the common behaviours of enemies
         this.behaviours.put(997, new AttackBehaviour());
-//        this.behaviours.put(998, new FollowBehaviour(Player.getInstance()));
+        // Follow behaviour will slot into 998 when a player instance is captured
         this.behaviours.put(999, new WanderBehaviour());
+        // Insert death reward to inventory
+        addItemToInventory(rewardCurrency());
     }
 
     /**

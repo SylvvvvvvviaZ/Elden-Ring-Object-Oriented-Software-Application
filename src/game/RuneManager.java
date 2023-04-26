@@ -97,7 +97,7 @@ public class RuneManager /* implements Resettable */ {
      * @param lastLocation the last location of the actor (where the currency will be dropped)
      */
     public void resetActor(Actor actor, Location lastLocation) {
-        if (!currencyRecord.containsKey(actor)) return; // actor has no money :(
+        if (!currencyRecord.containsKey(actor) || currencyRecord.get(actor) == 0) return; // actor has no money :(
         CurrencyItem runes = new Rune(currencyRecord.get(actor));
         currencyRecord.put(actor, 0);
         ResetManager.getInstance().registerResettable(runes);

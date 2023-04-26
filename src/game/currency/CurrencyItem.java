@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.ResetType;
 import game.Resettable;
+import game.Status;
 import game.actions.PickUpCurrencyAction;
 
 import java.util.Currency;
@@ -34,6 +35,8 @@ public abstract class CurrencyItem extends Item implements Resettable {
         super(name, displayChar, true);
         this.name = name;
         this.value = value;
+        addCapability(Status.DROP_ON_PLAYER_ATTACK_ONLY);
+        addCapability(Status.IMMEDIATE_PICK_UP);
     }
 
     /**

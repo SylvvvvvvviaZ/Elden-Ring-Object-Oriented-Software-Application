@@ -15,5 +15,15 @@ public enum Status {
      */
     DIES_TO_PILE_OF_BONES,
     RESPAWN_POINT,
-    UNMOVABLE
+    UNMOVABLE,
+    /**
+     * Item should only be dropped if actor died due to player attack
+     * @see Player
+     */
+    DROP_ON_PLAYER_ATTACK_ONLY,
+    /**
+     * Item should be picked up immediately by the player attacker
+     * @see Player
+     */
+    IMMEDIATE_PICK_UP
 }
