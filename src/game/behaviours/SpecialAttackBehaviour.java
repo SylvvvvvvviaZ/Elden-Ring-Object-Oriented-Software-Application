@@ -44,14 +44,10 @@ public class SpecialAttackBehaviour implements Behaviour {
         // Get the capabilities from the actor
         List<SpecialAttackType> specialAttacks = actor.findCapabilitiesByType(SpecialAttackType.class);
         if (!specialAttacks.isEmpty()) {
-            // Action specialAttackAction = null
+            // Get the first actor special attack
             SpecialAttackType specialAttackType = specialAttacks.get(0);
             // Return the appropriate special attack action
-            switch (specialAttackType) {
-                case SLAM -> {
-                    return new SlamAttackAction(actorWeapon);
-                }
-            }
+            return specialAttackType.getSpecialAttack(actorWeapon);
         }
         // If no special attacks found, return normal attack action
         if (actorWeapon == null) {

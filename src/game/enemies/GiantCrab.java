@@ -3,6 +3,7 @@ package game.enemies;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.EnemyType;
 import game.RandomNumberGenerator;
+import game.SpecialAttackType;
 import game.currency.CurrencyItem;
 import game.currency.Rune;
 
@@ -20,6 +21,7 @@ public class GiantCrab extends Enemy {
     public GiantCrab() {
         super("Giant Crab", 'C', 407, EnemyType.CRUSTACEAN, new IntrinsicWeapon(208, "slams", 90));
         addCapability(EnemyType.CRUSTACEAN);
+        addCapability(SpecialAttackType.SLAM);
     }
 
     /**

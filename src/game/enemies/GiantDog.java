@@ -3,6 +3,7 @@ package game.enemies;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.EnemyType;
 import game.RandomNumberGenerator;
+import game.SpecialAttackType;
 import game.currency.CurrencyItem;
 import game.currency.Rune;
 
@@ -20,6 +21,7 @@ public class GiantDog extends Enemy {
     public GiantDog() {
         super("Giant Dog", 'G', 693, EnemyType.CANINE, new IntrinsicWeapon(314, "slams", 90));
         addCapability(EnemyType.CANINE);
+        addCapability(SpecialAttackType.SLAM);
     }
 
     /**

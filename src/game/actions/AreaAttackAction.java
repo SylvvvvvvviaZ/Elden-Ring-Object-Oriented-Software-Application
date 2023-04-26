@@ -65,7 +65,6 @@ public abstract class AreaAttackAction extends Action {
                     };
                     Actor target = map.getActorAt(targetLocation);
                     attackActions.add(new AttackAction(target, direction, weapon));
-                    // targets.add(map.getActorAt(targetLocation));
                 }
             }
         }

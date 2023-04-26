@@ -41,9 +41,6 @@ public class SellTradeAction extends Action {
         if (!item.actorHas(actor)) {
             return String.format("%s cannot sell %s because they do not own one.", actor, item);
         }
-//        if (!actor.getItemInventory().contains(item) && !actor.getWeaponInventory().contains(item)) {
-//            return String.format("%s cannot sell %s because they do not own one.", actor, item);
-//        }
         // Remove item from actor's inventory
         item.takeFromActor(actor);
         runeManager.addMoney(actor, item.getSellPrice());
