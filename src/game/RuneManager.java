@@ -90,6 +90,12 @@ public class RuneManager /* implements Resettable */ {
         return true;
     }
 
+    /**
+     * Resets the currency holdings for an actor (drops currency on the ground)
+     *
+     * @param actor        the actor whose currency to reset
+     * @param lastLocation the last location of the actor (where the currency will be dropped)
+     */
     public void resetActor(Actor actor, Location lastLocation) {
         if (!currencyRecord.containsKey(actor)) return; // actor has no money :(
         CurrencyItem runes = new Rune(currencyRecord.get(actor));
@@ -97,19 +103,4 @@ public class RuneManager /* implements Resettable */ {
         ResetManager.getInstance().registerResettable(runes);
         lastLocation.addItem(runes);
     }
-
-//    @Override
-//    public void reset(ResetType resetType, GameMap gameMap) {
-//        if (resetType == ResetType.RESET_ON_DEATH) {
-//            // Player has died
-//            currencyRecord.forEach( ((actor, quantity) -> {
-//                if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-//                    // Their monies should be reset
-//                    // Drop all their currencies
-//                    // TODO: Drop runes in last-turn location
-//                    new Rune(quantity).getDropAction(actor).execute(actor, gameMap);
-//                }
-//            }));
-//        }
-//    }
 }

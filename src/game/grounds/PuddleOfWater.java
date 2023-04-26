@@ -7,6 +7,7 @@ import game.enemies.Enemy;
 import game.enemies.GiantCrab;
 import game.RandomNumberGenerator;
 import game.enemies.GiantCrayfish;
+import game.interfaces.CrustaceanSpawnable;
 
 /**
  * Puddle of Water ground
@@ -14,7 +15,7 @@ import game.enemies.GiantCrayfish;
  * @version 0.0
  * @see Ground
  */
-public class PuddleOfWater extends Ground {
+public class PuddleOfWater extends Ground implements CrustaceanSpawnable {
     /**
      * Constructor
      */
@@ -29,18 +30,20 @@ public class PuddleOfWater extends Ground {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        if (location.x() < location.map().getXRange().max() / 2) {
-            if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 2) {
-                Enemy giantCrab = new GiantCrab();
-                ResetManager.getInstance().registerResettable(giantCrab);
-                location.addActor(giantCrab);
-            }
-        } else if (location.x() > location.map().getXRange().max() / 2) {
-            if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 2) {
-                Enemy giantCrayfish = new GiantCrayfish();
-                ResetManager.getInstance().registerResettable(giantCrayfish);
-                location.addActor(giantCrayfish);
-            }
-        }
+        ResetManager resetManager = ResetManager.getInstance();
+        spawnFactory(location, resetManager);
+//        if (location.x() < location.map().getXRange().max() / 2) {
+//            if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 2) {
+//                Enemy giantCrab = new GiantCrab();
+//                ResetManager.getInstance().registerResettable(giantCrab);
+//                location.addActor(giantCrab);
+//            }
+//        } else if (location.x() > location.map().getXRange().max() / 2) {
+//            if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 2) {
+//                Enemy giantCrayfish = new GiantCrayfish();
+//                ResetManager.getInstance().registerResettable(giantCrayfish);
+//                location.addActor(giantCrayfish);
+//            }
+//        }
     }
 }
