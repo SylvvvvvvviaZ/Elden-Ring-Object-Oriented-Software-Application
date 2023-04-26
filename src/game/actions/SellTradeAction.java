@@ -14,7 +14,6 @@ import game.interfaces.Sellable;
  * @see TradeAction
  */
 public class SellTradeAction extends Action {
-    private final RuneManager runeManager;
     private final Sellable item;
 
     /**
@@ -23,7 +22,6 @@ public class SellTradeAction extends Action {
      * @param item the item to be traded
      */
     public SellTradeAction(Sellable item) {
-        this.runeManager = RuneManager.getInstance();
         this.item = item;
     }
 
@@ -43,7 +41,7 @@ public class SellTradeAction extends Action {
         }
         // Remove item from actor's inventory
         item.takeFromActor(actor);
-        runeManager.addMoney(actor, item.getSellPrice());
+        RuneManager.getInstance().addMoney(actor, item.getSellPrice());
         return menuDescription(actor);
     }
 

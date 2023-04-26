@@ -11,7 +11,7 @@ import java.util.HashMap;
 /**
  * Singleton for handling entities in the game holding currency/currencies
  */
-public class RuneManager /* implements Resettable */ {
+public class RuneManager {
     /**
      * Instance of the Currency Manager
      */

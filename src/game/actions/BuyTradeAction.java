@@ -14,7 +14,6 @@ import game.interfaces.Buyable;
  * @see TradeAction
  */
 public class BuyTradeAction extends Action {
-    private final RuneManager runeManager;
     private final Buyable item;
 
     /**
@@ -23,7 +22,6 @@ public class BuyTradeAction extends Action {
      * @param item the item to be traded
      */
     public BuyTradeAction(Buyable item) {
-        this.runeManager = RuneManager.getInstance();
         this.item = item;
     }
 
@@ -38,7 +36,7 @@ public class BuyTradeAction extends Action {
     public String execute(Actor actor, GameMap map) {
         // Process the transaction
         // Deduct money
-        if (!runeManager.removeMoney(actor, item.getBuyPrice())) {
+        if (!RuneManager.getInstance().removeMoney(actor, item.getBuyPrice())) {
             // Actor does not have enough money
             return String.format("%s cannot be bought because %s does not have enough money.", item, actor);
         }

@@ -43,7 +43,6 @@ public class Player extends Actor implements Resettable {
     public Player(String name, char displayChar, int hitPoints, ResetManager resetManager, Location firstStepLocation, RuneManager runeManager, Display display) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.HOSTILE_TO_ENEMY);
-//        this.addWeaponToInventory(new Club());
         this.runeManager = runeManager;
 
         // Ask for Combat Archetype
