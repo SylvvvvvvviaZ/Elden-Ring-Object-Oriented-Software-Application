@@ -19,14 +19,13 @@ public interface SkeletalSpawnable extends Spawnable {
      * On the west, Heavy Skeletal Swordsmen spawn; on the east, Skeletal Bandits spawn
      *
      * @param location     the location of the ground
-     * @param resetManager the game's reset manager
      */
     @Override
-    default void spawnFactory(Location location, ResetManager resetManager) {
+    default void spawnFactory(Location location) {
         MapArea spawnArea = getGroundArea(location);
         switch (spawnArea) {
-            case WEST -> spawn(location, new HeavySkeletalSwordsman(), 27, resetManager);
-            case EAST -> spawn(location, new SkeletalBandit(), 27, resetManager);
+            case WEST -> spawn(location, new HeavySkeletalSwordsman(), 27);
+            case EAST -> spawn(location, new SkeletalBandit(), 27);
         }
     }
 }

@@ -30,8 +30,7 @@ public class PuddleOfWater extends Ground implements CrustaceanSpawnable {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        ResetManager resetManager = ResetManager.getInstance();
-        spawnFactory(location, resetManager);
+        spawnFactory(location);
 //        if (location.x() < location.map().getXRange().max() / 2) {
 //            if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 2) {
 //                Enemy giantCrab = new GiantCrab();

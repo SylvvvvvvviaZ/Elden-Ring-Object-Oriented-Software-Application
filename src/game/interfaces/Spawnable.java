@@ -22,11 +22,10 @@ public interface Spawnable {
      * @param enemy        the enemy to spawn
      * @param location     the location of the ground
      * @param probability  the probability of the enemy spawning
-     * @param resetManager the reset manager of the game
      */
-    default void spawn(Location location, Enemy enemy, int probability, ResetManager resetManager) {
+    default void spawn(Location location, Enemy enemy, int probability) {
         if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= probability) {
-            resetManager.registerResettable(enemy);
+            ResetManager.getInstance().registerResettable(enemy);
             location.addActor(enemy);
         }
     }
@@ -51,7 +50,6 @@ public interface Spawnable {
      * Spawn enemies based on location
      *
      * @param location     the location of the ground
-     * @param resetManager the game's reset manager
      */
-    void spawnFactory(Location location, ResetManager resetManager);
+    void spawnFactory(Location location);
 }

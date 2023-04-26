@@ -17,14 +17,13 @@ public interface CanineSpawnable extends Spawnable {
      * On the west, Lone Wolves spawn; on the east, Giant Dogs spawn
      *
      * @param location     the location of the ground
-     * @param resetManager the game's reset manager
      */
     @Override
-    default void spawnFactory(Location location, ResetManager resetManager) {
+    default void spawnFactory(Location location) {
         MapArea spawnArea = getGroundArea(location);
         switch (spawnArea) {
-            case WEST -> spawn(location, new LoneWolf(), 33, resetManager);
-            case EAST -> spawn(location, new GiantDog(), 4, resetManager);
+            case WEST -> spawn(location, new LoneWolf(), 33);
+            case EAST -> spawn(location, new GiantDog(), 4);
         }
     }
 }
