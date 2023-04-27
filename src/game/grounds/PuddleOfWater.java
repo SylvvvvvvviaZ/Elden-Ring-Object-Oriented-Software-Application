@@ -20,6 +20,8 @@ import game.interfaces.EnemyFactory;
 public class PuddleOfWater extends Environment {
     /**
      * Constructor
+     *
+     * @param enemyFactory the enemy factory to spawn actors
      */
     public PuddleOfWater(EnemyFactory enemyFactory) {
         super('~', enemyFactory);

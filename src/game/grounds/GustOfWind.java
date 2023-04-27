@@ -20,6 +20,8 @@ import game.interfaces.EnemyFactory;
 public class GustOfWind extends Environment {
     /**
      * Constructor
+     *
+     * @param enemyFactory the enemy factory to spawn actors
      */
     public GustOfWind(EnemyFactory enemyFactory) {
         super('&', enemyFactory);

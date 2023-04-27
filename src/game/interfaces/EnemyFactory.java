@@ -8,14 +8,14 @@ import game.ResetManager;
 import game.enemies.Enemy;
 
 /**
- * Interface for generating enemies on different maps
+ * Interface for factories that generate enemies on maps
  */
 public interface EnemyFactory {
     /**
      * Attempt to spawn an enemy at the location if probability permits
      *
-     * @param enemy        the enemy to spawn
-     * @param location     the location of the ground
+     * @param enemy    the enemy to spawn
+     * @param location the location of the ground
      */
     default void spawn(Location location, Enemy enemy) {
         if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= enemy.getSpawnChance()) {
@@ -23,24 +23,25 @@ public interface EnemyFactory {
             location.addActor(enemy);
         }
     }
+
     /**
      * Generate Skeletal-type enemies
      *
-     * @param gameMap the game map to generate the enemies
+     * @param location the location to spawn the enemy
      */
     void generateSkeletal(Location location);
 
     /**
      * Generate Canine-type enemies
      *
-     * @param gameMap the game map to generate the enemies
+     * @param location the location to spawn the enemy
      */
     void generateCanine(Location location);
 
     /**
      * Generate Crustacean-type enemies
      *
-     * @param gameMap the game map to generate the enemies
+     * @param location the location to spawn the enemy
      */
     void generateCrustacean(Location location);
 }

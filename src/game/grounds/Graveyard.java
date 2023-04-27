@@ -24,6 +24,8 @@ import java.sql.PreparedStatement;
 public class Graveyard extends Environment {
     /**
      * Constructor
+     *
+     * @param enemyFactory the enemy factory to spawn actors
      */
     public Graveyard(EnemyFactory enemyFactory) {
         super('n', enemyFactory);
