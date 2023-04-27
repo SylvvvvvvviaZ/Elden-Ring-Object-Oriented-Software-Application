@@ -1,132 +1,63 @@
 package game.archetypes;
 
-import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.weapons.Club;
-import game.weapons.GreatKnife;
-import game.weapons.Uchigatana;
-
-import java.util.ArrayList;
 
 /**
- * Enumeration implementation of the Combat Archetypes
+ * Base class for Combat Archetype definitions
  *
  * @author dkon0020
  * @version 1.0
  */
-public enum CombatArchetype {
-    SAMURAI {
-        @Override
-        public WeaponItem getStartingWeapon() {
-            return new Uchigatana();
-        }
-
-        @Override
-        public int getStartingHitPoints() {
-            return 455;
-        }
-
-        @Override
-        public Character getHotKey() {
-            return 'S';
-        }
-
-        @Override
-        public String getName() {
-            return "Samurai";
-        }
-    },
-    BANDIT {
-        @Override
-        public WeaponItem getStartingWeapon() {
-            return new GreatKnife();
-        }
-
-        @Override
-        public int getStartingHitPoints() {
-            return 414;
-        }
-
-        @Override
-        public Character getHotKey() {
-            return 'B';
-        }
-
-        @Override
-        public String getName() {
-            return "Bandit";
-        }
-    },
-    WRETCH {
-        @Override
-        public WeaponItem getStartingWeapon() {
-            return new Club();
-        }
-
-        @Override
-        public int getStartingHitPoints() {
-            return 414;
-        }
-
-        @Override
-        public Character getHotKey() {
-            return 'W';
-        }
-
-        @Override
-        public String getName() {
-            return "Wretch";
-        }
-    };
-
+public abstract class CombatArchetype {
     /**
-     * Get the player's starting weapon item
-     *
-     * @return starting weapon item
+     * The weapon that the player starts off with
      */
-    public abstract WeaponItem getStartingWeapon();
-
+    private final WeaponItem startingWeapon;
     /**
-     * Get the player's starting hit points
-     *
-     * @return starting hit points
+     * The number of hit points that the player starts off with
      */
-    public abstract int getStartingHitPoints();
+    private final int startingHitPoints;
 
     /**
-     * Get the archetype option's hotkey
+     * Constructor
      *
-     * @return the hotkey for the menu
+     * @param startingWeapon    the weapon that the player starts off with
+     * @param startingHitPoints the number of hit points that the player starts off with
+     */
+    public CombatArchetype(WeaponItem startingWeapon, int startingHitPoints) {
+        this.startingWeapon = startingWeapon;
+        this.startingHitPoints = startingHitPoints;
+    }
+
+    /**
+     * Gets the weapon that the player starts off with
+     *
+     * @return the weapon that the player starts off with
+     */
+    public WeaponItem getStartingWeapon() {
+        return startingWeapon;
+    }
+
+    /**
+     * Gets the number of hit points that the player starts off with
+     *
+     * @return the number of hit points that the player starts off with
+     */
+    public int getStartingHitPoints() {
+        return startingHitPoints;
+    }
+
+    /**
+     * Gets the archetype's hotkey for input in the menu
+     *
+     * @return archetype hotkey
      */
     public abstract Character getHotKey();
 
     /**
-     * Get the archetype's name to be displayed
+     * Gets the archetype's name for selection in the menu
      *
      * @return archetype name
      */
     public abstract String getName();
-
-    public static CombatArchetype askForClass(Display display) {
-        // Print out every archetype available
-        for (CombatArchetype archetype : CombatArchetype.values()) {
-            display.println(String.format("%s. %s", archetype.getHotKey(), archetype.getName()));
-        }
-        ArrayList<Character> archetypeOptions = new ArrayList<>();
-        for (int i = 0; i < CombatArchetype.values().length; i++) {
-            archetypeOptions.add(CombatArchetype.values()[i].getHotKey());
-        }
-        display.println("=== SELECT ONE ===");
-        Character input = display.readChar();
-        while (!archetypeOptions.contains(input)) {
-            input = display.readChar();
-        }
-        // TODO: maybe improve this conascence
-        switch (input) {
-            case 'S' -> { return SAMURAI; }
-            case 'B' -> { return BANDIT; }
-            case 'W' -> { return WRETCH; }
-        }
-        return null;
-    }
 }

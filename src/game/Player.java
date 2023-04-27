@@ -2,16 +2,13 @@ package game;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.archetypes.CombatArchetype;
-import game.weapons.Club;
-import jdk.jshell.execution.LocalExecutionControl;
+import game.archetypes.CombatArchetypeEnum;
 
 import java.util.ArrayList;
 
@@ -44,16 +41,6 @@ public class Player extends Actor implements Resettable {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         this.runeManager = runeManager;
-
-        // Ask for Combat Archetype
-        CombatArchetype archetype = CombatArchetype.askForClass(display);
-        while (archetype == null) {
-            archetype = CombatArchetype.askForClass(display);
-        }
-        // Set Combat Archetype
-        addWeaponToInventory(archetype.getStartingWeapon());
-        resetMaxHp(archetype.getStartingHitPoints());
-
         // Add the Flask of Crimson Tears
         FlaskOfCrimsonTears flaskOfCrimsonTears = new FlaskOfCrimsonTears();
         addItemToInventory(flaskOfCrimsonTears);
