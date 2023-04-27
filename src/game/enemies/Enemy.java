@@ -57,7 +57,7 @@ public abstract class Enemy extends Actor implements CurrencySource, Resettable 
         // Follow behaviour will slot into 998 when a player instance is captured
         this.behaviours.put(999, new WanderBehaviour());
         // Insert death reward to inventory
-        addItemToInventory(rewardCurrency());
+        if (rewardCurrency() != null) addItemToInventory(rewardCurrency());
     }
 
     /**

@@ -46,14 +46,4 @@ public class PileOfBones extends Enemy {
     public int getSpawnChance() {
         return 0;
     }
-
-    /**
-     * Pile of Bones awards 35-892 Runes upon death
-     *
-     * @return 35-892 Runes
-     */
-    @Override
-    public CurrencyItem rewardCurrency() {
-        return new Rune(RandomNumberGenerator.getRandomInt(35, 892));
-    }
 }
