@@ -2,27 +2,24 @@ package game.factories;
 
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.enemies.GiantCrayfish;
+import game.enemies.HeavySkeletalSwordsman;
+import game.enemies.LoneWolf;
 import game.interfaces.EnemyFactory;
 
 public class WestEnemyFactory implements EnemyFactory {
-    private Location groundLocation;
-
-    public WestEnemyFactory(Location groundLocation) {
-        this.groundLocation = groundLocation;
+    @Override
+    public void generateSkeletal(Location location) {
+        spawn(location, new HeavySkeletalSwordsman());
     }
 
     @Override
-    public void generateSkeletal(GameMap gameMap) {
-//        gameMap.addActor(new );
+    public void generateCanine(Location location) {
+        spawn(location, new LoneWolf());
     }
 
     @Override
-    public void generateCanine(GameMap gameMap) {
-
-    }
-
-    @Override
-    public void generateCrustacean(GameMap gameMap) {
-
+    public void generateCrustacean(Location location) {
+        spawn(location, new GiantCrayfish());
     }
 }

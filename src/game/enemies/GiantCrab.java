@@ -24,6 +24,11 @@ public class GiantCrab extends Enemy {
         addCapability(SpecialAttackType.SLAM);
     }
 
+    @Override
+    public int getSpawnChance() {
+        return 2;
+    }
+
     /**
      * Giant Crab rewards 318-4961 Runes upon death
      * @return the Runes to be rewarded upon death

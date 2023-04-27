@@ -22,6 +22,11 @@ public class LoneWolf extends Enemy {
         addCapability(EnemyType.CANINE);
     }
 
+    @Override
+    public int getSpawnChance() {
+        return 33;
+    }
+
     /**
      * Lone Wolf rewards 55-1470 Runes upon death
      * @return the Runes to be rewarded upon death

@@ -38,6 +38,8 @@ public abstract class Enemy extends Actor implements CurrencySource, Resettable 
      */
     private IntrinsicWeapon intrinsicWeapon;
 
+    public abstract int getSpawnChance();
+
     /**
      * Constructor
      *

@@ -24,6 +24,11 @@ public class GiantCrayfish extends Enemy {
         addCapability(SpecialAttackType.SLAM);
     }
 
+    @Override
+    public int getSpawnChance() {
+        return 1;
+    }
+
     /**
      * Giant Crayfish rewards 500-2374 Runes upon death
      * @return the Runes to be rewarded upon death

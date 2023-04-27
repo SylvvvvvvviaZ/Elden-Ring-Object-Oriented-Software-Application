@@ -23,6 +23,11 @@ public class SkeletalBandit extends Enemy {
         addCapability(Status.DIES_TO_PILE_OF_BONES);
     }
 
+    @Override
+    public int getSpawnChance() {
+        return 27;
+    }
+
     /**
      * Skeletal Bandit rewards 35-892 Runes upon death
      * @return the Runes to be rewarded upon death

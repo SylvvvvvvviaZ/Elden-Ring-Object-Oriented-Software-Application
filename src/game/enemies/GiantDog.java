@@ -24,6 +24,11 @@ public class GiantDog extends Enemy {
         addCapability(SpecialAttackType.SLAM);
     }
 
+    @Override
+    public int getSpawnChance() {
+        return 4;
+    }
+
     /**
      * Giant Dog rewards 313-1808 Runes upon death
      * @return the Runes to be rewarded upon death

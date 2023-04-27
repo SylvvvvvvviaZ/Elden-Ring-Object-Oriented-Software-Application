@@ -42,6 +42,11 @@ public class PileOfBones extends Enemy {
         }
     }
 
+    @Override
+    public int getSpawnChance() {
+        return 0;
+    }
+
     /**
      * Pile of Bones awards 35-892 Runes upon death
      *

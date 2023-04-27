@@ -2,11 +2,13 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.MapArea;
 import game.ResetManager;
 import game.enemies.Enemy;
 import game.enemies.HeavySkeletalSwordsman;
 import game.RandomNumberGenerator;
 import game.enemies.SkeletalBandit;
+import game.interfaces.EnemyFactory;
 import game.interfaces.SkeletalSpawnable;
 import game.interfaces.Spawnable;
 
@@ -19,12 +21,12 @@ import java.sql.PreparedStatement;
  * @version 0.0
  * @see Ground
  */
-public class Graveyard extends Ground implements SkeletalSpawnable {
+public class Graveyard extends Environment {
     /**
      * Constructor
      */
-    public Graveyard() {
-        super('n');
+    public Graveyard(EnemyFactory enemyFactory) {
+        super('n', enemyFactory);
     }
 
     /**
@@ -35,19 +37,17 @@ public class Graveyard extends Ground implements SkeletalSpawnable {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        spawnFactory(location);
-//        if (location.x() < location.map().getXRange().max() / 2) {
-//            if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 27) {
-//                Enemy heavySkeletalSwordsman = new HeavySkeletalSwordsman();
-//                ResetManager.getInstance().registerResettable(heavySkeletalSwordsman);
-//                location.addActor(heavySkeletalSwordsman);
-//            }
-//        } else if (location.x() > location.map().getXRange().max() / 2) {
-//            if (!location.containsAnActor() && RandomNumberGenerator.getRandomInt(0, 100) <= 27) {
-//                Enemy skeletalBandit = new SkeletalBandit();
-//                ResetManager.getInstance().registerResettable(skeletalBandit);
-//                location.addActor(skeletalBandit);
-//            }
-//        }
+        spawn(location);
+    }
+
+
+    /**
+     * Spawns a Skeletal-type enemy using the enemy factory in the given location.
+     *
+     * @param location The location where the enemy is spawned.
+     */
+    @Override
+    void spawn(Location location) {
+        enemyFactory.generateSkeletal(location);
     }
 }
