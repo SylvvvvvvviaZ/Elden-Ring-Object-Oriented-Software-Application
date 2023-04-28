@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.RuneManager;
+import game.currency.BuyingCurrency;
 import game.interfaces.Buyable;
 
 /**
@@ -35,11 +36,16 @@ public class BuyTradeAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         // Process the transaction
+        BuyingCurrency buyPrice = item.getBuyPrice();
         // Deduct money
-        if (!RuneManager.getInstance().removeMoney(actor, item.getBuyPrice())) {
-            // Actor does not have enough money
-            return String.format("%s cannot be bought because %s does not have enough money.", item, actor);
+        if (!buyPrice.deductCurrency(actor)) {
+            // Player cannot afford to buy this item
+            return String.format("%s cannot be bought because %s cannot afford this payment of %s.", item, actor, item.getBuyPrice());
         }
+//        if (!RuneManager.getInstance().removeMoney(actor, item.getBuyPrice())) {
+//            // Actor does not have enough money
+//            return String.format("%s cannot be bought because %s does not have enough money.", item, actor);
+//        }
         // Give the buyer the new item
         item.giveToActor(actor);
         return menuDescription(actor);
@@ -47,6 +53,6 @@ public class BuyTradeAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return String.format("%s purchases %s for %d %s", actor, item, item.getBuyPrice().getValue(), item.getBuyPrice().getName());
+        return String.format("%s purchases %s for %s.", actor, item, item.getBuyPrice());
     }
 }

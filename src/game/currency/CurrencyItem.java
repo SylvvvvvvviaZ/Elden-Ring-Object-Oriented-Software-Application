@@ -7,10 +7,9 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.ResetType;
 import game.Resettable;
+import game.RuneManager;
 import game.Status;
 import game.actions.PickUpCurrencyAction;
-
-import java.util.Currency;
 
 /**
  * Item for currencies
@@ -19,7 +18,7 @@ import java.util.Currency;
  * @version 0.0
  * @see Item
  */
-public abstract class CurrencyItem extends Item implements Resettable {
+public abstract class CurrencyItem extends Item implements BuyingCurrency, Resettable {
     private final String name;
     private int value;
     private Location location;
@@ -55,6 +54,17 @@ public abstract class CurrencyItem extends Item implements Resettable {
      */
     public int getValue() {
         return value;
+    }
+
+    /**
+     * Deduct the currency item from the actor's record
+     *
+     * @param actor the actor who is buying the item
+     * @return whether the deduction was successful
+     */
+    @Override
+    public boolean deductCurrency(Actor actor) {
+        return RuneManager.getInstance().removeMoney(actor, this);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package game.interfaces;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import game.currency.BuyingCurrency;
 import game.currency.CurrencyItem;
 
 /**
@@ -15,7 +16,7 @@ public interface Buyable {
      *
      * @return the buy price
      */
-    CurrencyItem getBuyPrice();
+    BuyingCurrency getBuyPrice();
 
     /**
      * Implementation of giving the item to the buyer actor

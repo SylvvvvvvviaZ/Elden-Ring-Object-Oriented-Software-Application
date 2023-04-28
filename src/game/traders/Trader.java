@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.currency.BuyingCurrency;
 import game.currency.CurrencyItem;
 import game.Trade;
 import game.actions.BuyTradeAction;
@@ -24,7 +25,7 @@ import java.util.HashMap;
  * @see Actor
  */
 public abstract class Trader extends Actor {
-    private final HashMap<Buyable, CurrencyItem> buyableInventory;
+    private final HashMap<Buyable, BuyingCurrency> buyableInventory;
     private final HashMap<Sellable, CurrencyItem> sellableInventory;
 
     /**
