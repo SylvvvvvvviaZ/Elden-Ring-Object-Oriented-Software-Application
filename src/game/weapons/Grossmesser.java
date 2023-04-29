@@ -18,7 +18,7 @@ public class Grossmesser extends WeaponItem implements Sellable {
      * Set its damage, accuracy, and verb for the targeted attack.
      */
     public Grossmesser() {
-        super("Grossmesser", '?', 115, "slash", 85);
+        super("Grossmesser", '?', 115, "slashes", 85);
     }
 
     @Override

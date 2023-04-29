@@ -69,7 +69,7 @@ public abstract class CurrencyItem extends Item implements BuyingCurrency, Reset
 
     @Override
     public String toString() {
-        return String.format("%s (value: %d)", name, value);
+        return String.format("%d %s", value, name);
     }
 
     /**

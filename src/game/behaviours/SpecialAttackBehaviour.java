@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.RandomNumberGenerator;
 import game.SlamAttackAction;
 import game.SpecialAttackType;
 import game.actions.AttackAction;
@@ -38,7 +39,9 @@ public class SpecialAttackBehaviour implements Behaviour {
         if (!actor.getWeaponInventory().isEmpty()) {
             actorWeapon = actor.getWeaponInventory().get(0);
             if (actorWeapon.getSkill(actor) != null) {
-                return actorWeapon.getSkill(actor);
+                // Enemy uses special weapon skill with 50% chance
+                if (RandomNumberGenerator.getRandomInt(0, 100) <= 50)
+                    return actorWeapon.getSkill(actor);
             }
         }
         // Get the capabilities from the actor

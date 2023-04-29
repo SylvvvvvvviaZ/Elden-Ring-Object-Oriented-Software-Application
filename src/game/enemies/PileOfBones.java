@@ -31,7 +31,7 @@ public class PileOfBones extends Enemy {
         // Disregard default enemy behaviours
         super.behaviours.clear(); // TODO this seems a little janky
         // Add the behaviours
-        super.behaviours.put(0, new SwapActorBehaviour(formerActor));
+        super.behaviours.put(0, new SwapActorBehaviour(formerActor, 3));
         System.out.println(behaviours.values());
         // Add the former actor's inventory
         for (WeaponItem weaponItem : formerActor.getWeaponInventory()) {

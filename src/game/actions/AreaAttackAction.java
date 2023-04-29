@@ -73,7 +73,7 @@ public abstract class AreaAttackAction extends Action {
 
         // Iterate through the AttackActions to run the area attack
         for (AttackAction attack : attackActions) {
-            result.append(attack.execute(actor, map)).append("\n");
+            result.append(System.lineSeparator()).append(attack.execute(actor, map));
         }
 
         return result.toString();
