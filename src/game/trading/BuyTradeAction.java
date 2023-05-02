@@ -40,10 +40,6 @@ public class BuyTradeAction extends Action {
             // Player cannot afford to buy this item
             return String.format("%s cannot be bought because %s cannot afford this payment of %s.", item, actor, item.getBuyPrice());
         }
-//        if (!RuneManager.getInstance().removeMoney(actor, item.getBuyPrice())) {
-//            // Actor does not have enough money
-//            return String.format("%s cannot be bought because %s does not have enough money.", item, actor);
-//        }
         // Give the buyer the new item
         item.giveToActor(actor);
         return menuDescription(actor);

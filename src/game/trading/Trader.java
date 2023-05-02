@@ -20,7 +20,13 @@ import java.util.HashMap;
  * @see Actor
  */
 public abstract class Trader extends Actor {
+    /**
+     * The trader's inventory of items that can be bought
+     */
     private final HashMap<Buyable, BuyingCurrency> buyableInventory;
+    /**
+     * The trader's inventory of items that can be sold
+     */
     private final HashMap<Sellable, CurrencyItem> sellableInventory;
 
     /**

@@ -37,6 +37,13 @@ public interface AoeCapable {
         return surroundingLocations;
     }
 
+    /**
+     * Get the string description of the direction of the target location from the current location
+     *
+     * @param currentLocation the current location
+     * @param targetLocation  the target location
+     * @return a string description of the direction of the target
+     */
     default String getDirection(Location currentLocation, Location targetLocation) {
         int xOffset = targetLocation.x() - currentLocation.x();
         int yOffset = targetLocation.y() - currentLocation.y();

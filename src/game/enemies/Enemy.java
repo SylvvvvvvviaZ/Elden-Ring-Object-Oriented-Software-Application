@@ -121,10 +121,6 @@ public abstract class Enemy extends Actor implements CurrencySource, Resettable 
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-//        // At each turn, the enemy has a 10% chance of being despawned
-//        if (!hasCapability(Status.FOLLOWING_PLAYER) && RandomNumberGenerator.getRandomInt(0, 100) <= 10) {
-//            return new DespawnAction();
-//        }
         // Iterate through the available behaviours, and get the first one that has an action
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);

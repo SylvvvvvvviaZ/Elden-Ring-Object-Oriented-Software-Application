@@ -39,40 +39,15 @@ public abstract class AreaAttackAction extends Action implements AoeCapable {
         // The location of the actor attacking others
         Location actorLocation = map.locationOf(actor);
 
-        // Iterate through the 8 surrounding locations
-//        for (int xOffset = -1; xOffset <= 1; xOffset++) {
-//            for (int yOffset = -1; yOffset <= 1; yOffset++) {
-//                // Don't add the location of myself
-//                if (xOffset == 0 && yOffset == 0) {
-//                    continue;
-//                }
-//                // Check that the location is within the map
-//                if (!map.getXRange().contains(actorLocation.x() + xOffset) || !map.getYRange().contains(actorLocation.y() + yOffset)) {
-//                    continue;
-//                }
-//                Location targetLocation = map.at(actorLocation.x() + xOffset, actorLocation.y() + yOffset);
         for (Location targetLocation : getSurroundingLocations(map, actorLocation)) {
             // check if the target location is valid
             if (targetLocation != null && targetLocation.containsAnActor()) {
-//                String direction = "";
-//                direction += switch (yOffset) {
-//                    case -1 -> "north";
-//                    case 1 -> "south";
-//                    default -> "";
-//                };
-//                direction += switch (xOffset) {
-//                    case -1 -> "west";
-//                    case 1 -> "east";
-//                    default -> "";
-//                };
                 String direction = getDirection(actorLocation, targetLocation);
                 Actor target = map.getActorAt(targetLocation);
                 // AOE attacks do not care about enemy types, so just add them straightaway
                 attackActions.add(new AttackAction(target, direction, weapon));
             }
         }
-//            }
-//        }
 
         StringBuilder result = new StringBuilder();
 

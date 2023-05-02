@@ -26,7 +26,7 @@ public class SiteOfLostGrace extends Ground {
      * @param actor     the Actor acting
      * @param location  the current Location
      * @param direction the direction of the Ground from the Actor
-     * @return
+     * @return the rest action for players to rest
      */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {

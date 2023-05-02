@@ -32,19 +32,6 @@ public class AttackBehaviour implements Behaviour, AoeCapable {
         // The location of the actor attacking others
         Location actorLocation = map.locationOf(actor);
 
-//      Iterate through the 8 surrounding locations
-//        for (int xOffset = -1; xOffset <= 1; xOffset++) {
-//            for (int yOffset = -1; yOffset <= 1; yOffset++) {
-//                // Don't add the location of myself
-//                if (xOffset == 0 && yOffset == 0) {
-//                    continue;
-//                }
-//                if (!map.getXRange().contains(actorLocation.x() + xOffset) || !map.getYRange().contains(actorLocation.y() + yOffset)) {
-//                    continue;
-//                }
-//
-//                // Get the location
-//                Location targetLocation = map.at(actorLocation.x() + xOffset, actorLocation.y() + yOffset);
         for (Location targetLocation : getSurroundingLocations(map, actorLocation)) {
             if (targetLocation != null) {
                 // If the location exists on the map
@@ -73,8 +60,6 @@ public class AttackBehaviour implements Behaviour, AoeCapable {
                     }
                 }
             }
-//                }
-//            }
         }
         // No suitable actor to attack, so no action will be returned
         return null;

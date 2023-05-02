@@ -18,17 +18,6 @@ public class ResetManager {
     private List<Resettable> resettables;
     private static ResetManager instance;
 
-//    /**
-//     * Gets an instance of the reset manager
-//     *
-//     * @param gameMap the game map
-//     * @return instance of reset manager
-//     */
-//    public static ResetManager getInstance(GameMap gameMap) {
-//        if (instance == null) instance = new ResetManager(gameMap);
-//        return instance;
-//    }
-
     /**
      * Gets the instance of the reset manager
      *
@@ -42,8 +31,7 @@ public class ResetManager {
     /**
      * Constructor
      */
-    private ResetManager(/* GameMap gameMap */) {
-//        this.gameMap = gameMap;
+    private ResetManager() {
         this.resettables = new ArrayList<>();
     }
 

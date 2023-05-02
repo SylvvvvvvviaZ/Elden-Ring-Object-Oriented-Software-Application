@@ -7,11 +7,13 @@ import game.interfaces.Consumable;
 
 
 /**
- * Constructs a new ConsumeAction.
+ * Action that allows items to have effects on actors when they consume it
  */
 public class ConsumeAction extends Action {
-    private Consumable item;
-
+    /**
+     * The item to be consumed
+     */
+    private final Consumable item;
 
     /**
      * Constructs a new ConsumeAction with the specified consume item.

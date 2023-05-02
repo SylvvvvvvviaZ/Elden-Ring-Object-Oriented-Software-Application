@@ -2,7 +2,14 @@ package game.trading;
 
 import game.weapons.*;
 
+/**
+ * Class for the Merchant Kale
+ * @see Trader
+ */
 public class MerchantKale extends Trader {
+    /**
+     * Constructor
+     */
     public MerchantKale() {
         super("Kale", 'K');
         addBuyableItem(new Uchigatana());

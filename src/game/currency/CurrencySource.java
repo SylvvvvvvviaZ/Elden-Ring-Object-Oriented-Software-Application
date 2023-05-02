@@ -1,7 +1,5 @@
 package game.currency;
 
-import game.currency.CurrencyItem;
-
 /**
  * Interface for Actors that reward currency
  *

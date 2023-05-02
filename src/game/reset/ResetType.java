@@ -1,5 +1,15 @@
 package game.reset;
 
+/**
+ * Enumeration of the types of resets in the game
+ */
 public enum ResetType {
-    RESET_ON_DEATH, RESET_ON_REST
+    /**
+     * Resets on death
+     */
+    RESET_ON_DEATH,
+    /**
+     * Resets on rest
+     */
+    RESET_ON_REST
 }
