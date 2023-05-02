@@ -7,7 +7,6 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
-import game.archetypes.*;
 import game.currency.RuneManager;
 import game.factories.EastEnemyFactory;
 import game.factories.WestEnemyFactory;
