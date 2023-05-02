@@ -29,10 +29,9 @@ public class PileOfBones extends Enemy {
         addCapability(EnemyType.SKELETAL);
         addCapability(Status.UNMOVABLE);
         // Disregard default enemy behaviours
-        super.behaviours.clear(); // TODO this seems a little janky
+        super.behaviours.clear();
         // Add the behaviours
         super.behaviours.put(0, new SwapActorBehaviour(formerActor, 3));
-        System.out.println(behaviours.values());
         // Add the former actor's inventory
         for (WeaponItem weaponItem : formerActor.getWeaponInventory()) {
             addWeaponToInventory(weaponItem);

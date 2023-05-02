@@ -98,10 +98,10 @@ public class AttackAction extends Action {
 			// The target has died
             else if (target.hasCapability(Status.DIES_TO_PILE_OF_BONES)) {
 				// If the target can become a Pile of Bones upon death, do the swap action
-				result += new SwapActorAction(new PileOfBones(target)).execute(target, map);
+				result += System.lineSeparator() + new SwapActorAction(new PileOfBones(target)).execute(target, map);
 			} else {
 				// Otherwise, just execute the normal death action
-				result += new DeathAction(actor).execute(target, map);
+				result += System.lineSeparator() + new DeathAction(actor).execute(target, map);
 			}
 		}
 

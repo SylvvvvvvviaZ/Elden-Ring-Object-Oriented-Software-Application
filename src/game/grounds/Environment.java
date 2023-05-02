@@ -26,6 +26,17 @@ public abstract class Environment extends Ground {
     }
 
     /**
+     * At each turn, the environment will attempt to spawn enemies
+     *
+     * @param location The location of the Ground
+     */
+    @Override
+    public void tick(Location location) {
+        super.tick(location);
+        spawn(location);
+    }
+
+    /**
      * Spawn actors at the location
      *
      * @param location the location of the environment

@@ -32,18 +32,6 @@ public class Graveyard extends Environment {
     }
 
     /**
-     * At every turn, there is a 27% chance of spawning HeavySkeletalSwordsman
-     *
-     * @param location The location of the Ground
-     */
-    @Override
-    public void tick(Location location) {
-        super.tick(location);
-        spawn(location);
-    }
-
-
-    /**
      * Spawns a Skeletal-type enemy using the enemy factory in the given location.
      *
      * @param location The location where the enemy is spawned.

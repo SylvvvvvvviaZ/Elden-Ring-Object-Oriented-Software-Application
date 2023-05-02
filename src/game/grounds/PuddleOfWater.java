@@ -28,16 +28,6 @@ public class PuddleOfWater extends Environment {
     }
 
     /**
-     * At every turn, there is a 2% chance of spawning a Giant Crab
-     * @param location The location of the Ground
-     */
-    @Override
-    public void tick(Location location) {
-        super.tick(location);
-        spawn(location);
-    }
-
-    /**
      * Spawns a Canine-type enemy using the enemy factory in the given location.
      *
      * @param location The location where the enemy is spawned.

@@ -11,10 +11,7 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.*;
 import game.actions.AttackAction;
 import game.actions.DespawnAction;
-import game.behaviours.AttackBehaviour;
-import game.behaviours.Behaviour;
-import game.behaviours.FollowBehaviour;
-import game.behaviours.WanderBehaviour;
+import game.behaviours.*;
 import game.currency.CurrencyItem;
 import game.interfaces.CurrencySource;
 
@@ -38,6 +35,11 @@ public abstract class Enemy extends Actor implements CurrencySource, Resettable 
      */
     private IntrinsicWeapon intrinsicWeapon;
 
+    /**
+     * Get the chance of the enemy spawning
+     *
+     * @return spawn chance of enemy
+     */
     public abstract int getSpawnChance();
 
     /**
@@ -53,6 +55,7 @@ public abstract class Enemy extends Actor implements CurrencySource, Resettable 
         // Add enemy type
         addCapability(enemyType);
         // Add the common behaviours of enemies
+        this.behaviours.put(1, new DespawnBehaviour(10));
         this.behaviours.put(997, new AttackBehaviour());
         // Follow behaviour will slot into 998 when a player instance is captured
         this.behaviours.put(999, new WanderBehaviour());
@@ -116,10 +119,10 @@ public abstract class Enemy extends Actor implements CurrencySource, Resettable 
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        // At each turn, the enemy has a 10% chance of being despawned
-        if (!hasCapability(Status.FOLLOWING_PLAYER) && RandomNumberGenerator.getRandomInt(0, 100) <= 10) {
-            return new DespawnAction();
-        }
+//        // At each turn, the enemy has a 10% chance of being despawned
+//        if (!hasCapability(Status.FOLLOWING_PLAYER) && RandomNumberGenerator.getRandomInt(0, 100) <= 10) {
+//            return new DespawnAction();
+//        }
         // Iterate through the available behaviours, and get the first one that has an action
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);

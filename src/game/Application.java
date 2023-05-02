@@ -161,14 +161,12 @@ public class Application {
 		combatArchetypeOptions.add(new Bandit());
 		combatArchetypeOptions.add(new Wretch());
 
-		Map<Character, CombatArchetype> combatArchetypes = new HashMap<>(3);
+		Map<Character, CombatArchetype> combatArchetypes = new HashMap<>(combatArchetypeOptions.size());
 		for (CombatArchetype archetype : combatArchetypeOptions) {
 			combatArchetypes.put(archetype.getHotKey(), archetype);
 		}
 
-		combatArchetypes.forEach((hotKey, archetype) -> {
-			display.println(String.format("%s. %s", hotKey, archetype.getName()));
-		});
+		combatArchetypes.forEach((hotKey, archetype) -> display.println(String.format("%s. %s", hotKey, archetype.getName())));
 
 		display.println("=== SELECT ONE ===");
 		char archetypeSelection = display.readChar();

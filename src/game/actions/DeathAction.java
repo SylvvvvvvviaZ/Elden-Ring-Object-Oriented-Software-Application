@@ -6,12 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.RuneManager;
 import game.Status;
-import game.enemies.Enemy;
-import game.interfaces.CurrencySource;
-
-import java.util.Currency;
 
 /**
  * An action executed if an actor is killed.

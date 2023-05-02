@@ -13,9 +13,7 @@ import game.Status;
  * closer to a target Actor.
  * @see edu.monash.fit2099.demo.mars.Application
  *
- * Created by:
- * @author Riordan D. Alfredo
- * Modified by:
+ * @author Riordan D. Alfredo, modified by dkon0020
  *
  */
 public class FollowBehaviour implements Behaviour {
@@ -33,8 +31,11 @@ public class FollowBehaviour implements Behaviour {
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		if(!map.contains(target) || !map.contains(actor))
+		if(!map.contains(target) || !map.contains(actor)) {
+			// If following is no longer possible, remove the status in case the actor used to be following the player
+			actor.removeCapability(Status.FOLLOWING_PLAYER);
 			return null;
+		}
 		
 		Location here = map.locationOf(actor);
 		Location there = map.locationOf(target);
@@ -45,12 +46,16 @@ public class FollowBehaviour implements Behaviour {
 			if (destination.canActorEnter(actor)) {
 				int newDistance = distance(destination, there);
 				if (newDistance < currentDistance) {
-					actor.addCapability(Status.FOLLOWING_PLAYER);
+					// Add the following-player status if the target to follow is a player
+					if (target.hasCapability(Status.HOSTILE_TO_ENEMY))
+						actor.addCapability(Status.FOLLOWING_PLAYER);
 					return new MoveActorAction(destination, exit.getName());
 				}
 			}
 		}
 
+		// If following is no longer possible, remove the status in case the actor used to be following the player
+		actor.removeCapability(Status.FOLLOWING_PLAYER);
 		return null;
 	}
 
