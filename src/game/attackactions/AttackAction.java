@@ -1,4 +1,4 @@
-package game.actions;
+package game.attackactions;
 
 import java.util.Random;
 
@@ -6,8 +6,10 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
-import game.ResetManager;
-import game.ResetType;
+import game.reset.ResetManager;
+import game.reset.ResetType;
+import game.actions.DeathAction;
+import game.actions.SwapActorAction;
 import game.enemies.PileOfBones;
 import game.Status;
 

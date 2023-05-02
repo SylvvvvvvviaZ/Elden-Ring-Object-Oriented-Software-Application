@@ -1,4 +1,4 @@
-package game.interfaces;
+package game.currency;
 
 import game.currency.CurrencyItem;
 

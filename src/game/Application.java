@@ -8,10 +8,12 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
 import game.archetypes.*;
+import game.currency.RuneManager;
 import game.factories.EastEnemyFactory;
 import game.factories.WestEnemyFactory;
 import game.grounds.*;
-import game.traders.MerchantKale;
+import game.reset.ResetManager;
+import game.trading.MerchantKale;
 
 /**
  * The main class to start the game.
@@ -175,7 +177,7 @@ public class Application {
 
 		gameMap.at(40, 12).addActor(new MerchantKale());
 
-		Player player = new Player("Tarnished", '@', 300, resetManager, new Location(gameMap, 38, 11), runeManager, display);
+		Player player = new Player("Tarnished", '@', 300, resetManager, new Location(gameMap, 38, 11));
 		world.addPlayer(player, gameMap.at(38, 11));
 
 		// Archetype chosen

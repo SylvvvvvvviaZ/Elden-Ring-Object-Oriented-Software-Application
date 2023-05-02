@@ -1,4 +1,4 @@
-package game.actions;
+package game.trading;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -6,8 +6,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.currency.CurrencyItem;
-import game.RuneManager;
-import game.traders.Trader;
+import game.currency.RuneManager;
 
 /**
  * Base class for trade-related actions

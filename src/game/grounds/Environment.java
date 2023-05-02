@@ -2,8 +2,7 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.MapArea;
-import game.interfaces.EnemyFactory;
+import game.factories.EnemyFactory;
 
 /**
  * Base class for environments (grounds that spawn actors)

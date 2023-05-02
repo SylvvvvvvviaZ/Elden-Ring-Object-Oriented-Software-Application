@@ -3,11 +3,11 @@ package game.weapons;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actions.UnsheatheAttackAction;
+import game.attackactions.UnsheatheAttackAction;
 import game.currency.CurrencyItem;
 import game.currency.Rune;
-import game.interfaces.Buyable;
-import game.interfaces.Sellable;
+import game.trading.Buyable;
+import game.trading.Sellable;
 
 /**
  * Uchigatana weapon

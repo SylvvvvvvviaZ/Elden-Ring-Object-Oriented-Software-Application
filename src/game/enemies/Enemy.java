@@ -9,11 +9,13 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.*;
-import game.actions.AttackAction;
+import game.attackactions.AttackAction;
 import game.actions.DespawnAction;
 import game.behaviours.*;
 import game.currency.CurrencyItem;
-import game.interfaces.CurrencySource;
+import game.currency.CurrencySource;
+import game.reset.ResetType;
+import game.reset.Resettable;
 
 import java.util.HashMap;
 import java.util.Map;

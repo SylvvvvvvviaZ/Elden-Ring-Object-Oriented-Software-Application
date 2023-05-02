@@ -1,10 +1,9 @@
-package game.actions;
+package game.trading;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.RuneManager;
-import game.interfaces.Sellable;
+import game.currency.RuneManager;
 
 /**
  * Action for an actor to sell an item to a trader

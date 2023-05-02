@@ -1,6 +1,5 @@
 package game.enemies;
 
-import game.EnemyType;
 import game.RandomNumberGenerator;
 import game.Status;
 import game.currency.CurrencyItem;

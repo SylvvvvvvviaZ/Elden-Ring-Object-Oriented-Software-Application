@@ -2,14 +2,7 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.MapArea;
-import game.RandomNumberGenerator;
-import game.ResetManager;
-import game.enemies.Enemy;
-import game.enemies.GiantDog;
-import game.enemies.LoneWolf;
-import game.interfaces.CanineSpawnable;
-import game.interfaces.EnemyFactory;
+import game.factories.EnemyFactory;
 
 /**
  * Gust of Wind ground

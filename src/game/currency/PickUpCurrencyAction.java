@@ -1,10 +1,8 @@
-package game.actions;
+package game.currency;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.PickUpAction;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.currency.CurrencyItem;
-import game.RuneManager;
 
 /**
  * Action for picking up currency items that uses the CurrencyManager to update

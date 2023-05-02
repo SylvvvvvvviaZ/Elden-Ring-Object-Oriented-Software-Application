@@ -5,11 +5,9 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.ResetType;
-import game.Resettable;
-import game.RuneManager;
+import game.reset.ResetType;
+import game.reset.Resettable;
 import game.Status;
-import game.actions.PickUpCurrencyAction;
 
 /**
  * Item for currencies

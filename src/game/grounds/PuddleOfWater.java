@@ -2,14 +2,7 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.MapArea;
-import game.ResetManager;
-import game.enemies.Enemy;
-import game.enemies.GiantCrab;
-import game.RandomNumberGenerator;
-import game.enemies.GiantCrayfish;
-import game.interfaces.CrustaceanSpawnable;
-import game.interfaces.EnemyFactory;
+import game.factories.EnemyFactory;
 
 /**
  * Puddle of Water ground

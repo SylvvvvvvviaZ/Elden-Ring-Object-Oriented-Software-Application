@@ -3,13 +3,8 @@ package game.enemies;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.EnemyType;
-import game.RandomNumberGenerator;
 import game.Status;
 import game.behaviours.SwapActorBehaviour;
-import game.currency.CurrencyItem;
-import game.currency.Rune;
-import game.weapons.Grossmesser;
 
 /**
  * Pile of Bones enemy (other enemies can become this after death)

@@ -1,10 +1,8 @@
-package game.interfaces;
+package game.factories;
 
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.MapArea;
 import game.RandomNumberGenerator;
-import game.ResetManager;
+import game.reset.ResetManager;
 import game.enemies.Enemy;
 
 /**

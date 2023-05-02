@@ -2,17 +2,7 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.MapArea;
-import game.ResetManager;
-import game.enemies.Enemy;
-import game.enemies.HeavySkeletalSwordsman;
-import game.RandomNumberGenerator;
-import game.enemies.SkeletalBandit;
-import game.interfaces.EnemyFactory;
-import game.interfaces.SkeletalSpawnable;
-import game.interfaces.Spawnable;
-
-import java.sql.PreparedStatement;
+import game.factories.EnemyFactory;
 
 /**
  * Graveyard ground

@@ -7,9 +7,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.RandomNumberGenerator;
-import game.SlamAttackAction;
-import game.SpecialAttackType;
-import game.actions.AttackAction;
+import game.attackactions.SpecialAttackType;
+import game.attackactions.AttackAction;
 
 /**
  * Behaviour that handles actors that have special attack skills

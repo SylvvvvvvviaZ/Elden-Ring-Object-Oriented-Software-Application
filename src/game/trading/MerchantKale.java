@@ -1,4 +1,4 @@
-package game.traders;
+package game.trading;
 
 import game.weapons.*;
 

@@ -1,4 +1,4 @@
-package game.traders;
+package game.trading;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -9,11 +9,6 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.currency.BuyingCurrency;
 import game.currency.CurrencyItem;
-import game.Trade;
-import game.actions.BuyTradeAction;
-import game.actions.SellTradeAction;
-import game.interfaces.Buyable;
-import game.interfaces.Sellable;
 
 import java.util.HashMap;
 

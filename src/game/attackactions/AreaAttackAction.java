@@ -1,4 +1,4 @@
-package game.actions;
+package game.attackactions;
 
 import java.util.ArrayList;
 import java.util.List;
