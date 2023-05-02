@@ -2,8 +2,7 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.MapArea;
-import game.interfaces.EnemyFactory;
+import game.factories.EnemyFactory;
 
 /**
  * Base class for environments (grounds that spawn actors)
@@ -23,6 +22,17 @@ public abstract class Environment extends Ground {
     public Environment(char displayChar, EnemyFactory enemyFactory) {
         super(displayChar);
         this.enemyFactory = enemyFactory;
+    }
+
+    /**
+     * At each turn, the environment will attempt to spawn enemies
+     *
+     * @param location The location of the Ground
+     */
+    @Override
+    public void tick(Location location) {
+        super.tick(location);
+        spawn(location);
     }
 
     /**

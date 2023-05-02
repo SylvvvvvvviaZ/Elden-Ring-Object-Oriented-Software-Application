@@ -1,7 +1,6 @@
 package game.enemies;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.EnemyType;
 import game.RandomNumberGenerator;
 import game.currency.CurrencyItem;
 import game.currency.Rune;

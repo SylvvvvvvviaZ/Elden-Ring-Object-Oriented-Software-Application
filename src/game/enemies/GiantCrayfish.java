@@ -1,9 +1,8 @@
 package game.enemies;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.EnemyType;
 import game.RandomNumberGenerator;
-import game.SpecialAttackType;
+import game.attackactions.SpecialAttackType;
 import game.currency.CurrencyItem;
 import game.currency.Rune;
 
@@ -24,6 +23,11 @@ public class GiantCrayfish extends Enemy {
         addCapability(SpecialAttackType.SLAM);
     }
 
+    /**
+     * Giant Crayfish has a 1% chance of spawning on the east side of the map
+     *
+     * @return 1%
+     */
     @Override
     public int getSpawnChance() {
         return 1;
@@ -31,6 +35,7 @@ public class GiantCrayfish extends Enemy {
 
     /**
      * Giant Crayfish rewards 500-2374 Runes upon death
+     *
      * @return the Runes to be rewarded upon death
      */
     @Override

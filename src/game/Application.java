@@ -8,10 +8,12 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
 import game.archetypes.*;
+import game.currency.RuneManager;
 import game.factories.EastEnemyFactory;
 import game.factories.WestEnemyFactory;
 import game.grounds.*;
-import game.traders.MerchantKale;
+import game.reset.ResetManager;
+import game.trading.MerchantKale;
 
 /**
  * The main class to start the game.
@@ -156,19 +158,12 @@ public class Application {
 		}
 
 		// Ask for combat archetype
-		ArrayList<CombatArchetype> combatArchetypeOptions = new ArrayList<>(3);
-		combatArchetypeOptions.add(new Samurai());
-		combatArchetypeOptions.add(new Bandit());
-		combatArchetypeOptions.add(new Wretch());
-
-		Map<Character, CombatArchetype> combatArchetypes = new HashMap<>(3);
-		for (CombatArchetype archetype : combatArchetypeOptions) {
+		Map<Character, CombatArchetype> combatArchetypes = new HashMap<>(CombatArchetype.values().length);
+		for (CombatArchetype archetype : CombatArchetype.values()) {
 			combatArchetypes.put(archetype.getHotKey(), archetype);
 		}
 
-		combatArchetypes.forEach((hotKey, archetype) -> {
-			display.println(String.format("%s. %s", hotKey, archetype.getName()));
-		});
+		combatArchetypes.forEach((hotKey, archetype) -> display.println(String.format("%s. %s", hotKey, archetype.getName())));
 
 		display.println("=== SELECT ONE ===");
 		char archetypeSelection = display.readChar();
@@ -182,7 +177,7 @@ public class Application {
 
 		gameMap.at(40, 12).addActor(new MerchantKale());
 
-		Player player = new Player("Tarnished", '@', 300, resetManager, new Location(gameMap, 38, 11), runeManager, display);
+		Player player = new Player("Tarnished", '@', 300, resetManager, new Location(gameMap, 38, 11));
 		world.addPlayer(player, gameMap.at(38, 11));
 
 		// Archetype chosen

@@ -3,8 +3,8 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.ResetManager;
-import game.ResetType;
+import game.reset.ResetManager;
+import game.reset.ResetType;
 
 /**
  * The rest action that players can choose at the Site of Lost Grace

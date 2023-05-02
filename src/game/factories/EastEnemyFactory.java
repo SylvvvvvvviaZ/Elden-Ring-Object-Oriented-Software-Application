@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.enemies.GiantCrayfish;
 import game.enemies.GiantDog;
 import game.enemies.SkeletalBandit;
-import game.interfaces.EnemyFactory;
 
 /**
  * Enemy factory for the east side of the map

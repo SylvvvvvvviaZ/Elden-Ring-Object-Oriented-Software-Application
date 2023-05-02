@@ -8,7 +8,11 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.archetypes.CombatArchetypeEnum;
+import game.consumables.FlaskOfCrimsonTears;
+import game.currency.RuneManager;
+import game.reset.ResetManager;
+import game.reset.ResetType;
+import game.reset.Resettable;
 
 import java.util.ArrayList;
 
@@ -27,7 +31,6 @@ public class Player extends Actor implements Resettable {
     private final ArrayList<Location> siteOfLostGraceVisits = new ArrayList<>();
 
     private final ArrayList<Location> locationHistory = new ArrayList<>();
-    private final RuneManager runeManager;
     /**
      * Constructor.
      *
@@ -37,10 +40,9 @@ public class Player extends Actor implements Resettable {
      * @param resetManager      the reset manager
      * @param firstStepLocation the location of the First Step (of Site of Lost Grace)
      */
-    public Player(String name, char displayChar, int hitPoints, ResetManager resetManager, Location firstStepLocation, RuneManager runeManager, Display display) {
+    public Player(String name, char displayChar, int hitPoints, ResetManager resetManager, Location firstStepLocation) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.HOSTILE_TO_ENEMY);
-        this.runeManager = runeManager;
         // Add the Flask of Crimson Tears
         FlaskOfCrimsonTears flaskOfCrimsonTears = new FlaskOfCrimsonTears();
         addItemToInventory(flaskOfCrimsonTears);
@@ -61,7 +63,7 @@ public class Player extends Actor implements Resettable {
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         // Print the player's stats
-        display.println(String.format("%s %s, runes: %d", this, printHp(), runeManager.getBalance(this)));
+        display.println(String.format("%s %s, runes: %d", this, printHp(), RuneManager.getInstance().getBalance(this)));
         // Add the locations the player has moved through to a list called locationHistory
         locationHistory.add(map.locationOf(this));
 

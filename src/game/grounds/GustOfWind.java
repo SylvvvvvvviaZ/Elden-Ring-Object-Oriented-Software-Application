@@ -2,14 +2,7 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.MapArea;
-import game.RandomNumberGenerator;
-import game.ResetManager;
-import game.enemies.Enemy;
-import game.enemies.GiantDog;
-import game.enemies.LoneWolf;
-import game.interfaces.CanineSpawnable;
-import game.interfaces.EnemyFactory;
+import game.factories.EnemyFactory;
 
 /**
  * Gust of Wind ground
@@ -26,17 +19,6 @@ public class GustOfWind extends Environment {
     public GustOfWind(EnemyFactory enemyFactory) {
         super('&', enemyFactory);
     }
-
-    /**
-     * At every turn, there is a 33% chance of spawning a Lone Wolf
-     * @param location The location of the Ground
-     */
-    @Override
-    public void tick(Location location) {
-        super.tick(location);
-        spawn(location);
-    }
-
 
     /**
      * Spawns a Canine-type enemy using the enemy factory in the given location.

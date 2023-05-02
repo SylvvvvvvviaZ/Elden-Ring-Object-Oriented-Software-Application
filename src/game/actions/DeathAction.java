@@ -6,12 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.RuneManager;
 import game.Status;
-import game.enemies.Enemy;
-import game.interfaces.CurrencySource;
-
-import java.util.Currency;
 
 /**
  * An action executed if an actor is killed.
@@ -40,6 +35,14 @@ public class DeathAction extends Action {
         String result = "";
 
         ActionList dropActions = new ActionList();
+
+        // Much cleaner implementation that uses DIP, but downcasts to an interface
+        /*
+        if (target instanceof CurrencySource currencySource) {
+            RuneManager.getInstance().addMoney(attacker, currencySource.rewardCurrency());
+        }
+        */
+
         // drop all items
         for (Item item : target.getItemInventory()) {
             if (item.hasCapability(Status.DROP_ON_PLAYER_ATTACK_ONLY)) {

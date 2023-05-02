@@ -1,9 +1,8 @@
 package game.enemies;
 
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.EnemyType;
 import game.RandomNumberGenerator;
-import game.SpecialAttackType;
+import game.attackactions.SpecialAttackType;
 import game.currency.CurrencyItem;
 import game.currency.Rune;
 
@@ -24,6 +23,11 @@ public class GiantDog extends Enemy {
         addCapability(SpecialAttackType.SLAM);
     }
 
+    /**
+     * Giant Dog has a 4% chance of spawning on the east side of the map
+     *
+     * @return 4%
+     */
     @Override
     public int getSpawnChance() {
         return 4;
@@ -31,6 +35,7 @@ public class GiantDog extends Enemy {
 
     /**
      * Giant Dog rewards 313-1808 Runes upon death
+     *
      * @return the Runes to be rewarded upon death
      */
     @Override
