@@ -1,13 +1,9 @@
 package game.archetypes;
 
-import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.weapons.Club;
 import game.weapons.GreatKnife;
-import game.weapons.Scimitar;
 import game.weapons.Uchigatana;
-
-import java.util.ArrayList;
 
 /**
  * Enumeration implementation of the Combat Archetypes
@@ -16,95 +12,68 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public enum CombatArchetype {
-    SAMURAI {
-        @Override
-        public WeaponItem getStartingWeapon() {
-            return new Uchigatana();
-        }
+    SAMURAI(new Uchigatana(), 455, 'S', "Samurai"),
+    BANDIT(new GreatKnife(), 414, 'B', "Bandit"),
+    WRETCH(new Club(), 414, 'W', "Wretch");
 
-        @Override
-        public int getStartingHitPoints() {
-            return 455;
-        }
-
-        @Override
-        public Character getHotKey() {
-            return 'S';
-        }
-
-        @Override
-        public String getName() {
-            return "Samurai";
-        }
-    },
-    BANDIT {
-        @Override
-        public WeaponItem getStartingWeapon() {
-            return new GreatKnife();
-        }
-
-        @Override
-        public int getStartingHitPoints() {
-            return 414;
-        }
-
-        @Override
-        public Character getHotKey() {
-            return 'B';
-        }
-
-        @Override
-        public String getName() {
-            return "Bandit";
-        }
-    },
-    WRETCH {
-        @Override
-        public WeaponItem getStartingWeapon() {
-            return new Club();
-        }
-
-        @Override
-        public int getStartingHitPoints() {
-            return 414;
-        }
-
-        @Override
-        public Character getHotKey() {
-            return 'W';
-        }
-
-        @Override
-        public String getName() {
-            return "Wretch";
-        }
-    };
+    private final WeaponItem startingWeapon;
+    private final int startingHitPoints;
+    private final Character hotKey;
+    private final String name;
 
     /**
-     * Get the player's starting weapon item
+     * Constructor
      *
-     * @return starting weapon item
+     * @param startingWeapon    the starting weapon
+     * @param startingHitPoints the starting hit points
+     * @param hotKey            the hotkey for menu selection
+     * @param name              the name of the archetype
      */
-    public abstract WeaponItem getStartingWeapon();
+    CombatArchetype(
+            WeaponItem startingWeapon,
+            int startingHitPoints,
+            Character hotKey,
+            String name
+    ) {
+        this.startingWeapon = startingWeapon;
+        this.startingHitPoints = startingHitPoints;
+        this.hotKey = hotKey;
+        this.name = name;
+    }
 
     /**
-     * Get the player's starting hit points
+     * Get the archetype's starting weapon
+     *
+     * @return starting weapon
+     */
+    public WeaponItem getStartingWeapon() {
+        return startingWeapon;
+    }
+
+    /**
+     * Get the archetype's starting hit points
      *
      * @return starting hit points
      */
-    public abstract int getStartingHitPoints();
+    public int getStartingHitPoints() {
+        return startingHitPoints;
+    }
 
     /**
-     * Get the archetype option's hotkey
+     * Get the archetype's hot key
      *
-     * @return the hotkey for the menu
+     * @return the hotkey
      */
-    public abstract Character getHotKey();
+    public Character getHotKey() {
+        return hotKey;
+    }
 
     /**
-     * Get the archetype's name to be displayed
+     * Get the archetype's name
      *
-     * @return archetype name
+     * @return the name of the archetype
      */
-    public abstract String getName();
+    public String getName() {
+        return name;
+    }
 }
