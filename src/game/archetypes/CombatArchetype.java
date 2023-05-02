@@ -78,27 +78,6 @@ public enum CombatArchetype {
         public String getName() {
             return "Wretch";
         }
-    },
-    CREEPER {
-        @Override
-        public WeaponItem getStartingWeapon() {
-            return new Scimitar();
-        }
-
-        @Override
-        public int getStartingHitPoints() {
-            return 400;
-        }
-
-        @Override
-        public Character getHotKey() {
-            return 'C';
-        }
-
-        @Override
-        public String getName() {
-            return "Creeper";
-        }
     };
 
     /**

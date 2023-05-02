@@ -1,9 +1,6 @@
 package game.traders;
 
-import game.weapons.Club;
-import game.weapons.GreatKnife;
-import game.weapons.Grossmesser;
-import game.weapons.Uchigatana;
+import game.weapons.*;
 
 public class MerchantKale extends Trader {
     public MerchantKale() {
@@ -15,5 +12,7 @@ public class MerchantKale extends Trader {
         addSellableItem(new GreatKnife());
         addSellableItem(new Club());
         addSellableItem(new Grossmesser());
+        addBuyableItem(new Scimitar());
+        addSellableItem(new Scimitar());
     }
 }

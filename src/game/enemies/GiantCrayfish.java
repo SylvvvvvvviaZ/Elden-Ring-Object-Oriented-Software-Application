@@ -24,6 +24,11 @@ public class GiantCrayfish extends Enemy {
         addCapability(SpecialAttackType.SLAM);
     }
 
+    /**
+     * Giant Crayfish has a 1% chance of spawning on the east side of the map
+     *
+     * @return 1%
+     */
     @Override
     public int getSpawnChance() {
         return 1;
@@ -31,6 +36,7 @@ public class GiantCrayfish extends Enemy {
 
     /**
      * Giant Crayfish rewards 500-2374 Runes upon death
+     *
      * @return the Runes to be rewarded upon death
      */
     @Override

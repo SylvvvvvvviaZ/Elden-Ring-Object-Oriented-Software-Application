@@ -24,6 +24,11 @@ public class GiantDog extends Enemy {
         addCapability(SpecialAttackType.SLAM);
     }
 
+    /**
+     * Giant Dog has a 4% chance of spawning on the east side of the map
+     *
+     * @return 4%
+     */
     @Override
     public int getSpawnChance() {
         return 4;
@@ -31,6 +36,7 @@ public class GiantDog extends Enemy {
 
     /**
      * Giant Dog rewards 313-1808 Runes upon death
+     *
      * @return the Runes to be rewarded upon death
      */
     @Override
