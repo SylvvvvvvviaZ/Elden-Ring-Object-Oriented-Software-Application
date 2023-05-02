@@ -156,13 +156,8 @@ public class Application {
 		}
 
 		// Ask for combat archetype
-		ArrayList<CombatArchetype> combatArchetypeOptions = new ArrayList<>(3);
-		combatArchetypeOptions.add(new Samurai());
-		combatArchetypeOptions.add(new Bandit());
-		combatArchetypeOptions.add(new Wretch());
-
-		Map<Character, CombatArchetype> combatArchetypes = new HashMap<>(combatArchetypeOptions.size());
-		for (CombatArchetype archetype : combatArchetypeOptions) {
+		Map<Character, CombatArchetype> combatArchetypes = new HashMap<>(CombatArchetype.values().length);
+		for (CombatArchetype archetype : CombatArchetype.values()) {
 			combatArchetypes.put(archetype.getHotKey(), archetype);
 		}
 
