@@ -12,13 +12,34 @@ import game.weapons.Uchigatana;
  * @version 1.0
  */
 public enum CombatArchetype {
+    /**
+     * Samurai starts with Uchigatana with 455 HPs
+     */
     SAMURAI(new Uchigatana(), 455, 'S', "Samurai"),
+    /**
+     * Bandit starts with Great Knife with 414 HPs
+     */
     BANDIT(new GreatKnife(), 414, 'B', "Bandit"),
+    /**
+     * Wretch starts with Club with 414 HPs
+     */
     WRETCH(new Club(), 414, 'W', "Wretch");
 
+    /**
+     * The archetype's starting weapon
+     */
     private final WeaponItem startingWeapon;
+    /**
+     * The archetype's starting hit points
+     */
     private final int startingHitPoints;
+    /**
+     * The archetype's hot key for menu selection
+     */
     private final Character hotKey;
+    /**
+     * The archetype's name for menu selection
+     */
     private final String name;
 
     /**

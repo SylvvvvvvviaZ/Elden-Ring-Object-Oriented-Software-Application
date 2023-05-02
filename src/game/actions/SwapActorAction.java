@@ -10,7 +10,10 @@ import edu.monash.fit2099.engine.positions.Location;
  * @version 1.0
  */
 public class SwapActorAction extends Action {
-    private Actor targetActor;
+    /**
+     * The actor that the current actor will become upon this action
+     */
+    private final Actor targetActor;
 
     /**
      * Constructor

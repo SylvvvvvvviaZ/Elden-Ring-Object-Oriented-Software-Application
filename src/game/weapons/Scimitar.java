@@ -1,7 +1,9 @@
 package game.weapons;
 
+import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.attackactions.SpinningAttackAction;
 import game.currency.CurrencyItem;
 import game.currency.Rune;
 import game.trading.Buyable;
@@ -22,6 +24,16 @@ public class Scimitar extends WeaponItem implements Buyable, Sellable {
         super("Scimitar", 's', 118, "slashes", 88);
     }
 
+    /**
+     * Scimitar can perform spinning attack
+     *
+     * @param holder weapon holder
+     * @return spinning attack action
+     */
+    @Override
+    public Action getSkill(Actor holder) {
+        return new SpinningAttackAction(this);
+    }
 
     /**
      * Scimitar can be bought for 600 runes
