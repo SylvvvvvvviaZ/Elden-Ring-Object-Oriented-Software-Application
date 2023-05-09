@@ -176,7 +176,7 @@ public class Application {
 
 		gameMap.at(40, 12).addActor(new MerchantKale());
 
-		Player player = new Player("Tarnished", '@', 300, resetManager, new Location(gameMap, 38, 11));
+		Player player = new Player("Tarnished", '@', 300, resetManager, gameMap.at(38, 11));
 		world.addPlayer(player, gameMap.at(38, 11));
 
 		// Archetype chosen
