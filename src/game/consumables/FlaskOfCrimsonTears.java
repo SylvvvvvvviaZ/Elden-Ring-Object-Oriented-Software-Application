@@ -15,7 +15,7 @@ import game.reset.Resettable;
  * @version 1.0
  */
 public class FlaskOfCrimsonTears extends Item implements Resettable, Consumable {
-    private int noOfUses;
+    public int noOfUses;
     private ConsumeAction action;
 
     /**

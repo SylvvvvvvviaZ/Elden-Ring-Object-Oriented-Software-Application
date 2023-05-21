@@ -3,6 +3,7 @@ package game.enemies;
 import game.RandomNumberGenerator;
 import game.currency.CurrencyItem;
 import game.currency.Rune;
+import game.weapons.RiversOfBlood;
 import game.weapons.Scimitar;
 
 /**
@@ -17,7 +18,7 @@ public class GodrickSoldier extends Enemy {
      * Constructor
      */
     public GodrickSoldier() {
-        super("GodrickSoldier", 'p', 198, EnemyType.CASTLE, new Scimitar());
+        super("GodrickSoldier", 'p', 198, EnemyType.CASTLE, new RiversOfBlood());
         addCapability(EnemyType.CASTLE);
     }
 
