@@ -6,9 +6,9 @@
 - Xiaowen Zhou
 
 ## Contribution log
-View log in the contribution [spreadsheet](https://docs.google.com/spreadsheets/d/18r4YNIXrpoK3tmNtGBV13mPPPd_mv3nn57KLk8Tmuhs/edit?usp=sharing).
+View log in the contribution [spreadsheet](https://docs.google.com/spreadsheets/d/1dYq_OsWrgwEUcSYrZOyDyJuuTB7_FpEHMzmxd4v4pdM/edit?usp=sharing).
 
 ## A1. Design rationale
-View contribution history in the [design rationale document](https://docs.google.com/document/d/1mK42ozKTu9W_VCUIltPM_NKRp3dN598xRs0KZiSsNCA/edit?usp=sharing).
+View contribution history in the [design rationale document](https://docs.google.com/document/d/1SNdw1YtBxNB16r_ilkXOOMJH8A-N1TgBrZoRnKmfT-0/edit?usp=sharing).
 
 **For contribution records, refer to history before the version marked as 'Final'.**
