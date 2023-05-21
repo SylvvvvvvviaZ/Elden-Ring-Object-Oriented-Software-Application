@@ -21,5 +21,6 @@ public class MerchantKale extends Trader {
         addSellableItem(new Grossmesser());
         addBuyableItem(new Scimitar());
         addSellableItem(new Scimitar());
+        addSellableItem(new RiversOfBlood());
     }
 }

@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.attackactions.LifeStealAttackAction;
 import game.currency.CurrencyItem;
 import game.currency.Rune;
-import game.trading.Buyable;
 import game.trading.Sellable;
 
 /**
@@ -15,7 +14,7 @@ import game.trading.Sellable;
  * @version 1.0
  * @see WeaponItem
  */
-public class RiversOfBlood extends WeaponItem implements Buyable, Sellable {
+public class RiversOfBlood extends WeaponItem implements Sellable {
     /**
      * Constructor
      */
@@ -23,24 +22,10 @@ public class RiversOfBlood extends WeaponItem implements Buyable, Sellable {
         super("RiversOfBlood", ']', 120, "slashes", 80);
     }
 
-    /**
-     * RiversOfBlood can be bought for 5700 runes
-     * @return 5700 runes
-     */
     @Override
-    public CurrencyItem getBuyPrice() {
-        return new Rune(5700);
+    public Action getSkill(Actor target, String direction) {
+        return new LifeStealAttackAction(target, direction, this);
     }
-
-    /**
-     * Insert the weapon into the actor's inventory
-     * @param buyer the actor buying the item
-     */
-    @Override
-    public void giveToActor(Actor buyer) {
-        buyer.addWeaponToInventory(this);
-    }
-
     /**
      * RiversOfBlood can be sold for 570 runes
      * @return 570 runes
@@ -74,10 +59,5 @@ public class RiversOfBlood extends WeaponItem implements Buyable, Sellable {
             }
         }
         if (itemToRemove != null) seller.removeWeaponFromInventory(itemToRemove);
-    }
-
-    @Override
-    public Action getSkill(Actor target, String direction) {
-        return new LifeStealAttackAction(target, direction, this);
     }
 }
