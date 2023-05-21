@@ -39,4 +39,19 @@ public class WestEnemyFactory implements EnemyFactory {
     public void generateCrustacean(Location location) {
         spawn(location, new GiantCrab());
     }
+
+    /**
+     * Spawns Dog
+     *
+     * @param location the location to spawn the enemy
+     */
+    public void generateDog(Location location) {
+    }
+    /**
+     * Spawns GodrickSoldier
+     *
+     * @param location the location to spawn the enemy
+     */
+    public void generateSoldier(Location location) {
+    }
 }

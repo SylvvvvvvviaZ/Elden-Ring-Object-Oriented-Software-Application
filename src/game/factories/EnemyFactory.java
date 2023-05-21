@@ -42,4 +42,18 @@ public interface EnemyFactory {
      * @param location the location to spawn the enemy
      */
     void generateCrustacean(Location location);
+
+    /**
+     * Generate Dog
+     *
+     * @param location the location to spawn the enemy
+     */
+    void generateDog(Location location);
+
+    /**
+     * Generate GodrickSoldier
+     *
+     * @param location the location to spawn the enemy
+     */
+    void generateSoldier(Location location);
 }

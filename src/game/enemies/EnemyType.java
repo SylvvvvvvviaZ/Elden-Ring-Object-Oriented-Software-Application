@@ -5,5 +5,5 @@ package game.enemies;
  * @author dkon0020
  */
 public enum EnemyType {
-  CRUSTACEAN, SKELETAL, CANINE
+  CRUSTACEAN, SKELETAL, CANINE, CASTLE
 }

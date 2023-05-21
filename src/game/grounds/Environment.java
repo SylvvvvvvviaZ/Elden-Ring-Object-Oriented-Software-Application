@@ -3,6 +3,7 @@ package game.grounds;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.factories.EnemyFactory;
+import game.factories.StormveilFactory;
 
 /**
  * Base class for environments (grounds that spawn actors)

@@ -1,43 +1,36 @@
 package game.factories;
 
 import edu.monash.fit2099.engine.positions.Location;
-import game.enemies.GiantCrayfish;
-import game.enemies.GiantDog;
-import game.enemies.SkeletalBandit;
+import game.enemies.*;
 
 /**
- * Enemy factory for the east side of the map
+ * Enemy factory for the Stormveil Castle
  */
-public class EastEnemyFactory implements EnemyFactory {
-
+public class StormveilFactory implements EnemyFactory{
     /**
-     * Skeletal Bandits spawn on the east side
+     * Spawns Skeletal type enemy
      *
      * @param location the location to spawn the enemy
      */
-    @Override
     public void generateSkeletal(Location location) {
-        spawn(location, new SkeletalBandit());
     }
 
     /**
-     * Giant Dogs spawn on the east side
+     * Spawns Canine type enemy
      *
      * @param location the location to spawn the enemy
      */
     @Override
     public void generateCanine(Location location) {
-        spawn(location, new GiantDog());
     }
 
     /**
-     * Giant Crayfish spawn on the east side
+     * Spawns Crustacean type enemy
      *
      * @param location the location to spawn the enemy
      */
     @Override
     public void generateCrustacean(Location location) {
-        spawn(location, new GiantCrayfish());
     }
 
     /**
@@ -45,17 +38,12 @@ public class EastEnemyFactory implements EnemyFactory {
      *
      * @param location the location to spawn the enemy
      */
-    @Override
-    public void generateDog(Location location) {
-
-    }
+    public void generateDog(Location location) {spawn(location, new Dog());}
 
     /**
      * Spawns GodrickSoldier
      *
      * @param location the location to spawn the enemy
      */
-    public void generateSoldier(Location location) {
-
-    }
+    public void generateSoldier(Location location) {spawn(location, new GodrickSoldier());}
 }
