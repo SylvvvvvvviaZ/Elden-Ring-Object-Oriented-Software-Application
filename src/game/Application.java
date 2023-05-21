@@ -28,7 +28,7 @@ public class Application {
 
 		World world = new World(display);
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SiteOfLostGrace());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new SiteOfLostGrace(), new Cliff());
 
 		/*
 		List<String> map = Arrays.asList(

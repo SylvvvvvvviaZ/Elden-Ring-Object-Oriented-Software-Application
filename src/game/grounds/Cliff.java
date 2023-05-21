@@ -2,7 +2,9 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
-import game.Status;
+import game.reset.ResetManager;
+
+import static game.reset.ResetType.RESET_ON_DEATH;
 
 public class Cliff extends Ground {
     public Cliff() {super('+');
@@ -10,6 +12,7 @@ public class Cliff extends Ground {
 
     @Override
     public boolean canActorEnter(Actor actor) {
-        return false;
+        return actor.hasCapability(RESET_ON_DEATH);
     }
 }
+
