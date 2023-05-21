@@ -45,9 +45,9 @@ public class LifeStealAttackAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         String result = "";
-        int dmg = weapon.damage();
+        int dmg = (int) ceil(weapon.damage()*1.5);
         if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-            dmg = (int) ceil(weapon.damage()*1.5);
+            dmg = (int) ceil(weapon.damage()*2);
         }
         actor.heal((int) ceil(weapon.damage()*0.1));
         WeaponItem modifiedWeaponitem = new ModifiedWeaponItem(weapon, dmg, 80);
