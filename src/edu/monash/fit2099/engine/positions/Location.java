@@ -25,12 +25,12 @@ public class Location implements Printable {
 
 	/**
 	 * Constructor.
-	 *
+	 * <p>
 	 * Locations know which map they are part of, and where.
 	 *
 	 * @param map the map that contains this location
-	 * @param x x coordinate of this location within the map
-	 * @param y y coordinate of this location within the map
+	 * @param x   x coordinate of this location within the map
+	 * @param y   y coordinate of this location within the map
 	 */
 	public Location(GameMap map, int x, int y) {
 		this.map = map;
@@ -67,7 +67,7 @@ public class Location implements Printable {
 
 	/**
 	 * Returns a list of items at this location.
-	 *
+	 * <p>
 	 * This list uses Collections.unmodifiableList() to prevent privacy leaks.
 	 *
 	 * @return an unmodifiable List of items at this location
@@ -76,7 +76,8 @@ public class Location implements Printable {
 		return Collections.unmodifiableList(items);
 	}
 
-	/** Add an item to this location.
+	/**
+	 * Add an item to this location.
 	 *
 	 * @param item the item to add
 	 */
@@ -97,6 +98,7 @@ public class Location implements Printable {
 
 	/**
 	 * Accessor for the ground at this location.
+	 *
 	 * @return the ground at this location
 	 */
 	public Ground getGround() {
@@ -105,20 +107,20 @@ public class Location implements Printable {
 
 	/**
 	 * Set the Ground type at the given Location
-	 * 
+	 *
 	 * @param ground Ground type to set
 	 */
 	public void setGround(Ground ground) {
 		this.ground = ground;
 	}
-	
+
 	/**
 	 * Called once per turn, so that Locations can experience the passage time. If that's
 	 * important to them.
 	 */
 	public void tick() {
 		ground.tick(this);
-		for(Item item :  new ArrayList<>(items)) {
+		for (Item item : new ArrayList<>(items)) {
 			item.tick(this);
 		}
 	}
@@ -140,7 +142,7 @@ public class Location implements Printable {
 	public Actor getActor() {
 		return map.getActorAt(this);
 	}
-	
+
 	/**
 	 * Add an Actor to the Location.
 	 * This is really only here for consistency for the Location API.
@@ -151,28 +153,29 @@ public class Location implements Printable {
 		Objects.requireNonNull(actor);
 		map.addActor(actor, this);
 	}
-	
-	
+
+
 	/**
 	 * Returns a MoveActorAction that will move actor to location if the terrain type allows.
-	 * @param actor the Actor to move
-	 * @param direction the direction of the destination from actor
-	 * @param hotKey the character that will trigger the movement command
 	 *
+	 * @param actor     the Actor to move
+	 * @param direction the direction of the destination from actor
+	 * @param hotKey    the character that will trigger the movement command
 	 * @return a MoveActorAction that allows actor to move to location if allowed; otherwise null
 	 */
 	public MoveActorAction getMoveAction(Actor actor, String direction, String hotKey) {
-		if(canActorEnter(actor))
+		if (canActorEnter(actor))
 			return new MoveActorAction(this, direction, hotKey);
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * Returns true if an Actor can enter this location.
-	 *
+	 * <p>
 	 * Actors can enter a location if the terrain is passable and there isn't an Actor there already.
 	 * Game rule. One actor per location.
+	 *
 	 * @param actor the Actor who might be moving
 	 * @return true if the Actor can enter this location
 	 */
@@ -182,7 +185,7 @@ public class Location implements Printable {
 
 	/**
 	 * Returns the character to display for this location.
-	 *
+	 * <p>
 	 * If there is an Actor here, they are drawn.  If there is no Actor, then any items present are drawn.
 	 * If there is no Actor and no item, then the ground symbol is drawn.
 	 *
@@ -191,14 +194,14 @@ public class Location implements Printable {
 	@Override
 	public char getDisplayChar() {
 		Printable thing;
-		
-		if(this.containsAnActor()) 
+
+		if (this.containsAnActor())
 			thing = this.getActor();
 		else if (items.size() > 0)
 			thing = items.get(items.size() - 1);
 		else
 			thing = ground;
-		
+
 		return thing.getDisplayChar();
 	}
 
@@ -226,6 +229,7 @@ public class Location implements Printable {
 
 	/**
 	 * Computes a hash for the current Location.
+	 *
 	 * @return the hash
 	 */
 	@Override
@@ -244,31 +248,24 @@ public class Location implements Printable {
 
 	/**
 	 * Add an exit to this Location.
-	 *
+	 * <p>
 	 * This method is used in GameMap to initialize the Location's exits.
+	 *
 	 * @param exit the exit to add
 	 */
 	public void addExit(Exit exit) {
 		exits.add(exit);
 	}
-	
+
 	/**
 	 * Remove an exit from this Location.
-	 *
+	 * <p>
 	 * This method is used in GameMap to initialize the Location's exits.
+	 *
 	 * @param exit the exit to remove
 	 */
 	public void removeExit(Exit exit) {
 		exits.remove(exit);
 	}
-
-	/**
-	 * Checks whether the specified GoldenRunes object is contained within this collection.
-	 *
-	 * @param goldenRunes The GoldenRunes object to be checked for containment.
-	 * @return true if the GoldenRunes object is found in the collection, false otherwise.
-	 */
-    public boolean contains(GoldenRunes goldenRunes) {
-		return false;
-	}
 }
+

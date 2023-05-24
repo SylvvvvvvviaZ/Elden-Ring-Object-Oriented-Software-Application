@@ -29,7 +29,7 @@ public class GoldenRunes extends Item {
         super.tick(location);
 
         // Randomly generate the amount of runes when consumed
-        if (!location.contains(this))
+        if (!location.containsAnActor())
             return;
 
         // Generate a random number between 200 and 10000
