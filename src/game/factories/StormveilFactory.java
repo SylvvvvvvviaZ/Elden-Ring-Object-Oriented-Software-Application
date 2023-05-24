@@ -7,11 +7,12 @@ import game.enemies.*;
  * Enemy factory for the Stormveil Castle
  */
 public class StormveilFactory implements EnemyFactory{
-    /**
-     * Spawns Skeletal type enemy
-     *
-     * @param location the location to spawn the enemy
-     */
+
+/**
+ * Spawns Skeletal type enemy
+ *
+ * @param location the location to spawn the enemy
+ */
     public void generateSkeletal(Location location) {
     }
 
