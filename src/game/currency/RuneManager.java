@@ -101,4 +101,7 @@ public class RuneManager {
         ResetManager.getInstance().registerResettable(runes);
         lastLocation.addItem(runes);
     }
+
+    public void addRunes(int amount) {
+    }
 }

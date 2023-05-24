@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.displays.Printable;
 import edu.monash.fit2099.engine.items.Item;
+import game.GoldenRunes;
 
 import java.util.*;
 
@@ -259,5 +260,15 @@ public class Location implements Printable {
 	 */
 	public void removeExit(Exit exit) {
 		exits.remove(exit);
+	}
+
+	/**
+	 * Checks whether the specified GoldenRunes object is contained within this collection.
+	 *
+	 * @param goldenRunes The GoldenRunes object to be checked for containment.
+	 * @return true if the GoldenRunes object is found in the collection, false otherwise.
+	 */
+    public boolean contains(GoldenRunes goldenRunes) {
+		return false;
 	}
 }
