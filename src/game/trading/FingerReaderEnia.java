@@ -21,25 +21,29 @@ public class FingerReaderEnia extends Trader {
     }
 
     /**
-     * Allows the trader to exchange the Remembrance of the Grafted for either the Axe of Godrick or Grafted Dragon.
-     *
+     * Allows trader Finger Reader Enia to exchange the Remembrance of the Grafted
+     * For either the Axe of Godrick or Grafted Dragon
      * @param remembrance the Remembrance of the Grafted item
      */
-    public <RemembranceOfTheGrafted> void exchangeRemembrance(RemembranceOfTheGrafted remembrance) {
-        if (remembrance == null)
+    public void exchangeRemembrance(RemembranceOfTheGrafted remembrance) {
+        if (remembrance == null) {
             return;
+        }
 
         // Remove the Remembrance of the Grafted from the player's inventory
-        removeTradeItem((Item) remembrance);
+        removeTradeItem(remembrance);
 
         // Determine which weapon to give based on player's choice
         WeaponItem weaponToGive;
-        if (Math.random() < 0.5)
+        if (Math.random() < 0.5) {
             weaponToGive = new AxeOfGodrick();
-        else
+        } else {
             weaponToGive = new GraftedDragon();
+        }
 
         // Add the chosen weapon to the trader's inventory
         addSellableItem((Sellable) weaponToGive);
     }
+
+
 }

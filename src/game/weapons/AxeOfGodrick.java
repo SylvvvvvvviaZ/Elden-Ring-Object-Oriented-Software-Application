@@ -49,9 +49,14 @@ public class AxeOfGodrick extends WeaponItem implements Sellable {
         return false;
     }
 
-
+    /**
+     * Takes the Axe of Godrick from the seller actor.
+     *
+     * @param seller the actor from whom to take the weapon.
+     */
     @Override
     public void takeFromActor(Actor seller) {
-
+        seller.removeItemFromInventory(this);
     }
+
 }

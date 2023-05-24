@@ -49,8 +49,13 @@ public class GraftedDragon extends WeaponItem implements Sellable {
         return false;
     }
 
+    /**
+     * Takes the Grafted Dragon from the seller actor.
+     *
+     * @param seller the actor from whom to take the weapon.
+     */
     @Override
     public void takeFromActor(Actor seller) {
-
+        seller.removeItemFromInventory(this);
     }
 }
