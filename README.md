@@ -1,13 +1,7 @@
-# FIT2099 Assignment3 (Semester 1, 2023)
+FIT2099 
 
-## CL_Lab1Team3
-- Aung Kyaw
-- Xiaowen Zhou
+Working on a text-based “rogue-like” game.
 
-## Contribution log
-View log in the contribution [spreadsheet](https://docs.google.com/spreadsheets/d/1dYq_OsWrgwEUcSYrZOyDyJuuTB7_FpEHMzmxd4v4pdM/edit?usp=sharing).
+Inspired by Elden Ring. using several similar names (characters, items, locations) and concepts. The purpose of using an actual game’s concepts is to help you visualise the required features.
 
-## A3. Design rationale
-View contribution history in the [design rationale document](https://docs.google.com/document/d/1SNdw1YtBxNB16r_ilkXOOMJH8A-N1TgBrZoRnKmfT-0/edit?usp=sharing).
-
-**For contribution records, refer to history before the version marked as 'Final'.**
+All of the linked game contents, videos, and images belong to the respective owners and are subject to copyright. We mainly use the concepts for educational purposes and provide credit to the original creators accordingly. 
